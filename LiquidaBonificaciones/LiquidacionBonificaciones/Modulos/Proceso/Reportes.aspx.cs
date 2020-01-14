@@ -13,5 +13,10 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         {
 
         }
+
+        protected void ddlEstadoDebito_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

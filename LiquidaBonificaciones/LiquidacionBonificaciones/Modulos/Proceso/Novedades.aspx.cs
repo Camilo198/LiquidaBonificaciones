@@ -13,5 +13,47 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         {
 
         }
+
+        protected void imgBtnNuevo_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void imgBtnGuardar_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void txbContrato_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlEstadoD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void chbSuspender_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void chbTercero_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void imgBuscar_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void gvHistorial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

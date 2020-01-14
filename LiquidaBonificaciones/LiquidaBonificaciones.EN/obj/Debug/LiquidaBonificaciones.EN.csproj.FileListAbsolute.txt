@@ -12,8 +12,3 @@ C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\
 C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.csprojResolveAssemblyReference.cache
 C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.dll
 C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.pdb
-C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\bin\Debug\LiquidaBonificaciones.EN.dll
-C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\bin\Debug\LiquidaBonificaciones.EN.pdb
-C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.csprojResolveAssemblyReference.cache
-C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.dll
-C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.pdb

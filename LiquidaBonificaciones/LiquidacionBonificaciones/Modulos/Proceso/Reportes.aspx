@@ -20,7 +20,7 @@
                 <tr>
                     <td class="CuadranteBotonImagen">
                         <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/MarcaVisual/iconos/nuevo.png"
-                            Width="16px" ToolTip="Nuevo..." OnClick="imgBtnNuevo_Click" />
+                            Width="16px" ToolTip="Nuevo..." OnClick="imgBtnNuevo_Click" style="height: 16px" />
                     </td>
                     <td class="CuadranteBotonImagen">
                     <asp:ImageButton ID="imgBtnReportes" runat="server" ImageUrl="~/MarcaVisual/iconos/activar_sel.png"
@@ -195,7 +195,7 @@
                                         </td>
                                        <td class="EstiloEtiquetas80" colspan="9">
                                           
-                                           <asp:DropDownList ID="ddlEstadoDebito" runat="server" CssClass="BordeListas" Visible="false" Width="150px">
+                                           <asp:DropDownList ID="ddlEstadoDebito" runat="server" CssClass="BordeListas" Visible="false" Width="150px" OnSelectedIndexChanged="ddlEstadoDebito_SelectedIndexChanged">
                                            </asp:DropDownList>
                                           
                                         </td>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra/Sitio.Master" AutoEventWireup="true" CodeBehind="Liquidacion.aspx.cs" Inherits="LiquidacionBonificaciones.Modulos.Proceso.Liquidacion" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra/Sitio.Master" AutoEventWireup="true" CodeBehind="Liquidacion.aspx.cs" Inherits="LiquidacionBonificaciones.Modulos.Proceso.Liquidacion" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
@@ -38,46 +38,7 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContenido" runat="server">
-    <script type="text/javascript" language="javascript">
 
-
-        /* Permite digitar únicamente números en el texto */
-        function soloNumeros(control) {
-            limitarCaracteres(control, "^[0-9]+$");
-        }
-
-        /* Únicamente permite digitar los caracteres que cumplan la expresión regular */
-        function limitarCaracteres(control, expresion) {
-            document.getElementById(control).addEventListener('keypress', function (event) {
-                var regex = new RegExp(expresion);
-                if (esCaracterEspecial(event)) {
-                    return true;
-                }
-                else {
-                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                    if (!regex.test(key)) {
-                        event.preventDefault();
-                        return false;
-                    }
-                }
-            }
-            );
-        }
-
-        function esCaracterEspecial(event) {
-            var whichCode = !event.charCode ? event.which : event.charCode;
-
-            if (whichCode == 0) return true;
-            if (whichCode == 8) return true;
-            if (whichCode == 9) return true;
-            if (whichCode == 13) return true;
-            if (whichCode == 16) return true;
-            if (whichCode == 17) return true;
-            if (whichCode == 27) return true;
-            return false;
-        }
-
-    </script>
 
     <asp:UpdatePanel ID="upContenido" runat="server">
         <ContentTemplate>
