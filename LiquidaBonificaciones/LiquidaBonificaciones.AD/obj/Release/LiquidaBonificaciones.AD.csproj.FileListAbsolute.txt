@@ -1,0 +1,7 @@
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Release\LiquidaBonificaciones.AD.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Release\LiquidaBonificaciones.AD.pdb
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Release\LiquidaBonificaciones.EN.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Release\LiquidaBonificaciones.EN.pdb
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Release\LiquidaBonificaciones.AD.csprojResolveAssemblyReference.cache
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Release\LiquidaBonificaciones.AD.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Release\LiquidaBonificaciones.AD.pdb

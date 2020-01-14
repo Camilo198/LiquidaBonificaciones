@@ -1,0 +1,21 @@
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.AD.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.AD.pdb
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.EN.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.EN.pdb
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.csprojResolveAssemblyReference.cache
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.pdb
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.AD.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.AD.pdb
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.EN.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.EN.pdb
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.csprojResolveAssemblyReference.cache
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.pdb
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.AD.dll
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.AD.pdb
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.EN.dll
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.EN.pdb
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.csprojResolveAssemblyReference.cache
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.dll
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.pdb

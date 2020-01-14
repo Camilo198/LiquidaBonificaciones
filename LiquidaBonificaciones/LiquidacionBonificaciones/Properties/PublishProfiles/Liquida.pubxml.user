@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\NICOLAS\PASO A PRUEBAS\Liquidacion\</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>11/22/2019 08:40:25</publishTime>
+    </File>
+    <File Include="bin/es/AjaxControlToolkit.resources.dll">
+      <publishTime>11/22/2019 08:40:16</publishTime>
+    </File>
+    <File Include="bin/LiquidaBonificaciones.AD.dll">
+      <publishTime>12/10/2019 10:59:18</publishTime>
+    </File>
+    <File Include="bin/LiquidaBonificaciones.EN.dll">
+      <publishTime>12/10/2019 10:59:17</publishTime>
+    </File>
+    <File Include="bin/LiquidaBonificaciones.LN.dll">
+      <publishTime>12/10/2019 10:59:18</publishTime>
+    </File>
+    <File Include="bin/LiquidacionBonificaciones.dll">
+      <publishTime>12/10/2019 10:59:19</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>11/22/2019 08:40:25</publishTime>
+    </File>
+    <File Include="Librerias/AjaxControlToolkit.dll">
+      <publishTime>11/22/2019 08:40:25</publishTime>
+    </File>
+    <File Include="Librerias/es/ajax.js">
+      <publishTime>11/22/2019 08:40:16</publishTime>
+    </File>
+    <File Include="Librerias/es/AjaxControlToolkit.resources.dll">
+      <publishTime>11/22/2019 08:40:16</publishTime>
+    </File>
+    <File Include="Librerias/es/jquery-1.10.2.min.js">
+      <publishTime>11/22/2019 08:40:16</publishTime>
+    </File>
+    <File Include="Librerias/es/Validaciones.js">
+      <publishTime>11/22/2019 08:40:16</publishTime>
+    </File>
+    <File Include="Librerias/log4net.dll">
+      <publishTime>11/22/2019 08:40:25</publishTime>
+    </File>
+    <File Include="Librerias/Microsoft.Office.Interop.Excel.dll">
+      <publishTime>11/22/2019 08:40:25</publishTime>
+    </File>
+    <File Include="MarcaVisual/estilos/estilos.css">
+      <publishTime>11/22/2019 08:34:21</publishTime>
+    </File>
+    <File Include="MarcaVisual/estilos/Fondo.css">
+      <publishTime>11/22/2019 08:34:21</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/abrir.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/aceptar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/activar_sel.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/activar_todas.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/adjuntar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/adjuntar_dis.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/advertencia.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/agregar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/aprobar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/aprobar_dis.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/ayuda.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/borrar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/borrar_app.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/borrar_app_dis.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/borrar_dis.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/buscar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/calendario.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/compania.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/cortar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/credencial.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/delete.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/delete2.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/deshacer.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/editar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/encontrar.gif">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/enviar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/guardar.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/guardar_todo.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/herramientas.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/herramienta_ajuntar.gif">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/herramienta_guardar.gif">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/Home.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/imprimir.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/informacion.gif">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/loading.gif">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/menu_gen_ope.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/menu_mantenimiento.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/menu_pro.png">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/modulo_produccion.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/nodo_abierto.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/nodo_padre.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/nuevo.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/precaucion.gif">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/preferencias.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/previsualizar_impresion.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/referescar.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/registro_auditoria.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/registro_auditoria_con_datos.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/rehacer.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/subnodo16.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/trash1.gif">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/usuario.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/WZNEXT.BMP">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/zoom_in.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/zoom_out.png">
+      <publishTime>11/22/2019 08:34:32</publishTime>
+    </File>
+    <File Include="MarcaVisual/iconos/_logo.gif">
+      <publishTime>11/22/2019 08:34:31</publishTime>
+    </File>
+    <File Include="MarcaVisual/imagenes/barra_estado.png">
+      <publishTime>11/22/2019 08:34:42</publishTime>
+    </File>
+    <File Include="MarcaVisual/imagenes/base_menu.png">
+      <publishTime>11/22/2019 08:34:42</publishTime>
+    </File>
+    <File Include="MarcaVisual/imagenes/BtnLupa.PNG">
+      <publishTime>11/22/2019 08:34:42</publishTime>
+    </File>
+    <File Include="MarcaVisual/imagenes/fondo_barra_herramientas.png">
+      <publishTime>11/22/2019 08:34:42</publishTime>
+    </File>
+    <File Include="MarcaVisual/imagenes/fondo_panel.png">
+      <publishTime>11/22/2019 08:34:42</publishTime>
+    </File>
+    <File Include="MarcaVisual/imagenes/imgBtnOculto.png">
+      <publishTime>11/22/2019 08:34:42</publishTime>
+    </File>
+    <File Include="MarcaVisual/imagenes/pie22.jpg">
+      <publishTime>11/22/2019 08:34:42</publishTime>
+    </File>
+    <File Include="MarcaVisual/imagenes/status_anim.gif">
+      <publishTime>11/22/2019 08:34:42</publishTime>
+    </File>
+    <File Include="MarcaVisual/imagenes/titulo22.jpg">
+      <publishTime>11/22/2019 08:34:42</publishTime>
+    </File>
+    <File Include="Modulos/Administracion/AdminUsuario.aspx">
+      <publishTime>11/30/2019 15:10:59</publishTime>
+    </File>
+    <File Include="Modulos/Administracion/MenuPrincipal.aspx">
+      <publishTime>11/27/2019 12:15:46</publishTime>
+    </File>
+    <File Include="Modulos/Proceso/Liquidacion.aspx">
+      <publishTime>11/30/2019 10:33:22</publishTime>
+    </File>
+    <File Include="Modulos/Proceso/Novedades.aspx">
+      <publishTime>11/27/2019 10:56:00</publishTime>
+    </File>
+    <File Include="Modulos/Proceso/Parametrizacion.aspx">
+      <publishTime>11/30/2019 14:54:44</publishTime>
+    </File>
+    <File Include="Modulos/Proceso/Reportes.aspx">
+      <publishTime>11/27/2019 10:53:33</publishTime>
+    </File>
+    <File Include="PaginaMaestra/Sitio.Master">
+      <publishTime>11/22/2019 08:43:37</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.4.1.js">
+      <publishTime>11/22/2019 08:35:24</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.4.1.min.js">
+      <publishTime>11/22/2019 08:35:24</publishTime>
+    </File>
+    <File Include="Scripts/ReFocus.js">
+      <publishTime>11/22/2019 08:35:24</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/10/2019 10:59:20</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

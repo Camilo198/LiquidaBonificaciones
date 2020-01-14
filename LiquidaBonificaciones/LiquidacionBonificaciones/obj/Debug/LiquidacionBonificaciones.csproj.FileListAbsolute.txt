@@ -1,0 +1,37 @@
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidacionBonificaciones.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidacionBonificaciones.pdb
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\AjaxControlToolkit.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.EN.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.LN.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\log4net.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.AD.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.EN.pdb
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.LN.pdb
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.AD.pdb
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\es\AjaxControlToolkit.resources.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csprojResolveAssemblyReference.cache
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.Mensajes.resources
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csproj.GenerateResource.Cache
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.dll
+D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.pdb
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidacionBonificaciones.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidacionBonificaciones.pdb
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\AjaxControlToolkit.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.EN.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.LN.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\log4net.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.AD.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.EN.pdb
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.LN.pdb
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.AD.pdb
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\bin\es\AjaxControlToolkit.resources.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csprojResolveAssemblyReference.cache
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.Mensajes.resources
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csproj.GenerateResource.Cache
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.dll
+\\sbogche020v\Repositorio_Desarrollo2\Departamento de Sistemas\CRISTIAN MUÑOZ\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.pdb
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csprojResolveAssemblyReference.cache
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.Mensajes.resources
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csproj.GenerateResource.Cache
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.dll
+C:\Users\cristian.munoz\Desktop\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.pdb
