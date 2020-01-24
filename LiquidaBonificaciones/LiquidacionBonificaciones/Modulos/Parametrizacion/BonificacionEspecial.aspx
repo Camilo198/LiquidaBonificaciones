@@ -1,13 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra/Sitio.Master" AutoEventWireup="true" CodeBehind="BonificacionEspecial.aspx.cs" Inherits="LiquidacionBonificaciones.Modulos.Parametrizacion.BonificacionEspecial" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCabecera" runat="server">
-    <style type="text/css">
-        .EstiloEtiquetas81
-        {
-            margin-right: 0px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-        </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBarraHerramientas" runat="server">
 
@@ -15,33 +9,63 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContenido" runat="server">
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <asp:UpdatePanel ID="upContenido" runat="server">
         <ContentTemplate>
-            <asp:Panel ID="Panel1" runat="server">
+            <table style="width: 100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="BarraSubTitulo">Parametrización
+                    </td>
+                </tr>
+                <tr>
+                    <td class="SeparadorSubTitulo"></td>
+                </tr>
+            </table>
+            <table style="width: 100%"  cellpadding="0" cellspacing="0">
+                <tr>
+                    <td style="height: 10px" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td style="width: 10px"></td>
+                    <td>
+                        <asp:Panel ID="pnlCliente" runat="server" ScrollBars="Auto" Height="100%" Width="900px">
 
-    <table style="width: 100%" cellpadding="0" cellspacing="2">
+                            <asp:Panel ID="pnlDatos" CssClass="PanelBordesRedondos" runat="server" Width="99%">
+                                <table style="width: 100%" cellpadding="0" cellspacing="2">
                                     <tr>
-                                        <td class="LetraLeyendaColor" colspan="5">Bonificacion Especial Asesores
-                                     
-                                        </td>
-                                    </tr>
-                                        <tr>
-                                        <td colspan="5">Cantidad de Planes
-                                     
-                                        </td>
+                                        <td class="LetraLeyendaColor" colspan="9">Bonificacion Especial Asesores</td>
                                     </tr>
                                     <tr>
-                                        <td class="LetraLeyendaColor" colspan="3" style="height: 10px">
-                                            <asp:ImageButton ID="ImgBtnAddCantidadPlanes" runat="server" ImageUrl="~/MarcaVisual/iconos/agregar.png" OnClick="ImgBtnAddCantidadPlanes_Click" />Añadir Nueva Bonificacion Especial
+                                        <td style="height: 10px" colspan="9"></td>
+                                    </tr>
+                                                          <tr>
+                                        <td class="EspaciadoInicial"></td>
+                                        <td class="EstiloEtiquetas80">                                      
+
+
+
                                         </td>
+                                        <td class="EspaciadoIntermedio"></td>
+                                       <td class="EstiloEtiquetas80">
+                                           Cantidad de Planes</td>
+                                          <td class="EspaciadoIntermedio"></td>
+                                       
+                                        <td class="EspaciadoIntermedio"></td>
                                    
+                                        <td class="EspaciadoFinal"></td>
                                     </tr>
+                                     <tr>
+                                        <td style="height: 10px" colspan="9">
+                                            <asp:ImageButton ID="ImgBtnAddCantidadPlanes" runat="server" ImageUrl="~/MarcaVisual/iconos/agregar.png" OnClick="ImgBtnAddCantidadPlanes_Click" />Añadir Nueva Bonificacion Especial
 
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
+                                        <td class="EstiloEtiquetas80"></td>
+                                        <td class="EspaciadoIntermedio"></td>
                                         <td>
-                                              <asp:GridView ID="GridViewBeCantidadPlanes" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" 
-                                                CssClass="EstiloEtiquetas81" Font-Size="Small" GridLines="Horizontal" HorizontalAlign="Left" 
+ <asp:GridView ID="GridViewBeCantidadPlanes" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" 
+                                                CssClass="EstiloEtiquetas81" Font-Size="Small" GridLines="Horizontal" HorizontalAlign="Center" 
                                                 OnRowDeleting="GridViewBeCantidadPlanes_RowDeleting" OnRowEditing="GridViewBeCantidadPlanes_RowEditing" 
                                                   OnRowUpdating="GridViewBeCantidadPlanes_RowUpdating" Width="500px" 
                                                 OnRowCancelingEdit="GridViewBeCantidadPlanes_RowCancelingEdit" OnRowCommand="GridViewBeCantidadPlanes_RowCommand" ShowHeaderWhenEmpty="True">
@@ -139,43 +163,56 @@
                                                         </FooterTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
-                                                <HeaderStyle BackColor="#C5C5C6" />
-                                                <PagerStyle BackColor="#C5C5C6" Font-Strikeout="False" Font-Underline="False" />
-                                                <RowStyle BackColor="#F0F0F0" BorderColor="#D0DEF0" />
+                                                   <PagerStyle BackColor="White" Height="2px"
+                                                    HorizontalAlign="Center" />
+                                                <SelectedRowStyle BackColor="AliceBlue" Font-Bold="True" ForeColor="#333333" />
+                                                <HeaderStyle BackColor="#326394" Font-Bold="True" Font-Size="Small" ForeColor="White" />
+                                                <AlternatingRowStyle BackColor="#F2F2F2" />
                                             </asp:GridView>
 
-
                                         </td>
-                                        <td class="EspaciadoFinal"></td>
+                                        <td colspan="9">&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td style="height: 10px" colspan="5"></td>
+                                        <td style="height: 10px" colspan="7">&nbsp;</td>
                                     </tr>
                                 </table>
+                            </asp:Panel>
+                             <br />
 
-
-
-                    <table style="width: 100%" cellpadding="0" cellspacing="2">
+                             <asp:Panel ID="Panel1" CssClass="PanelBordesRedondos" runat="server" Width="99%">
+                                <table style="width: 100%" cellpadding="0" cellspacing="2">
                                     <tr>
-                                        <td class="LetraLeyendaColor" colspan="5">Bonificacion Especial Asesores
-                                     
-                                        </td>
-                                    </tr>
-                                        <tr>
-                                        <td colspan="5">Valor del Plan</td>
+                                        <td class="LetraLeyendaColor" colspan="9">Bonificacion Especial Asesores</td>
                                     </tr>
                                     <tr>
-                                        <td class="LetraLeyendaColor" colspan="3" style="height: 10px">
-                                            <asp:ImageButton ID="ImgBtnAddValorPLan" runat="server" ImageUrl="~/MarcaVisual/iconos/agregar.png" OnClick="ImgBtnAddValorPLan_Click" />Añadir Nueva Bonificacion Especial
+                                        <td style="height: 10px" colspan="9"></td>
+                                    </tr>
+                                                          <tr>
+                                        <td class="EspaciadoInicial"></td>
+                                        <td class="EstiloEtiquetas80">                                    
                                         </td>
+                                        <td class="EspaciadoIntermedio"></td>
+                                       <td class="EstiloEtiquetas80">
+                                           Valor del Plan</td>
+                                          <td class="EspaciadoIntermedio"></td>
+                                       
+                                        <td class="EspaciadoIntermedio"></td>
                                    
+                                        <td class="EspaciadoFinal"></td>
                                     </tr>
-
+                                     <tr>
+                                        <td style="height: 10px" colspan="9">
+                                             <asp:ImageButton ID="ImgBtnAddValorPLan" runat="server" ImageUrl="~/MarcaVisual/iconos/agregar.png" OnClick="ImgBtnAddValorPLan_Click" />Añadir Nueva Bonificacion Especial
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
+                                        <td class="EstiloEtiquetas80"></td>
+                                        <td class="EspaciadoIntermedio"></td>
                                         <td>
-                                              <asp:GridView ID="GridViewBeValorPLan" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" 
-                                                CssClass="EstiloEtiquetas81" Font-Size="Small" GridLines="Horizontal" HorizontalAlign="Left" 
+ <asp:GridView ID="GridViewBeValorPLan" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" 
+                                                CssClass="EstiloEtiquetas81" Font-Size="Small" GridLines="Horizontal" HorizontalAlign="Center" 
                                                 OnRowDeleting="GridViewBeValorPLan_RowDeleting" OnRowEditing="GridViewBeValorPLan_RowEditing" 
                                                   OnRowUpdating="GridViewBeValorPLan_RowUpdating" Width="500px" 
                                                 OnRowCancelingEdit="GridViewBeValorPLan_RowCancelingEdit" OnRowCommand="GridViewBeValorPLan_RowCommand" ShowHeaderWhenEmpty="True">
@@ -273,29 +310,39 @@
                                                         </FooterTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
-                                                <HeaderStyle BackColor="#C5C5C6" />
-                                                <PagerStyle BackColor="#C5C5C6" Font-Strikeout="False" Font-Underline="False" />
-                                                <RowStyle BackColor="#F0F0F0" BorderColor="#D0DEF0" />
+                                                  <PagerStyle BackColor="White" Height="2px"
+                                                    HorizontalAlign="Center" />
+                                                <SelectedRowStyle BackColor="AliceBlue" Font-Bold="True" ForeColor="#333333" />
+                                                <HeaderStyle BackColor="#326394" Font-Bold="True" Font-Size="Small" ForeColor="White" />
+                                                <AlternatingRowStyle BackColor="#F2F2F2" />
                                             </asp:GridView>
 
-
                                         </td>
-                                        <td class="EspaciadoFinal"></td>
+                                        <td colspan="9">&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td style="height: 10px" colspan="5"></td>
+                                        <td style="height: 10px" colspan="7">&nbsp;</td>
                                     </tr>
                                 </table>
+                            </asp:Panel>
 
+                            </asp:Panel>
+
+                            <br />
+                    </td>
+                </tr>
                 
-
-            </asp:Panel>
-
+            </table>
+ 
         </ContentTemplate>
 
-
-
     </asp:UpdatePanel>
+
+       
+
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphBarraEstado" runat="server">
+
+        
+
 </asp:Content>

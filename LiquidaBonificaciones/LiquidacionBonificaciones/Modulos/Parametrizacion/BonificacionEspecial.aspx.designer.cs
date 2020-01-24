@@ -13,22 +13,31 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion {
     public partial class BonificacionEspecial {
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// upContenido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel upContenido;
         
         /// <summary>
-        /// Panel1 control.
+        /// pnlCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel pnlCliente;
+        
+        /// <summary>
+        /// pnlDatos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDatos;
         
         /// <summary>
         /// ImgBtnAddCantidadPlanes control.
@@ -47,6 +56,15 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewBeCantidadPlanes;
+        
+        /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
         /// ImgBtnAddValorPLan control.
