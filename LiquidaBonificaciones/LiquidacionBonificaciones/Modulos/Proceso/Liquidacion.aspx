@@ -76,7 +76,7 @@
                                         <td>
                                             <asp:GridView ID="gvParametros" runat="server" AutoGenerateColumns="False" Width="450px" Font-Size="Small"
                                                 AllowSorting="True" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Center"
-                                                GridLines="Horizontal" CssClass="EstiloEtiquetas81">
+                                                GridLines="Horizontal" CssClass="EstiloEtiquetas81" OnSelectedIndexChanged="gvParametros_SelectedIndexChanged">
                                                 <Columns>
                                                     <asp:BoundField HeaderText="Id" DataField="pId" ItemStyle-CssClass="OcultarControles"
                                                         HeaderStyle-CssClass="OcultarControles">

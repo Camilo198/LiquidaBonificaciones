@@ -124,11 +124,29 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parametros Actualizados Correctamente.
+        /// </summary>
+        internal static string ParametroActualizado {
+            get {
+                return ResourceManager.GetString("ParametroActualizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El parametro a continuación no puede tener el mismo valor que antes: .
         /// </summary>
         internal static string ParametroIgual {
             get {
                 return ResourceManager.GetString("ParametroIgual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Los parametros Ingresados Son Invalidos.
+        /// </summary>
+        internal static string ParametrosInvalidos {
+            get {
+                return ResourceManager.GetString("ParametrosInvalidos", resourceCulture);
             }
         }
         
@@ -147,6 +165,15 @@ namespace LiquidacionBonificaciones {
         internal static string ProcesoError {
             get {
                 return ResourceManager.GetString("ProcesoError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No hay Parametros Configurados, Agregue al menos 1.
+        /// </summary>
+        internal static string SinParametros {
+            get {
+                return ResourceManager.GetString("SinParametros", resourceCulture);
             }
         }
         

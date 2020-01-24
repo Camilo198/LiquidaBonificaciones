@@ -8,16 +8,6 @@
     <asp:ContentPlaceHolder ID="cphCabecera" runat="server">
     </asp:ContentPlaceHolder>
     <link href="~/MarcaVisual/estilos/estilos.css" rel="stylesheet" type="text/css" />
-<%--    <script type="text/javascript" src="<%=ResolveClientUrl("~/Librerias/es/Validaciones.js")%>"></script>--%>
-    <script type="text/javascript">
-        function capturarTecla(e) {
-            var evento = window.event || elEvento;
-            //if (evento.keyCode == 17)
-            //    alert('Favor Soltar la Tecla "Ctrl"');
-            //else if (evento.keyCode == 16)
-            //    alert('Favor Soltar la Tecla "Shift"');
-        }
-    </script>
 </head>
 <body onkeydown="capturarTecla(this)">
     <form id="form1" runat="server">

@@ -19,6 +19,8 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         {
             try
             {
+               // Session["usuario"] = "Nicolas.Larrota";
+               Session["usuario"] = "cristian.munoz";
                 Usuario objUsuario = new Usuario();
 
                 if (Session["usuario"] == null)
@@ -38,7 +40,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                 }
 
 
-                if ((Session["perfil"].ToString() != "2"))
+                if ((Session["perfil"].ToString() != "3"))
                 {
                     Response.Redirect("~/Modulos/MenuPrincipal.aspx");
                 }
@@ -130,6 +132,8 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
 
             if (DatosParametros.Count > 0)
             {
+
+               //Carga la tabla de parametros al GridView
                 this.GvParametros.DataSource = DatosParametros;
                 this.GvParametros.DataBind();
 
@@ -196,5 +200,6 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
 
             ConsultaParametros();
         }
+
     }
 }

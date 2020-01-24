@@ -138,14 +138,23 @@
   <data name="LiquidacionCerrada" xml:space="preserve">
     <value>Esta liquidación ya fue cerrada, cree un nuevo mes para poder continuar </value>
   </data>
+  <data name="ParametroActualizado" xml:space="preserve">
+    <value>Parametros Actualizados Correctamente</value>
+  </data>
   <data name="ParametroIgual" xml:space="preserve">
     <value>El parametro a continuación no puede tener el mismo valor que antes: </value>
+  </data>
+  <data name="ParametrosInvalidos" xml:space="preserve">
+    <value>Los parametros Ingresados Son Invalidos</value>
   </data>
   <data name="ParametrosNo" xml:space="preserve">
     <value>No existen parametros, por favor validar</value>
   </data>
   <data name="ProcesoError" xml:space="preserve">
     <value>Ocurrió un error en el proceso, por favor comuniquese con el administrador del sistema</value>
+  </data>
+  <data name="SinParametros" xml:space="preserve">
+    <value>No hay Parametros Configurados, Agregue al menos 1</value>
   </data>
   <data name="UsuarioActualizado" xml:space="preserve">
     <value>El usuario se actualizo correctamente</value>

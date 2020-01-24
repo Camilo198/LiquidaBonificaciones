@@ -150,6 +150,7 @@
     <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Modulos\Administracion\AdminUsuario.aspx" />
     <Content Include="Modulos\Administracion\MenuPrincipal.aspx" />
+    <Content Include="Modulos\Parametrizacion\BonificacionEspecial.aspx" />
     <Content Include="Modulos\Proceso\Liquidacion.aspx" />
     <Content Include="Modulos\Proceso\Novedades.aspx" />
     <Content Include="Modulos\Proceso\Parametrizacion.aspx" />
@@ -180,6 +181,13 @@
     </Compile>
     <Compile Include="Modulos\Administracion\MenuPrincipal.aspx.designer.cs">
       <DependentUpon>MenuPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\BonificacionEspecial.aspx.cs">
+      <DependentUpon>BonificacionEspecial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\BonificacionEspecial.aspx.designer.cs">
+      <DependentUpon>BonificacionEspecial.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Proceso\Liquidacion.aspx.cs">
       <DependentUpon>Liquidacion.aspx</DependentUpon>
@@ -257,7 +265,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>1494</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:55928/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

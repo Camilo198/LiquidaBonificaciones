@@ -2,13 +2,7 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCabecera" runat="server">
-    <style type="text/css">
-        .auto-style1 {
-            margin-left: 40px;
-            width: 175px;
-        }
-    </style>
-</asp:Content>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBarraHerramientas" runat="server">
     <table align="left" cellpadding="0" cellspacing="0">
         <tr>
@@ -88,7 +82,7 @@
                                                 CellPadding="0" GridLines="None" Height="117px" BorderColor="#DADADA"
                                                 BorderWidth="1px" Font-Size="8pt"
                                                 Width="764px">
-                                                <FooterStyle BackColor="#326394" Font-Bold="True" ForeColor="White" />
+                                               <FooterStyle BackColor="#326394" Font-Bold="True" ForeColor="White" />
                                                 <RowStyle BackColor="#f9fcff" />
                                                 <Columns>
                                                 
@@ -140,10 +134,10 @@
                                             </asp:GridView>
 
                                         </td>
-                                        <td colspan="9"></td>
+                                        <td colspan="9">&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td style="height: 10px" colspan="7"></td>
+                                        <td style="height: 10px" colspan="7">&nbsp;</td>
                                     </tr>
                                 </table>
                             </asp:Panel>

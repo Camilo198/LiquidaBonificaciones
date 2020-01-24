@@ -18,7 +18,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             try
             {
                 Usuario objUsuario = new Usuario();
-                Session["usuario"] = "nicolas.larrotta";
+                Session["usuario"] = "cristian.munoz";
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
@@ -35,7 +35,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                     Session["perfil"] = objUsuarioCon.pIdPerfil;
                 }
 
-                if ((Session["perfil"].ToString() != "3"))
+                if ((Session["perfil"].ToString()!= "3"))
                 {
                     Response.Redirect("~/Modulos/MenuPrincipal.aspx");
                 }
@@ -62,8 +62,8 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
 
                     if (DatosParametros.Count > 0)
                     {
-                        this.gvParametros.DataSource = DatosParametros;
-                        this.gvParametros.DataBind();
+                      this.gvParametros.DataSource = DatosParametros;
+                      this.gvParametros.DataBind();
                     }
                     else
                     {
@@ -150,7 +150,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                 if (Consulta.Substring(0, 1) != "0")
                 {
        
-                    this.lblNVentas.Text = Consulta;
+                    this.lblNVentas.Text = Consulta.ToString();
                     Ventas ObjReglas = new Ventas();
                     ObjReglas.pCeremonia = this.txbCeremonia.Text.Substring(6, 4) + this.txbCeremonia.Text.Substring(3, 2);
 
@@ -242,6 +242,11 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         }
 
         protected void btnSubirAsesores_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gvParametros_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
