@@ -11,13 +11,13 @@ namespace LiquidaBonificaciones.LN.Consultas
 {
     public class VentasLN
     {
-        public string CargarVentas(Ventas ObjEntidad, string Procedimiento)
+        public string CargarVentas(VentasEN ObjEntidad, string Procedimiento)
         {
             String Consulta = String.Empty;
             return Consulta = new VentasAD().CargarVentas(ObjEntidad, Procedimiento);
         }
 
-        public string Reglas(Ventas ObjEntidad, string Procedimiento)
+        public string Reglas(VentasEN ObjEntidad, string Procedimiento)
         {
             String Actualiza = String.Empty;
             return Actualiza = new VentasAD().Aplicarreglas(ObjEntidad, Procedimiento);

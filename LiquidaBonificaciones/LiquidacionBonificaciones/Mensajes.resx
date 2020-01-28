@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="asesoresOK" xml:space="preserve">
+    <value>Asesores Cargados Correctamente</value>
+  </data>
   <data name="BorrarUsuario" xml:space="preserve">
     <value>El usuario se borro correctamente</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="ProcesoError" xml:space="preserve">
     <value>Ocurrió un error en el proceso, por favor comuniquese con el administrador del sistema</value>
+  </data>
+  <data name="sinAsesores" xml:space="preserve">
+    <value>No se encontraron Asesores en Sico para Cargar</value>
   </data>
   <data name="SinParametros" xml:space="preserve">
     <value>No hay Parametros Configurados, Agregue al menos 1</value>

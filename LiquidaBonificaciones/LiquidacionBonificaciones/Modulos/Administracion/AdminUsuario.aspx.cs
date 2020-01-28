@@ -33,18 +33,18 @@ namespace LiquidacionBonificaciones.Modulos.Administracion
         {
             try
             {
-                Usuario objUsuario = new Usuario();
+                UsuarioEN objUsuario = new UsuarioEN();
 
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
                     objUsuario.pUsuario = Session["usuario"].ToString();
 
-                IList<Usuario> lista = new UsuarioLN().ConsultaUsuario(objUsuario);
+                IList<UsuarioEN> lista = new UsuarioLN().ConsultaUsuario(objUsuario);
 
                 if (lista.Count > 0)
                 {
-                    Usuario objUsuarioCon = new Usuario();
+                    UsuarioEN objUsuarioCon = new UsuarioEN();
                     objUsuarioCon = lista[0];
 
                     Session["IdUsuario"] = objUsuarioCon.pId;
@@ -98,7 +98,7 @@ namespace LiquidacionBonificaciones.Modulos.Administracion
             try
             {
 
-                Usuario objUsuario = new Usuario();
+                UsuarioEN objUsuario = new UsuarioEN();
                 UsuarioLN objConsultaUsuario = new UsuarioLN();
 
                 String Result = String.Empty;
@@ -155,7 +155,7 @@ namespace LiquidacionBonificaciones.Modulos.Administracion
                 }
                 else if (e.CommandName.Equals("Eliminar"))
                 {
-                    Usuario objUsuario = new Usuario();
+                    UsuarioEN objUsuario = new UsuarioEN();
                     objUsuario.pId = Convert.ToInt32(HttpUtility.HtmlDecode(gvUsuario.Rows[Convert.ToInt32(e.CommandArgument)].Cells[2].Text.Trim()));
                     objUsuario.pIdPerfil = 0;
                     objUsuario.pHabilita = this.chbHabilita.Checked;

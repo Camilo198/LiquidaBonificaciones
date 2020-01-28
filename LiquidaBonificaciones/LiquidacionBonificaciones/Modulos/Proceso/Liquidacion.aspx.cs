@@ -17,18 +17,18 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         {
             try
             {
-                Usuario objUsuario = new Usuario();
+                UsuarioEN objUsuario = new UsuarioEN();
                 Session["usuario"] = "cristian.munoz";
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
                     objUsuario.pUsuario = Session["usuario"].ToString();
 
-                IList<Usuario> lista = new UsuarioLN().ConsultaUsuario(objUsuario);
+                IList<UsuarioEN> lista = new UsuarioLN().ConsultaUsuario(objUsuario);
 
                 if (lista.Count > 0)
                 {
-                    Usuario objUsuarioCon = new Usuario();
+                    UsuarioEN objUsuarioCon = new UsuarioEN();
                     objUsuarioCon = lista[0];
 
                     Session["usuario"] = objUsuarioCon.pUsuario;
@@ -56,9 +56,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                 try
                 {
                     #region VALIDACIONES
-                    Parametros ObjPara = new Parametros();
+                    ParametrosEN ObjPara = new ParametrosEN();
                     ObjPara.pTipo = "Regla";
-                    IList<Parametros> DatosParametros = new ParametrosLN().Consulta(ObjPara, "BON_ConsultaParametros");
+                    IList<ParametrosEN> DatosParametros = new ParametrosLN().Consulta(ObjPara, "BON_ConsultaParametros");
 
                     if (DatosParametros.Count > 0)
                     {
@@ -73,9 +73,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                     #endregion
 
                     #region FECHA LIQUIDACIÓN
-                    Parametros ObjParaFec = new Parametros();
+                    ParametrosEN ObjParaFec = new ParametrosEN();
                     ObjParaFec.pTipo = "Fecha";
-                    IList<Parametros> DatosParametrosFecha = new ParametrosLN().Consulta(ObjParaFec, "BON_ConsultaParametros");
+                    IList<ParametrosEN> DatosParametrosFecha = new ParametrosLN().Consulta(ObjParaFec, "BON_ConsultaParametros");
 
                     if (DatosParametrosFecha.Count > 0)
                     {
@@ -89,9 +89,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                     #endregion
 
                     #region CEREMONIA
-                    Parametros ObjParaAsam = new Parametros();
+                    ParametrosEN ObjParaAsam = new ParametrosEN();
                     ObjParaAsam.pTipo = "Ceremonia";
-                    IList<Parametros> DatosParametrosCeremonia = new ParametrosLN().Consulta(ObjParaAsam, "BON_ConsultaParametros");
+                    IList<ParametrosEN> DatosParametrosCeremonia = new ParametrosLN().Consulta(ObjParaAsam, "BON_ConsultaParametros");
 
                     if (DatosParametrosCeremonia.Count > 0)
                     {
@@ -104,9 +104,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                     #endregion
 
                     #region ESTADO LIQUIDACION
-                    Parametros ObjParaLiqui = new Parametros();
+                    ParametrosEN ObjParaLiqui = new ParametrosEN();
                     ObjParaLiqui.pTipo = "Estado";
-                    IList<Parametros> DatosParametrosLiqui = new ParametrosLN().Consulta(ObjParaLiqui, "BON_ConsultaParametros");
+                    IList<ParametrosEN> DatosParametrosLiqui = new ParametrosLN().Consulta(ObjParaLiqui, "BON_ConsultaParametros");
 
                     if (DatosParametrosLiqui.Count > 0)
                     {
@@ -139,7 +139,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         {
             try
             {
-                Ventas ObjVentas = new Ventas();
+                VentasEN ObjVentas = new VentasEN();
 
                 ObjVentas.pFechaFin = this.txbFechaFin.Text;
                 ObjVentas.pFechaInicio = this.txbFechaInicio.Text;
@@ -151,7 +151,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                 {
        
                     this.lblNVentas.Text = Consulta.ToString();
-                    Ventas ObjReglas = new Ventas();
+                    VentasEN ObjReglas = new VentasEN();
                     ObjReglas.pCeremonia = this.txbCeremonia.Text.Substring(6, 4) + this.txbCeremonia.Text.Substring(3, 2);
 
                     foreach (GridViewRow dtgItem in this.gvParametros.Rows)
@@ -188,7 +188,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         {
             try
             {
-                Parametros ObjPara = new Parametros();
+                ParametrosEN ObjPara = new ParametrosEN();
                 String Actualiza = String.Empty;
 
                 ObjPara.pId = 11;
@@ -204,9 +204,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                 else
                 {
                     #region ESTADO LIQUIDACION
-                    Parametros ObjParaLiqui = new Parametros();
+                    ParametrosEN ObjParaLiqui = new ParametrosEN();
                     ObjParaLiqui.pTipo = "Estado";
-                    IList<Parametros> DatosParametrosLiqui = new ParametrosLN().Consulta(ObjParaLiqui, "BON_ConsultaParametros");
+                    IList<ParametrosEN> DatosParametrosLiqui = new ParametrosLN().Consulta(ObjParaLiqui, "BON_ConsultaParametros");
 
                     if (DatosParametrosLiqui.Count > 0)
                     {
@@ -243,7 +243,29 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
 
         protected void btnSubirAsesores_Click(object sender, EventArgs e)
         {
-
+            AsesoresLN aseln = new AsesoresLN();
+            try
+            {
+               Int32 retornoElim=Convert.ToInt32(aseln.EliminarAsesoresSqlLN());//limpia la tabla de asesores de SQL
+               
+                IList<AsesoresEN> listaAsesores = aseln.ConsultarAsesoresSicolLN();
+                if (listaAsesores.Count > 0)
+                {
+                    for (int i = 0; i < listaAsesores.Count; i++)
+                    {
+                        AsesoresEN asen = listaAsesores[i];
+                      int retin=  Convert.ToInt32(aseln.InsertarAsoresSqlLN(asen));
+                    }
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.asesoresOK + "');</script>", false);
+                }
+                else {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" +Mensajes.sinAsesores + "');</script>", false);
+                }
+            }
+            catch(Exception ex){
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ProcesoError+ex+ "');</script>", false);
+            }
+                
         }
 
         protected void gvParametros_SelectedIndexChanged(object sender, EventArgs e)

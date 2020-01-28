@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LiquidaBonificaciones.EN.Tablas
 {
-    public class Asesores
+    public class AsesoresEN
     {
         public Int32? pId { get; set; }
         public Int32? pVendCodigo { get; set; }
@@ -14,8 +14,8 @@ namespace LiquidaBonificaciones.EN.Tablas
         public Int32? pOficCodigo { get; set; }
         public String pVendIdeNro { get; set; }
         public String pOficNombre { get; set; }
-        public Int32? pVendFecIng { get; set; }
-        public Int32? pVendFecRet { get; set; }
+        public DateTime pVendFecIng { get; set; }
+        public DateTime pVendFecRet { get; set; }
         public String pVendTipoAse { get; set; }
         public String pVendMail { get; set; }
     }

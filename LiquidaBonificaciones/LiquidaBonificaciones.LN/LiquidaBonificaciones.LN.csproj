@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas\AsesoresLN.cs" />
     <Compile Include="Consultas\BonificacionEspecialLN.cs" />
     <Compile Include="Consultas\PorCantidadPlanesLN.cs" />
     <Compile Include="Consultas\PorValoresPlanLN.cs" />

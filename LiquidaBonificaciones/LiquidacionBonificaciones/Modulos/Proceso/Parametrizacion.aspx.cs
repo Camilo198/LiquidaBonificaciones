@@ -21,18 +21,18 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             {
                // Session["usuario"] = "Nicolas.Larrota";
                Session["usuario"] = "cristian.munoz";
-                Usuario objUsuario = new Usuario();
+                UsuarioEN objUsuario = new UsuarioEN();
 
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
                     objUsuario.pUsuario = Session["usuario"].ToString();
 
-                IList<Usuario> lista = new UsuarioLN().ConsultaUsuario(objUsuario);
+                IList<UsuarioEN> lista = new UsuarioLN().ConsultaUsuario(objUsuario);
 
                 if (lista.Count > 0)
                 {
-                    Usuario objUsuarioCon = new Usuario();
+                    UsuarioEN objUsuarioCon = new UsuarioEN();
                     objUsuarioCon = lista[0];
 
                     Session["usuario"] = objUsuarioCon.pUsuario;
@@ -78,7 +78,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         {
 
             int repetido = 0;
-            Parametros ObjPara = new Parametros();
+            ParametrosEN ObjPara = new ParametrosEN();
 
             try
             {
@@ -95,7 +95,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
 
                         if (ConfigurationManager.AppSettings["Codigos"].ToString().Contains("," + Convert.ToInt32(ObjPara.pId) + ","))
                         {
-                            IList<Parametros> lista = new ParametrosLN().ConsultaParametroIdTipo(ObjPara, "BON_ConsultaParametrosId");
+                            IList<ParametrosEN> lista = new ParametrosLN().ConsultaParametroIdTipo(ObjPara, "BON_ConsultaParametrosId");
 
                             if (lista.Count > 0)
                             {
@@ -128,7 +128,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
 
         private void ConsultaParametros()
         {
-            IList<Parametros> DatosParametros = new ParametrosLN().ConsultaPara("BON_ConsultaParametrosGnrls");
+            IList<ParametrosEN> DatosParametros = new ParametrosLN().ConsultaPara("BON_ConsultaParametrosGnrls");
 
             if (DatosParametros.Count > 0)
             {
@@ -138,9 +138,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                 this.GvParametros.DataBind();
 
                 #region ESTADO LIQUIDACION
-                Parametros ObjParaLiqui = new Parametros();
+                ParametrosEN ObjParaLiqui = new ParametrosEN();
                 ObjParaLiqui.pTipo = "Estado";
-                IList<Parametros> DatosParametrosLiqui = new ParametrosLN().Consulta(ObjParaLiqui, "BON_ConsultaParametros");
+                IList<ParametrosEN> DatosParametrosLiqui = new ParametrosLN().Consulta(ObjParaLiqui, "BON_ConsultaParametros");
 
                 if (DatosParametrosLiqui.Count > 0)
                 {
@@ -162,7 +162,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         {
             int controlaguardar = 0;
             String Actualiza = String.Empty;
-            Parametros ObjPara = new Parametros();
+            ParametrosEN ObjPara = new ParametrosEN();
 
             for (int i = 0; i < GvParametros.Rows.Count; i++)
             {

@@ -10,25 +10,25 @@ namespace LiquidaBonificaciones.LN.Consultas
 {
     public class UsuarioLN
     {
-        public IList<Usuario> ConsultaUsuario(Usuario ObjUsuario)
+        public IList<UsuarioEN> ConsultaUsuario(UsuarioEN ObjUsuario)
         {
-            IList<Usuario> lista = new UsuarioAD().ConsultaUsuario(ObjUsuario);
+            IList<UsuarioEN> lista = new UsuarioAD().ConsultaUsuario(ObjUsuario);
             return lista;
         }
 
-        public IList<Usuario> ConsultaUsuarioChevy(string procedimiento)
+        public IList<UsuarioEN> ConsultaUsuarioChevy(string procedimiento)
         {
-            IList<Usuario> lista = new UsuarioAD().UsuarioChevy(procedimiento);
+            IList<UsuarioEN> lista = new UsuarioAD().UsuarioChevy(procedimiento);
             return lista;
         }
 
-        public IList<Usuario> ConsultaTodosUsuario(string procedimiento)
+        public IList<UsuarioEN> ConsultaTodosUsuario(string procedimiento)
         {
-            IList<Usuario> lista = new UsuarioAD().ConsultaTodos(procedimiento);
+            IList<UsuarioEN> lista = new UsuarioAD().ConsultaTodos(procedimiento);
             return lista;
         }
 
-        public string Ejecutar(Usuario ObjEntidad, string Procedimiento)
+        public string Ejecutar(UsuarioEN ObjEntidad, string Procedimiento)
         {
             String Result = String.Empty;
             return Result = new UsuarioAD().GuardarActualizarEliminar(ObjEntidad, Procedimiento);

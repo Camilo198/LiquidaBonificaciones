@@ -12,7 +12,7 @@ namespace LiquidaBonificaciones.AD.Consultas
     {
         WcfData wsc = new WcfData();
 
-        public string CargarVentas(Ventas ObjEntidad, string Procedimiento)
+        public string CargarVentas(VentasEN ObjEntidad, string Procedimiento)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
-        public string Aplicarreglas(Ventas ObjEntidad, string Procedimiento)
+        public string Aplicarreglas(VentasEN ObjEntidad, string Procedimiento)
         {
             try
             {

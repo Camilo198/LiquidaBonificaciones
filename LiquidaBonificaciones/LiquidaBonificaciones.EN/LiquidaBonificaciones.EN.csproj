@@ -40,12 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tablas\Asesores.cs" />
+    <Compile Include="Tablas\AsesoresEN.cs" />
     <Compile Include="Tablas\BonificacionEspecialEN.cs" />
-    <Compile Include="Tablas\Parametros.cs" />
-    <Compile Include="Tablas\Perfil.cs" />
-    <Compile Include="Tablas\Usuario.cs" />
-    <Compile Include="Tablas\Ventas.cs" />
+    <Compile Include="Tablas\ParametrosEN.cs" />
+    <Compile Include="Tablas\PerfilEN.cs" />
+    <Compile Include="Tablas\UsuarioEN.cs" />
+    <Compile Include="Tablas\VentasEN.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

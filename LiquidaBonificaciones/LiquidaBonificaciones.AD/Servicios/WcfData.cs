@@ -537,6 +537,26 @@ namespace LiquidaBonificaciones.AD.Servicios
             return registro;
         }
 
+        ///<summary>
+        ///Convierte fecha a Juliana
+        /// 
+        /// 
+        /// </summary>
+        public Int64 ConvertToJuliana(string Date)
+        {
+            return Convert.ToInt64(Convert.ToDateTime(Date).ToOADate() - 10594);
+        }
+
+        ///<sumry>
+        ///Converir de juliana a Gregoriana MM/dd/yyyy
+        /// </sumry>
+        public string fechaJulianaToGregoriana(long fechaJuliana)
+        {
+            DateTime.FromOADate(Convert.ToDouble(fechaJuliana + 10594));
+            return DateTime.FromOADate(Convert.ToDouble(fechaJuliana + 10594)).ToString("dd/MM/yyyy");
+
+        }
+
        
     }
 

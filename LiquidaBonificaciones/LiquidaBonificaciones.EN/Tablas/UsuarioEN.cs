@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LiquidaBonificaciones.EN.Tablas
 {
     [Serializable()]
-    public class Usuario
+    public class UsuarioEN
     {
         public Int32? pId { get; set; }
         public String pUsuario { get; set; }

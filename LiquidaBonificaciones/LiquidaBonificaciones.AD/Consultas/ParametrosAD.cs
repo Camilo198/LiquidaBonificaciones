@@ -13,9 +13,9 @@ namespace LiquidaBonificaciones.AD.Consultas
 
         WcfData wsc = new WcfData();
 
-        public IList<Parametros> ConsultaParametro(Parametros ObjEntidad, string Procedimiento)
+        public IList<ParametrosEN> ConsultaParametro(ParametrosEN ObjEntidad, string Procedimiento)
         {
-            List<Parametros> listParametro = new List<Parametros>();
+            List<ParametrosEN> listParametro = new List<ParametrosEN>();
             List<string[,]> lista = new List<string[,]>();
 
             try
@@ -33,7 +33,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                 {
                     for (int i = 0; i < lista.Count; i++)
                     {
-                        Parametros objParametros = new Parametros();
+                        ParametrosEN objParametros = new ParametrosEN();
                         Valida = lista[i];
 
                         objParametros.pId = Convert.ToInt32(Valida[0, 1].ToString());
@@ -52,9 +52,9 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
-        public IList<Parametros> ConsultaParametroGnrls(string Procedimiento)
+        public IList<ParametrosEN> ConsultaParametroGnrls(string Procedimiento)
         {
-            List<Parametros> listParametro = new List<Parametros>();
+            List<ParametrosEN> listParametro = new List<ParametrosEN>();
             List<string[,]> lista = new List<string[,]>();
 
             try
@@ -68,7 +68,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                 {
                     for (int i = 0; i < lista.Count; i++)
                     {
-                        Parametros objParametros = new Parametros();
+                        ParametrosEN objParametros = new ParametrosEN();
                         Valida = lista[i];
 
                         objParametros.pId = Convert.ToInt32(Valida[0, 1].ToString());
@@ -90,7 +90,7 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
-        public string Actualizar(Parametros ObjEntidad, string Procedimiento)
+        public string Actualizar(ParametrosEN ObjEntidad, string Procedimiento)
         {
             try
             {
@@ -129,9 +129,9 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
-        public IList<Parametros> ConsultaParametroId(Parametros ObjEntidad, string Procedimiento)
+        public IList<ParametrosEN> ConsultaParametroId(ParametrosEN ObjEntidad, string Procedimiento)
         {
-            List<Parametros> listParametro = new List<Parametros>();
+            List<ParametrosEN> listParametro = new List<ParametrosEN>();
             List<string[,]> lista = new List<string[,]>();
 
             try
@@ -153,7 +153,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                 {
                     for (int i = 0; i < lista.Count; i++)
                     {
-                        Parametros objParametros = new Parametros();
+                        ParametrosEN objParametros = new ParametrosEN();
                         Valida = lista[i];
 
                         objParametros.pId = Convert.ToInt32(Valida[0, 1].ToString());

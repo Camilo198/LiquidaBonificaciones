@@ -15,18 +15,19 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             try
             {
-                Usuario objUsuario = new Usuario();
+                
+                UsuarioEN objUsuario = new UsuarioEN();
                 Session["usuario"] = "cristian.munoz";
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
                     objUsuario.pUsuario = Session["usuario"].ToString();
 
-                IList<Usuario> lista = new UsuarioLN().ConsultaUsuario(objUsuario);
+                IList<UsuarioEN> lista = new UsuarioLN().ConsultaUsuario(objUsuario);
 
                 if (lista.Count > 0)
                 {
-                    Usuario objUsuarioCon = new Usuario();
+                    UsuarioEN objUsuarioCon = new UsuarioEN();
                     objUsuarioCon = lista[0];
 
                     Session["usuario"] = objUsuarioCon.pUsuario;

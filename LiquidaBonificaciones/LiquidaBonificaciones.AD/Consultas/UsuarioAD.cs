@@ -13,9 +13,9 @@ namespace LiquidaBonificaciones.AD.Consultas
 
         WcfData wsc = new WcfData();
 
-        public IList<Usuario> ConsultaUsuario(Usuario ObjUsuario)
+        public IList<UsuarioEN> ConsultaUsuario(UsuarioEN ObjUsuario)
         {
-            List<Usuario> listaUsuario = new List<Usuario>();
+            List<UsuarioEN> listaUsuario = new List<UsuarioEN>();
             List<string[,]> lista = new List<string[,]>();
             
             try
@@ -31,7 +31,7 @@ namespace LiquidaBonificaciones.AD.Consultas
 
                 if (lista.Count > 0)
                 {
-                    Usuario objUsuario = new Usuario();
+                    UsuarioEN objUsuario = new UsuarioEN();
                     Valida = lista[0];
    
                     objUsuario.pId = Convert.ToInt32(Valida[0, 1].ToString());
@@ -49,9 +49,9 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
-        public IList<Usuario> UsuarioChevy(string procedimiento)
+        public IList<UsuarioEN> UsuarioChevy(string procedimiento)
         {
-            List<Usuario> listaUsuario = new List<Usuario>();
+            List<UsuarioEN> listaUsuario = new List<UsuarioEN>();
             List<string[,]> lista = new List<string[,]>();
 
             try
@@ -65,7 +65,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                 {
                     for (int i = 0; i < lista.Count; i++)
                     {
-                        Usuario objUsuario = new Usuario();
+                        UsuarioEN objUsuario = new UsuarioEN();
                         Valida = lista[i];
                         objUsuario.pUsuario = Valida[0, 1].ToString();
                         listaUsuario.Add(objUsuario);
@@ -81,9 +81,9 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
-        public IList<Usuario> ConsultaTodos(string procedimiento)
+        public IList<UsuarioEN> ConsultaTodos(string procedimiento)
         {
-            List<Usuario> listaUsuario = new List<Usuario>();
+            List<UsuarioEN> listaUsuario = new List<UsuarioEN>();
             List<string[,]> lista = new List<string[,]>();
 
             try
@@ -97,7 +97,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                 {
                     for (int i = 0; i < lista.Count ; i++)
                     {
-                        Usuario objUsuario = new Usuario();
+                        UsuarioEN objUsuario = new UsuarioEN();
                         Valida = lista[i];
 
                         objUsuario.pId = Convert.ToInt32(Valida[0, 1].ToString());
@@ -117,7 +117,7 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
-        public string GuardarActualizarEliminar(Usuario ObjEntidad, string Procedimiento)
+        public string GuardarActualizarEliminar(UsuarioEN ObjEntidad, string Procedimiento)
         {
             try
             {

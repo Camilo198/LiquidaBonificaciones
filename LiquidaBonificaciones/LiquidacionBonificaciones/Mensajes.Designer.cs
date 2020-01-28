@@ -61,6 +61,15 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Asesores Cargados Correctamente.
+        /// </summary>
+        internal static string asesoresOK {
+            get {
+                return ResourceManager.GetString("asesoresOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El usuario se borro correctamente.
         /// </summary>
         internal static string BorrarUsuario {
@@ -165,6 +174,15 @@ namespace LiquidacionBonificaciones {
         internal static string ProcesoError {
             get {
                 return ResourceManager.GetString("ProcesoError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se encontraron Asesores en Sico para Cargar.
+        /// </summary>
+        internal static string sinAsesores {
+            get {
+                return ResourceManager.GetString("sinAsesores", resourceCulture);
             }
         }
         

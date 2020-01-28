@@ -10,9 +10,9 @@ namespace LiquidaBonificaciones.LN.Consultas
 {
     public class PerfilLN
     {
-        public IList<Perfil> ConsultaPerfiles(string procedimiento)
+        public IList<PerfilEN> ConsultaPerfiles(string procedimiento)
         {
-            IList<Perfil> lista = new PerfilAD().Perfiles(procedimiento);
+            IList<PerfilEN> lista = new PerfilAD().Perfiles(procedimiento);
             return lista;
         }
     }

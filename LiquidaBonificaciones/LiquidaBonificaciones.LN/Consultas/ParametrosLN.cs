@@ -10,19 +10,19 @@ namespace LiquidaBonificaciones.LN.Consultas
 {
     public class ParametrosLN
     {
-        public IList<Parametros> Consulta(Parametros ObjEntidad, string Procedimiento)
+        public IList<ParametrosEN> Consulta(ParametrosEN ObjEntidad, string Procedimiento)
         {
-            IList<Parametros> listParametro = new ParametrosAD().ConsultaParametro(ObjEntidad, Procedimiento);
+            IList<ParametrosEN> listParametro = new ParametrosAD().ConsultaParametro(ObjEntidad, Procedimiento);
             return listParametro;
         }
 
-        public IList<Parametros> ConsultaPara(string Procedimiento)
+        public IList<ParametrosEN> ConsultaPara(string Procedimiento)
         {
-            IList<Parametros> lista = new ParametrosAD().ConsultaParametroGnrls(Procedimiento);
+            IList<ParametrosEN> lista = new ParametrosAD().ConsultaParametroGnrls(Procedimiento);
             return lista;
         }
 
-        public string ActualizarParametros(Parametros ObjEntidad, string Procedimiento)
+        public string ActualizarParametros(ParametrosEN ObjEntidad, string Procedimiento)
         {
             String Actualiza = String.Empty;
             return Actualiza = new ParametrosAD().Actualizar(ObjEntidad, Procedimiento);
@@ -34,9 +34,9 @@ namespace LiquidaBonificaciones.LN.Consultas
             return Guardar = new ParametrosAD().GuardarHistorico(Procedimiento);
         }
 
-        public IList<Parametros> ConsultaParametroIdTipo(Parametros ObjEntidad, string Procedimiento)
+        public IList<ParametrosEN> ConsultaParametroIdTipo(ParametrosEN ObjEntidad, string Procedimiento)
         {
-            IList<Parametros> lista = new ParametrosAD().ConsultaParametroId(ObjEntidad,Procedimiento);
+            IList<ParametrosEN> lista = new ParametrosAD().ConsultaParametroId(ObjEntidad,Procedimiento);
             return lista;
         }
     }

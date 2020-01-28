@@ -151,6 +151,7 @@
     <Content Include="Modulos\Administracion\AdminUsuario.aspx" />
     <Content Include="Modulos\Administracion\MenuPrincipal.aspx" />
     <Content Include="Modulos\Parametrizacion\BonificacionEspecial.aspx" />
+    <Content Include="Modulos\Parametrizacion\MontosMinimosPlanes.aspx" />
     <Content Include="Modulos\Proceso\Liquidacion.aspx" />
     <Content Include="Modulos\Proceso\Novedades.aspx" />
     <Content Include="Modulos\Proceso\Parametrizacion.aspx" />
@@ -188,6 +189,13 @@
     </Compile>
     <Compile Include="Modulos\Parametrizacion\BonificacionEspecial.aspx.designer.cs">
       <DependentUpon>BonificacionEspecial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\MontosMinimosPlanes.aspx.cs">
+      <DependentUpon>MontosMinimosPlanes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\MontosMinimosPlanes.aspx.designer.cs">
+      <DependentUpon>MontosMinimosPlanes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Proceso\Liquidacion.aspx.cs">
       <DependentUpon>Liquidacion.aspx</DependentUpon>
