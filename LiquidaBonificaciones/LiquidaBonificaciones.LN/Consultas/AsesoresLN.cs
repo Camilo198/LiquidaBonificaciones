@@ -13,6 +13,7 @@ namespace LiquidaBonificaciones.LN.Consultas
 
       private String ProcedimientoInserta = "BON_CrearAsesor_SQL";
       private String ProcedimientoElimina = "BON_BorarAsesores_SQL";
+      private string ProcedimientoCargaAsistencia = "BON_CargarAsistencia";
 
       public IList<AsesoresEN> ConsultarAsesoresSicolLN()
       {
@@ -31,5 +32,12 @@ namespace LiquidaBonificaciones.LN.Consultas
           String Actualiza = String.Empty;
           return Actualiza = new AsesoresAD().EliminarAsesores(ProcedimientoElimina);
       }
+
+      public string cargarAsistencia(AsesoresEN ObjEntidad)
+      {
+          String Actualiza = String.Empty;
+          return Actualiza = new AsesoresAD().cargarAsistencia(ObjEntidad, ProcedimientoCargaAsistencia);
+      }
+
     }
 }

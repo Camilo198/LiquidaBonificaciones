@@ -196,6 +196,24 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se ha cargado La permanencia para este periodo.
+        /// </summary>
+        internal static string sinPersistencia {
+            get {
+                return ResourceManager.GetString("sinPersistencia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No hay ventas para el periodo parametrizado.
+        /// </summary>
+        internal static string sinVentas {
+            get {
+                return ResourceManager.GetString("sinVentas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El usuario se actualizo correctamente.
         /// </summary>
         internal static string UsuarioActualizado {

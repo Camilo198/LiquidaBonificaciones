@@ -41,7 +41,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                         objParametros.pVendCodigo = Convert.ToInt32(Valida[0, 1].ToString());
                         objParametros.pVendTipoVen= Convert.ToInt32(Valida[1, 1].ToString());
                         objParametros.pOficCodigo = Convert.ToInt32(Valida[2, 1]);
-                        objParametros.pVendIdeNro = Valida[3, 1];
+                        objParametros.pVendIdeNro = Convert.ToInt64(Valida[3, 1]);
                         objParametros.pOficNombre = Valida[4, 1];
                         objParametros.pVendFecIng = Convert.ToDateTime(wsc.fechaJulianaToGregoriana(Convert.ToInt64(Valida[5, 1])).ToString());
                         objParametros.pVendFecRet = Convert.ToDateTime(wsc.fechaJulianaToGregoriana(Convert.ToInt64(Valida[6, 1])).ToString());
@@ -78,9 +78,9 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[2, 1, 0] = "@codigoOficina";
                 Param[2, 2, 0] = "int";
 
-                Param[3, 0, 0] = ObjEntidad.pVendIdeNro;
+                Param[3, 0, 0] = ObjEntidad.pVendIdeNro.ToString();
                 Param[3, 1, 0] = "@idVendedor";
-                Param[3, 2, 0] = "varchar(50)";
+                Param[3, 2, 0] = "bigint";
 
                 Param[4, 0, 0] = ObjEntidad.pOficNombre;
                 Param[4, 1, 0] = "@nombreOficina";
@@ -121,6 +121,28 @@ namespace LiquidaBonificaciones.AD.Consultas
                 return ex.Message;
             }
         }
+        public string cargarAsistencia(AsesoresEN obj, String Procedimiento)
+        {
+            try
+            {
+                string[, ,] Param = new string[2, 3, 1];
 
+                Param[0, 0, 0]=obj.pAsistenciaInicio.ToString();
+                Param[0, 1, 0]="@fechaInicio";
+                Param[0, 2, 0]="datetime";
+
+                Param[1, 0, 0]=obj.pAsistenciaFin.ToString();
+                Param[1, 1, 0] = "@fechaFin";
+                Param[1, 2, 0]="datetime";
+
+                return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        
+        
+        }
     }
 }

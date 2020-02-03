@@ -35,6 +35,7 @@ namespace LiquidaBonificaciones.EN.Tablas
         public Int32? pAsamblea { get; set; }
         public Int32? pEstadoSICO { get; set; }
         public Int32? pProspecto { get; set; }
+        public Int32? pAsistencia { get; set; }
         public String pFecActualizacion { get; set; }
         public String pUsuarioActualiza { get; set; }
 

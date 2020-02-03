@@ -162,6 +162,12 @@
   <data name="SinParametros" xml:space="preserve">
     <value>No hay Parametros Configurados, Agregue al menos 1</value>
   </data>
+  <data name="sinPersistencia" xml:space="preserve">
+    <value>No se ha cargado La permanencia para este periodo</value>
+  </data>
+  <data name="sinVentas" xml:space="preserve">
+    <value>No hay ventas para el periodo parametrizado</value>
+  </data>
   <data name="UsuarioActualizado" xml:space="preserve">
     <value>El usuario se actualizo correctamente</value>
   </data>

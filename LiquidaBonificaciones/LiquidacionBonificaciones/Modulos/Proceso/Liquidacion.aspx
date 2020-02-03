@@ -195,7 +195,10 @@
                                     </tr>
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
-                                        <td style="width: 20%" class="EstiloEtiquetas80"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            <asp:Button ID="btnSubirAsesores" runat="server" OnClick="btnSubirAsesores_Click" Text="Subir Asesores" ToolTip="Subir Asesores" ValidationGroup="1" />
+                                            <asp:ImageButton ID="ImageButton1" runat="server" Enabled="false" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/usuario.png" Width="20px" />
+                                        </td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td class="auto-style5"></td>
                                         <td class="EspaciadoIntermedio"></td>
@@ -213,9 +216,7 @@
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
                                         <td style="width: 20%" class="EstiloEtiquetas80">
-                                            <asp:Button ID="btnSubirVentas" runat="server" ToolTip="Subir Ventas" ValidationGroup="1" Text="Subir Ventas" OnClick="btnSubirVentas_Click" />
-                                            <asp:ImageButton runat="server" Enabled="false" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/activar_sel.png" Width="20px" />
-                                        </td>
+                                            &nbsp;</td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td class="auto-style5"></td>
                                         <td class="EspaciadoIntermedio"></td>
@@ -227,8 +228,8 @@
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
                                         <td style="width: 20%" class="EstiloEtiquetas80">
-                                            <asp:Button ID="btnSubirAsesores" runat="server" ToolTip="Subir Asesores" ValidationGroup="1" Text="Subir Asesores" OnClick="btnSubirAsesores_Click" />
-                                            <asp:ImageButton ID="ImageButton1" Enabled="false" runat="server" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/usuario.png" Width="20px" />
+                                            <asp:Button ID="btnSubirVentas" runat="server" OnClick="btnSubirVentas_Click" Text="Subir Ventas" ToolTip="Subir Ventas" ValidationGroup="1" />
+                                            <asp:ImageButton runat="server" Enabled="false" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/activar_sel.png" Width="20px" />
                                         </td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td class="auto-style5"></td>

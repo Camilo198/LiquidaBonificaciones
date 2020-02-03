@@ -162,6 +162,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                         {
                             ObjReglas.pIdTabla = dtgItem.Cells[0].Text;
                             dtgItem.Cells[3].Text = new VentasLN().Reglas(ObjReglas, "BON_ContarBases");
+                            if (dtgItem.Cells[3].Text == "0" && dtgItem.Cells[0].Text=="21" ) {
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.sinPersistencia + "');</script>", false);
+                            }
                         }
                     }
 
@@ -175,7 +178,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ProcesoError + "');</script>", false);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.sinVentas + "');</script>", false);
                 }
             }
             catch (Exception)
@@ -251,19 +254,24 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                 IList<AsesoresEN> listaAsesores = aseln.ConsultarAsesoresSicolLN();
                 if (listaAsesores.Count > 0)
                 {
-                    for (int i = 0; i < listaAsesores.Count; i++)
+                   for (int i = 0; i < listaAsesores.Count; i++)
                     {
                         AsesoresEN asen = listaAsesores[i];
                       int retin=  Convert.ToInt32(aseln.InsertarAsoresSqlLN(asen));
                     }
+                    AsesoresEN objAsesor = new AsesoresEN();
+                    objAsesor.pAsistenciaFin = Convert.ToDateTime(this.txbFechaFin.Text);
+                objAsesor.pAsistenciaInicio = Convert.ToDateTime(this.txbFechaInicio.Text);
+               int retorno=Convert.ToInt32(aseln.cargarAsistencia(objAsesor)); //Carga la asistencia de los asesores
+                    
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.asesoresOK + "');</script>", false);
                 }
                 else {
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" +Mensajes.sinAsesores + "');</script>", false);
                 }
             }
-            catch(Exception ex){
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ProcesoError+ex+ "');</script>", false);
+            catch(Exception){
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ProcesoError+ "');</script>", false);
             }
                 
         }
