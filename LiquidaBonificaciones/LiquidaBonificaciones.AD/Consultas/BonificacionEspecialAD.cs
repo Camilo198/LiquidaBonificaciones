@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LiquidaBonificaciones.EN.Tablas;
 using LiquidaBonificaciones.AD.Servicios;
+using System.Globalization;
 
 namespace LiquidaBonificaciones.AD.Consultas
 {
@@ -13,14 +14,19 @@ namespace LiquidaBonificaciones.AD.Consultas
       WcfData wsc = new WcfData();
 
       //Retorna en una lista los parametros de la bonificacion Especial.
-        public IList<BonificacionEspecialEN> ConsultarBonificacionEspecialAD(string Procedimiento)
+      public IList<BonificacionEspecialEN> ConsultarBonificacionEspecialAD(string Procedimiento, BonificacionEspecialEN objEntidad)
         {
             List<BonificacionEspecialEN> listParametro = new List<BonificacionEspecialEN>();
             List<string[,]> lista = new List<string[,]>();
 
             try
             {
-                string[, ,] Param = new string[0, 0, 0]; // solo cuando el procedimiento almacenado tiene parametros
+                string[, ,] Param = new string[1, 3, 1]; // solo cuando el procedimiento almacenado tiene parametros
+
+
+                Param[0, 0, 0] = objEntidad.pIdPlanBonificacion.ToString();
+                Param[0, 1, 0] = "@IdPlanBonificacion";
+                Param[0, 2, 0] = "int";
                 
 
                 lista = wsc.LlenarLista(Param, Procedimiento, "SQLBoni", "SP", "Sql");
@@ -35,12 +41,13 @@ namespace LiquidaBonificaciones.AD.Consultas
 
                         objParametros.pId = Convert.ToInt32(Valida[0, 1].ToString());
                         objParametros.pDescripcionBono = Valida[1, 1].ToString();
-                        objParametros.pPlanesMinimos = Convert.ToInt32(Valida[2, 1].ToString());
-                        objParametros.pPlanesMaximos = Convert.ToInt32(Valida[3, 1].ToString());
+                        objParametros.pPlanesMinimos = float.Parse(Valida[2, 1].ToString(), CultureInfo.InvariantCulture.NumberFormat);
+                        objParametros.pPlanesMaximos = float.Parse(Valida[3, 1].ToString(), CultureInfo.InvariantCulture.NumberFormat);
                         objParametros.pValorBono = Valida[4, 1].ToString();
                         objParametros.pAplica = Convert.ToBoolean(Valida[5, 1]);
                         objParametros.pFecActualiza = Convert.ToDateTime(Valida[6, 1].ToString());
                         objParametros.pUsuActualiza = Valida[7, 1].ToString();
+                        objParametros.pIdPlanBonificacion = Convert.ToInt32(Valida[8, 1].ToString());
                         listParametro.Add(objParametros);
                     }
                 }
@@ -58,7 +65,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         {
             try
             {
-                string[, ,] Param = new string[7, 3, 1];
+                string[, ,] Param = new string[8, 3, 1];
 
 
                 Param[0, 0, 0] = ObjEntidad.pId.ToString();
@@ -71,11 +78,11 @@ namespace LiquidaBonificaciones.AD.Consultas
 
                 Param[2, 0, 0] = ObjEntidad.pPlanesMinimos.ToString();
                 Param[2, 1, 0] = "@planesMinimos";
-                Param[2, 2, 0] = "int";
+                Param[2, 2, 0] = "float";
 
                 Param[3, 0, 0] = ObjEntidad.pPlanesMaximos.ToString();
                 Param[3, 1, 0] = "@planesMaximos";
-                Param[3, 2, 0] = "int";
+                Param[3, 2, 0] = "float";
 
                 Param[4, 0, 0] = ObjEntidad.pValorBono;
                 Param[4, 1, 0] = "@valorBono";
@@ -88,6 +95,10 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[6, 0, 0] = ObjEntidad.pUsuActualiza;
                 Param[6, 1, 0] = "@usuarioactualiza";
                 Param[6, 2, 0] = "varchar(50)";
+
+                Param[7, 0, 0] = ObjEntidad.pIdPlanBonificacion.ToString();
+                Param[7, 1, 0] = "@planBonificacion";
+                Param[7, 2, 0] = "int";
 
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
             }
@@ -117,7 +128,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         {
             try
             {
-                string[, ,] Param = new string[6, 3, 1];
+                string[, ,] Param = new string[7, 3, 1];
 
                 Param[0, 0, 0] = ObjEntidad.pDescripcionBono;
                 Param[0, 1, 0] = "@descripcion";
@@ -125,11 +136,11 @@ namespace LiquidaBonificaciones.AD.Consultas
 
                 Param[1, 0, 0] = ObjEntidad.pPlanesMinimos.ToString();
                 Param[1, 1, 0] = "@planesMinimos";
-                Param[1, 2, 0] = "int";
+                Param[1, 2, 0] = "float";
 
                 Param[2, 0, 0] = ObjEntidad.pPlanesMaximos.ToString();
                 Param[2, 1, 0] = "@planesMaximos";
-                Param[2, 2, 0] = "int";
+                Param[2, 2, 0] = "float";
 
                 Param[3, 0, 0] = ObjEntidad.pValorBono;
                 Param[3, 1, 0] = "@valorBono";
@@ -142,6 +153,10 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[5, 0, 0] = ObjEntidad.pUsuActualiza;
                 Param[5, 1, 0] = "@usuarioactualiza";
                 Param[5, 2, 0] = "varchar(50)";
+
+                Param[6, 0, 0] = ObjEntidad.pIdPlanBonificacion.ToString();
+                Param[6, 1, 0] = "@planBonificacion";
+                Param[6, 2, 0] = "int";
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
             }
             catch (Exception ex)

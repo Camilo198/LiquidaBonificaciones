@@ -9,6 +9,7 @@ using System.Data.Odbc;
 using System.Configuration;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
+using System.Globalization;
 
 
 namespace LiquidaBonificaciones.AD.Servicios
@@ -91,7 +92,7 @@ namespace LiquidaBonificaciones.AD.Servicios
         /// <param name="param">Nombre del parametro</param>
         /// <param name="valor">Valor a asignar al parámetro</param>
         /// <param name="posicion">posición del arreglo en el que va el parametro</param>
-        public void AdicionaParametro2(String param, object valor, int posicion, string SqlTipo)
+        public void AdicionaParametro2(String param, Object valor, int posicion, string SqlTipo)
         {
             switch (SqlTipo)
             {
@@ -104,6 +105,8 @@ namespace LiquidaBonificaciones.AD.Servicios
                 case "date": parametro[posicion] = new SqlParameter(param, Convert.ToDateTime(valor));
                     break;
                 case "bool": parametro[posicion] = new SqlParameter(param, Convert.ToBoolean(valor));
+                    break;
+                case "float": parametro[posicion] = new SqlParameter(param,float.Parse(valor.ToString(), CultureInfo.InvariantCulture.NumberFormat));
                     break;
                 default: parametro[posicion] = new SqlParameter(param, valor);
                     break;

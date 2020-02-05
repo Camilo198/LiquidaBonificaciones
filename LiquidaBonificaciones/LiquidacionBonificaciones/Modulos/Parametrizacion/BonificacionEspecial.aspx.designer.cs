@@ -40,6 +40,42 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion {
         protected global::System.Web.UI.WebControls.Panel pnlDatos;
         
         /// <summary>
+        /// ListAsesor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ListAsesor;
+        
+        /// <summary>
+        /// TextBox9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        
+        /// <summary>
+        /// ListBonificacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ListBonificacion;
+        
+        /// <summary>
+        /// Label7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label7;
+        
+        /// <summary>
         /// ImgBtnAddCantidadPlanes control.
         /// </summary>
         /// <remarks>
@@ -49,39 +85,12 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion {
         protected global::System.Web.UI.WebControls.ImageButton ImgBtnAddCantidadPlanes;
         
         /// <summary>
-        /// GridViewBeCantidadPlanes control.
+        /// GridViewBonificacionEspecial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewBeCantidadPlanes;
-        
-        /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
-        /// ImgBtnAddValorPLan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgBtnAddValorPLan;
-        
-        /// <summary>
-        /// GridViewBeValorPLan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewBeValorPLan;
+        protected global::System.Web.UI.WebControls.GridView GridViewBonificacionEspecial;
     }
 }

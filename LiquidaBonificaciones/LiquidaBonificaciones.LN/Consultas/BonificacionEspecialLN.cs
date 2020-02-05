@@ -8,25 +8,34 @@ using LiquidaBonificaciones.AD.Consultas;
 
 namespace LiquidaBonificaciones.LN.Consultas
 {
-   public abstract class BonificacionEspecialLN
+   public  class BonificacionEspecialLN
     {
-    protected  String ProcedimientoConsulta; 
-    protected String ProcedimientoActualiza;
-    protected String ProcedimientoElimina;
-    protected String ProcedimientoInserta;
 
 
+    public  IList<BonificacionEspecialEN> ConsultarBonificacionEspecialLN(String ProcedimientoConsulta, BonificacionEspecialEN objEntidad)
+    {
 
-    public abstract IList<BonificacionEspecialEN> ConsultarBonificacionEspecialLN();
+        IList<BonificacionEspecialEN> lista = new BonificacionEspecialAD().ConsultarBonificacionEspecialAD(ProcedimientoConsulta,objEntidad);
+        return lista;
+    }
 
+    public  string ActualizarBonificacionEspecialLN(BonificacionEspecialEN ObjEntidad, String ProcedimientoActualiza)
+    {
+        String Actualiza = String.Empty;
+        return Actualiza = new BonificacionEspecialAD().ActualizarBonificacionEspecial(ObjEntidad, ProcedimientoActualiza);
+    }
 
-    public abstract string ActualizarBonificacionEspecialLN(BonificacionEspecialEN ObjEntidad);
+    public  string EliminarBonificacionEspecialLN(BonificacionEspecialEN ObjEntidad, String ProcedimientoElimina)
+    {
+        String Actualiza = String.Empty;
+        return Actualiza = new BonificacionEspecialAD().EliminarBonificacionEspecial(ObjEntidad, ProcedimientoElimina);
+    }
 
-
-    public abstract string EliminarBonificacionEspecialLN(BonificacionEspecialEN ObjEntidad);
-
-
-    public abstract string InsertarBonificacionEspecialLN(BonificacionEspecialEN ObjEntidad);
+    public  string InsertarBonificacionEspecialLN(BonificacionEspecialEN ObjEntidad, String ProcedimientoInserta)
+    {
+        String Actualiza = String.Empty;
+        return Actualiza = new BonificacionEspecialAD().InsertarBonificacionEspacial(ObjEntidad, ProcedimientoInserta);
+    }
 
     }
 }

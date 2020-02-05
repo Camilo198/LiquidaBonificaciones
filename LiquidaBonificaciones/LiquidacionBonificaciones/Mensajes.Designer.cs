@@ -178,11 +178,29 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Seleccione una Bonificacion Primero.
+        /// </summary>
+        internal static string seleccioneBonificacion {
+            get {
+                return ResourceManager.GetString("seleccioneBonificacion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No se encontraron Asesores en Sico para Cargar.
         /// </summary>
         internal static string sinAsesores {
             get {
                 return ResourceManager.GetString("sinAsesores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se encontro informacion en base de datos, consulte el administrador del sistema.
+        /// </summary>
+        internal static string SinInformacionDB {
+            get {
+                return ResourceManager.GetString("SinInformacionDB", resourceCulture);
             }
         }
         

@@ -174,4 +174,10 @@
   <data name="UsuarioNo" xml:space="preserve">
     <value>Usuario no valido</value>
   </data>
+  <data name="SinInformacionDB" xml:space="preserve">
+    <value>No se encontro informacion en base de datos, consulte el administrador del sistema</value>
+  </data>
+  <data name="seleccioneBonificacion" xml:space="preserve">
+    <value>Seleccione una Bonificacion Primero</value>
+  </data>
 </root>

@@ -43,7 +43,9 @@
     <Compile Include="Tablas\AsesoresEN.cs" />
     <Compile Include="Tablas\BonificacionEspecialEN.cs" />
     <Compile Include="Tablas\ParametrosEN.cs" />
+    <Compile Include="Tablas\PerfilComercialEN.cs" />
     <Compile Include="Tablas\PerfilEN.cs" />
+    <Compile Include="Tablas\PlanDeBonificacionEN.cs" />
     <Compile Include="Tablas\UsuarioEN.cs" />
     <Compile Include="Tablas\VentasEN.cs" />
   </ItemGroup>

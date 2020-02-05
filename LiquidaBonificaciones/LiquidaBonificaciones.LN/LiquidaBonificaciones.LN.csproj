@@ -44,10 +44,10 @@
   <ItemGroup>
     <Compile Include="Consultas\AsesoresLN.cs" />
     <Compile Include="Consultas\BonificacionEspecialLN.cs" />
-    <Compile Include="Consultas\PorCantidadPlanesLN.cs" />
-    <Compile Include="Consultas\PorValoresPlanLN.cs" />
     <Compile Include="Consultas\ParametrosLN.cs" />
+    <Compile Include="Consultas\PerfilComercialLN.cs" />
     <Compile Include="Consultas\PerfilLN.cs" />
+    <Compile Include="Consultas\PlanDeBonificacionLN.cs" />
     <Compile Include="Consultas\UsuarioLN.cs" />
     <Compile Include="Consultas\VentasLN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
