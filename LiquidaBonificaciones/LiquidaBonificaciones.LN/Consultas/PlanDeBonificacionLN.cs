@@ -10,11 +10,21 @@ namespace LiquidaBonificaciones.LN.Consultas
 {
   public  class PlanDeBonificacionLN
     {
-      public IList<PlanDeBonificacionEN> ConsultarPlanBonificacionEspecialLN(String ProcedimientoConsulta,AsesoresEN AsesorObj)
+      public IList<PlanDeBonificacionEN> ConsultarPlanBonificacionEspecialXidLN(String ProcedimientoConsulta,AsesoresEN AsesorObj)
       {
 
-          IList<PlanDeBonificacionEN> lista = new PlanDeBonificacionAD().ConsultarPlanBonificacionAD(ProcedimientoConsulta,AsesorObj);
+          IList<PlanDeBonificacionEN> lista = new PlanDeBonificacionAD().ConsultarPlanBonificacionXidAD(ProcedimientoConsulta,AsesorObj);
           return lista;
       }
+
+      public IList<PlanDeBonificacionEN> ConsultarPlanesBonificacionEspecialLN(String ProcedimientoConsulta)
+      {
+
+          IList<PlanDeBonificacionEN> lista = new PlanDeBonificacionAD().ConsultarPlanesBonificacion(ProcedimientoConsulta);
+          return lista;
+      }
+
     }
+
+
 }

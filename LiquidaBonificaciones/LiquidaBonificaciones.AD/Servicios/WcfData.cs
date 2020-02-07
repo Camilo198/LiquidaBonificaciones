@@ -108,6 +108,8 @@ namespace LiquidaBonificaciones.AD.Servicios
                     break;
                 case "float": parametro[posicion] = new SqlParameter(param,float.Parse(valor.ToString(), CultureInfo.InvariantCulture.NumberFormat));
                     break;
+                case "Numeric": parametro[posicion] = new SqlParameter(param, Convert.ToDouble(valor));
+                    break;
                 default: parametro[posicion] = new SqlParameter(param, valor);
                     break;
 

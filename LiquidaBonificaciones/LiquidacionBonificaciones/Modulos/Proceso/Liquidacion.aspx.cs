@@ -153,24 +153,28 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                     this.lblNVentas.Text = Consulta.ToString();
                     VentasEN ObjReglas = new VentasEN();
                     ObjReglas.pCeremonia = this.txbCeremonia.Text.Substring(6, 4) + this.txbCeremonia.Text.Substring(3, 2);
-
+                    int ContadorReglas = 0;
                     foreach (GridViewRow dtgItem in this.gvParametros.Rows)
                     {
                         String Actualiza = String.Empty;
 
                         if (dtgItem.Cells[2].Text.Equals("Si"))
                         {
+                            ContadorReglas++;
                             ObjReglas.pIdTabla = dtgItem.Cells[0].Text;
-                            dtgItem.Cells[3].Text = new VentasLN().Reglas(ObjReglas, "BON_ContarBases");
+                            dtgItem.Cells[3].Text = new VentasLN().AplicarReglas(ObjReglas, "BON_ContarBases");
                             if (dtgItem.Cells[3].Text == "0" && dtgItem.Cells[0].Text=="21" ) {
                                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.sinPersistencia + "');</script>", false);
                             }
                         }
                     }
+                    
+                    string resultActCampos = new VentasLN().ActualizaCampos("BON_ActualizarCampos");
+                    ObjReglas.pIdTabla = ContadorReglas.ToString();
+                   this.TextVentasValidas.Text= new VentasLN().ValidarReglas(ObjReglas, "BON_CalculaReglas");
+                   this.TextVentasValidas.Enabled = false;
 
-                    string result = new VentasLN().ActualizaCampos("BON_ActualizarCampos");
-
-                    if (result.Substring(0, 1) != "0")
+                    if (resultActCampos.Substring(0, 1) != "0")
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.Exitoso + "');</script>", false);    
                     else
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ProcesoError + "');</script>", false);
@@ -241,7 +245,39 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
 
         protected void btnLiquidar_Click(object sender, EventArgs e)
         {
+            PlanDeBonificacionLN pbln= new PlanDeBonificacionLN();
+            IList<PlanDeBonificacionEN> listaPlanes = pbln.ConsultarPlanesBonificacionEspecialLN("BON_ConsultaPlanesBonificacion");
 
+            for (int i = 0; i < listaPlanes.Count;i++ )
+            {
+                if (listaPlanes[i].estado == true) {
+                    BonificacionEspecialLN beln = new BonificacionEspecialLN();
+                    BonificacionEspecialEN benPb = new BonificacionEspecialEN();
+                    benPb.pIdPlanBonificacion = listaPlanes[i].ID;
+                    IList<BonificacionEspecialEN> listaBonificaciones = beln.ConsultarBonificacionEspecialXidPlanLN("BON_ConsultaBonificacionEspecialXidPlan", benPb);
+                    for (int j = 0; j < listaBonificaciones.Count; j++)
+                    {
+                        if (listaBonificaciones[j].pEstado == true)
+                        {
+                            int idPlan = listaPlanes[i].ID;
+                            int id = listaBonificaciones[j].pId;
+                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+
+                            BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                            ben.pId = 4;
+                            ben.pIdPlanBonificacion = listaPlanes[i].ID;
+                            ben.pUsuActualiza = Session["usuario"].ToString();
+                            ben.pDescripcionBono = "";
+                            String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion");
+                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+                        }
+                    }
+                   
+                }
+  
+            }
+            
+         
         }
 
         protected void btnSubirAsesores_Click(object sender, EventArgs e)

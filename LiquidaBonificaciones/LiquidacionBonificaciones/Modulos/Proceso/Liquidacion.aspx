@@ -232,7 +232,10 @@
                                             <asp:ImageButton runat="server" Enabled="false" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/activar_sel.png" Width="20px" />
                                         </td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td class="auto-style5"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80"">
+                                            <asp:Label ID="LabelVentasValidas" runat="server" Text="Ventas Validas"></asp:Label>
+                                            <asp:TextBox ID="TextVentasValidas" runat="server" Width="89px"></asp:TextBox>
+                                        </td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td style="width: 20%" class="EstiloEtiquetas80">
                                             <asp:Button ID="btnConfirmaLiquidacion" runat="server" ToolTip="Confirmar Liquidación" ValidationGroup="1" Text="Confirmar Liquidación" OnClick="btnConfirmaLiquida_Click" />

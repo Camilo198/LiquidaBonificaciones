@@ -13,7 +13,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         WcfData wsc = new WcfData();
 
         //Retorna en una lista los parametros de la bonificacion Especial.
-        public IList<PlanDeBonificacionEN> ConsultarPlanBonificacionAD(string Procedimiento, AsesoresEN AsesorObj)
+        public IList<PlanDeBonificacionEN> ConsultarPlanBonificacionXidAD(string Procedimiento, AsesoresEN AsesorObj)
         {
             List<PlanDeBonificacionEN> listParametro = new List<PlanDeBonificacionEN>();
             List<string[,]> lista = new List<string[,]>();
@@ -53,5 +53,43 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
+
+        public IList<PlanDeBonificacionEN> ConsultarPlanesBonificacion(string Procedimiento)
+        {
+            List<PlanDeBonificacionEN> listParametro = new List<PlanDeBonificacionEN>();
+            List<string[,]> lista = new List<string[,]>();
+
+            try
+            {
+                string[, ,] Param = new string[0, 0, 0]; // solo cuando el procedimiento almacenado tiene parametros
+
+
+
+                lista = wsc.LlenarLista(Param, Procedimiento, "SQLBoni", "SP", "Sql");
+                string[,] Valida;
+
+                if (lista.Count > 0)
+                {
+                    for (int i = 0; i < lista.Count; i++)
+                    {
+                        PlanDeBonificacionEN objParametros = new PlanDeBonificacionEN();
+                        Valida = lista[i];
+
+                        objParametros.ID = Convert.ToInt32(Valida[0, 1].ToString());
+                        objParametros.Nombre = Valida[1, 1].ToString();
+                        objParametros.idRol = Convert.ToInt32(Valida[2, 1].ToString());
+                        objParametros.estado = Convert.ToBoolean(Valida[3, 1]);
+                        objParametros.Descripcion = Valida[4, 1];
+                        listParametro.Add(objParametros);
+                    }
+                }
+
+                return listParametro;
+            }
+            catch (Exception)
+            {
+                return listParametro;
+            }
+        }
     }
 }

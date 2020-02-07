@@ -38,7 +38,7 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
-        public string Aplicarreglas(VentasEN ObjEntidad, string Procedimiento)
+        public string AplicarReglas(VentasEN ObjEntidad, string Procedimiento)
         {
             try
             {
@@ -73,6 +73,22 @@ namespace LiquidaBonificaciones.AD.Consultas
                 return "0";
             }
         }
+        public string ValidarReglas(VentasEN ObjEntidad, string Procedimiento)
+        {
+            try
+            {
+                string[, ,] Param = new string[1, 3, 1];
 
+                Param[0, 0, 0] = ObjEntidad.pIdTabla;
+                Param[0, 1, 0] = "@cantidadReglas";
+                Param[0, 2, 0] = "int";
+
+                return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
+            }
+            catch (Exception)
+            {
+                return "0";
+            }
+        }
     }
 }

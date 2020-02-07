@@ -13,5 +13,7 @@ namespace LiquidaBonificaciones.EN.Tablas
      public int idRol { get; set; }
      public Boolean estado { get; set; }
      public String Descripcion { get; set; }
+     public DateTime pFecActualiza { get; set; }
+     public String pUsuActualiza { get; set; }
     }
 }

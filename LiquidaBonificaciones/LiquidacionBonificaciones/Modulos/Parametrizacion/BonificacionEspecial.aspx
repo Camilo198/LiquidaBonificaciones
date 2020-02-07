@@ -126,15 +126,15 @@
                                                                                       <asp:Label ID="Label4" runat="server" Text='<%# Bind("pValorBono") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                               </asp:TemplateField>
-                                                                              <asp:TemplateField HeaderText="Aplica" SortExpression="pAplica">
+                                                                              <asp:TemplateField HeaderText="Estado" SortExpression="pAplica">
                                                                                   <EditItemTemplate>
-                                                                                      <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("pAplica") %>' />
+                                                                                      <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("pEstado") %>' />
                                                                                   </EditItemTemplate>
                                                                                   <FooterTemplate>
                                                                                       <asp:CheckBox ID="CheckBox2" runat="server" />
                                                                                   </FooterTemplate>
                                                                                   <ItemTemplate>
-                                                                                      <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("pAplica") %>' Enabled="false" />
+                                                                                      <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("pEstado") %>' Enabled="false" />
                                                                                   </ItemTemplate>
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="Usuario Modifica">

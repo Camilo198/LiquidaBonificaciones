@@ -10,5 +10,7 @@ namespace LiquidaBonificaciones.EN.Tablas
     {
      public  int ID { get; set; }
       public string Nombre { get; set; }
+      public String pUsuActualiza { get; set; }
+      public DateTime pFecActualiza { get; set; }
     }
 }

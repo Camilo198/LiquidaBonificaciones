@@ -11,5 +11,7 @@ namespace LiquidaBonificaciones.EN.Tablas
     {
         public Int32? pId { get; set; }
         public String pPerfil { get; set; }
+        public DateTime pFecActualiza { get; set; }
+        public String pUsuActualiza { get; set; }
     }
 }

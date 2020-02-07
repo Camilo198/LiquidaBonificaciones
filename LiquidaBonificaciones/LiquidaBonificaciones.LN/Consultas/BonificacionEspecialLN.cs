@@ -12,10 +12,10 @@ namespace LiquidaBonificaciones.LN.Consultas
     {
 
 
-    public  IList<BonificacionEspecialEN> ConsultarBonificacionEspecialLN(String ProcedimientoConsulta, BonificacionEspecialEN objEntidad)
+    public  IList<BonificacionEspecialEN> ConsultarBonificacionEspecialXidPlanLN(String ProcedimientoConsulta, BonificacionEspecialEN objEntidad)
     {
 
-        IList<BonificacionEspecialEN> lista = new BonificacionEspecialAD().ConsultarBonificacionEspecialAD(ProcedimientoConsulta,objEntidad);
+        IList<BonificacionEspecialEN> lista = new BonificacionEspecialAD().ConsultarBonificacionEspecialXidPlanAD(ProcedimientoConsulta,objEntidad);
         return lista;
     }
 
@@ -37,5 +37,14 @@ namespace LiquidaBonificaciones.LN.Consultas
         return Actualiza = new BonificacionEspecialAD().InsertarBonificacionEspacial(ObjEntidad, ProcedimientoInserta);
     }
 
+       public string LiquidarBonificacionEspecial (BonificacionEspecialEN bonEs,String ProcedimientoLiquida){
+               String Actualiza = String.Empty;
+               return Actualiza = new BonificacionEspecialAD().LiquidarBonificacionEspecial(bonEs, ProcedimientoLiquida);
+
+}
+
+
     }
+
+
 }

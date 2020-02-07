@@ -17,10 +17,10 @@ namespace LiquidaBonificaciones.LN.Consultas
             return Consulta = new VentasAD().CargarVentas(ObjEntidad, Procedimiento);
         }
 
-        public string Reglas(VentasEN ObjEntidad, string Procedimiento)
+        public string AplicarReglas(VentasEN ObjEntidad, string Procedimiento)
         {
             String Actualiza = String.Empty;
-            return Actualiza = new VentasAD().Aplicarreglas(ObjEntidad, Procedimiento);
+            return Actualiza = new VentasAD().AplicarReglas(ObjEntidad, Procedimiento);
         }
 
         public string ActualizaCampos(string Procedimiento)
@@ -28,6 +28,12 @@ namespace LiquidaBonificaciones.LN.Consultas
             String Result = String.Empty;
             return Result = new VentasAD().ActualizaCampos(Procedimiento);
         
+        }
+
+        public string ValidarReglas(VentasEN ObjEntidad, string Procedimiento)
+        {
+            String Actualiza = String.Empty;
+            return Actualiza = new VentasAD().ValidarReglas(ObjEntidad, Procedimiento);
         }
     }
 }
