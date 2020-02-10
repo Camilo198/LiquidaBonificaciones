@@ -1,26 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra/Sitio.Master" AutoEventWireup="true" CodeBehind="BonificacionEspecial.aspx.cs" Inherits="LiquidacionBonificaciones.Modulos.Parametrizacion.BonificacionEspecial" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra/Sitio.Master" AutoEventWireup="true" CodeBehind="Presupuesto.aspx.cs" Inherits="LiquidacionBonificaciones.Modulos.Parametrizacion.Presupuesto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCabecera" runat="server">
-
-    <style type="text/css">
-        .auto-style1
-        {
-            font-size: 8pt;
-            color: #2C4586;
-            width: 268435440px;
-        }
-        .auto-style2
-        {
-            height: 10px;
-            width: 268435440px;
-        }
-    </style>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBarraHerramientas" runat="server">
-
-
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContenido" runat="server">
     <asp:UpdatePanel ID="upContenido" runat="server">
@@ -98,15 +79,13 @@
                                                                   <td>
                                                                       <asp:GridView ID="GridViewBonificacionEspecial" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" CssClass="EstiloEtiquetas81" Font-Size="Small" GridLines="Horizontal" HorizontalAlign="Left" OnRowCancelingEdit="GridViewBeCantidadPlanes_RowCancelingEdit" OnRowCommand="GridViewBeCantidadPlanes_RowCommand" OnRowDeleting="GridViewBeCantidadPlanes_RowDeleting" OnRowEditing="GridViewBeCantidadPlanes_RowEditing" OnRowUpdating="GridViewBeCantidadPlanes_RowUpdating" ShowHeaderWhenEmpty="True" Width="500px">
                                                                           <Columns>
-                                                                              <asp:TemplateField HeaderText="Id">
+                                                                              <asp:TemplateField HeaderText="CodigoOficina">
                                                                                   <ItemTemplate>
                                                                                       <asp:Label ID="Label0" runat="server" Text='<%# Bind("pId") %>'></asp:Label>
                                                                                   </ItemTemplate>
-                                                                                  <HeaderStyle CssClass="OcultarControles" />
-                                                                                  <ItemStyle CssClass="OcultarControles" HorizontalAlign="Center" />
-                                                                                  <FooterStyle CssClass="OcultarControles" />
+                           
                                                                               </asp:TemplateField>
-                                                                              <asp:TemplateField HeaderText="Descripcion">
+                                                                              <asp:TemplateField HeaderText="Presupuesto">
                                                                                   <EditItemTemplate>
                                                                                       <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("pDescripcionBono") %>'></asp:TextBox>
                                                                                   </EditItemTemplate>
@@ -117,54 +96,6 @@
                                                                                       <asp:Label ID="Label1" runat="server" Text='<%# Bind("pDescripcionBono") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
-                                                                              </asp:TemplateField>
-                                                                              <asp:TemplateField HeaderText="Planes Minimos">
-                                                                                  <EditItemTemplate>
-                                                                                      <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("pPlanesMinimos") %>'></asp:TextBox>
-                                                                                  </EditItemTemplate>
-                                                                                  <FooterTemplate>
-                                                                                      <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-                                                                                  </FooterTemplate>
-                                                                                  <ItemTemplate>
-                                                                                      <asp:Label ID="Label2" runat="server" Text='<%# Bind("pPlanesMinimos") %>'></asp:Label>
-                                                                                  </ItemTemplate>
-                                                                                  <HeaderStyle Width="60px" />
-                                                                                  <ItemStyle HorizontalAlign="Center" />
-                                                                              </asp:TemplateField>
-                                                                              <asp:TemplateField HeaderText="Planes Maximos">
-                                                                                  <EditItemTemplate>
-                                                                                      <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("pPlanesMaximos") %>'></asp:TextBox>
-                                                                                  </EditItemTemplate>
-                                                                                  <FooterTemplate>
-                                                                                      <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("pPlanesMaximos") %>'></asp:TextBox>
-                                                                                  </FooterTemplate>
-                                                                                  <ItemTemplate>
-                                                                                      <asp:Label ID="Label3" runat="server" Text='<%# Bind("pPlanesMaximos") %>'></asp:Label>
-                                                                                  </ItemTemplate>
-                                                                                  <HeaderStyle Width="60px" />
-                                                                                  <ItemStyle HorizontalAlign="Center" />
-                                                                              </asp:TemplateField>
-                                                                              <asp:TemplateField HeaderText="Valor del Bono">
-                                                                                  <EditItemTemplate>
-                                                                                      <asp:TextBox ID="TextBox4" runat="server" text='<%# Bind("pValorBono") %>'></asp:TextBox>
-                                                                                  </EditItemTemplate>
-                                                                                  <FooterTemplate>
-                                                                                      <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
-                                                                                  </FooterTemplate>
-                                                                                  <ItemTemplate>
-                                                                                      <asp:Label ID="Label4" runat="server" Text='<%# Bind("pValorBono") %>'></asp:Label>
-                                                                                  </ItemTemplate>
-                                                                              </asp:TemplateField>
-                                                                              <asp:TemplateField HeaderText="Estado" SortExpression="pAplica">
-                                                                                  <EditItemTemplate>
-                                                                                      <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("pEstado") %>' />
-                                                                                  </EditItemTemplate>
-                                                                                  <FooterTemplate>
-                                                                                      <asp:CheckBox ID="CheckBox2" runat="server" />
-                                                                                  </FooterTemplate>
-                                                                                  <ItemTemplate>
-                                                                                      <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("pEstado") %>' Enabled="false" />
-                                                                                  </ItemTemplate>
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="Usuario Modifica">
                                                                                   <ItemTemplate>
@@ -221,12 +152,6 @@
 
     </asp:UpdatePanel>
 
-       
-
 </asp:Content>
-
 <asp:Content ID="Content4" ContentPlaceHolderID="cphBarraEstado" runat="server">
-
-        
-
 </asp:Content>

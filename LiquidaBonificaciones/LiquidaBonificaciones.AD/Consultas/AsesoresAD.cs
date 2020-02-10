@@ -23,7 +23,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                 string[, ,] Param = new string[0, 0, 0]; // solo cuando el procedimiento almacenado tiene parametros
 
 
-                String sentenciaSicoSQL = "SELECT VEND.VendCodigo, VEND.VendTipoVen, OFIC.OficCodigo, VEND.VendIdeNro, OFIC.OficNombre, VEND.VendFecIng, VEND.VendFecRet, VEND.VendTipoAse, VEND.VendMail FROM  VEND, OFIC WHERE VEND.VendCodOfi = OFIC.OficCodigo";
+                String sentenciaSicoSQL = "SELECT VEND.VendCodigo, VEND.VendTipoVen, VEND.VendIdeNro,REGI.RegiCodigo, REGI.RegiNombre,OFIC.OficCodigo, OFIC.OficNombre, VEND.VendFecIng, VEND.VendFecRet, VEND.VendTipoAse, VEND.VendMail FROM  VEND, OFIC,REGI WHERE OFIC.OficCodReg = REGI.RegiCodigo AND  VEND.VendCodOfi = OFIC.OficCodigo";
                 String keyODBC = "SICO";
                 String tipoConsulta = "sql";
                 String tipoConexion = "ODBC";          
@@ -40,13 +40,16 @@ namespace LiquidaBonificaciones.AD.Consultas
 
                         objParametros.pVendCodigo = Convert.ToInt32(Valida[0, 1].ToString());
                         objParametros.pVendTipoVen= Convert.ToInt32(Valida[1, 1].ToString());
-                        objParametros.pOficCodigo = Convert.ToInt32(Valida[2, 1]);
-                        objParametros.pVendIdeNro = Convert.ToInt64(Valida[3, 1]);
-                        objParametros.pOficNombre = Valida[4, 1];
-                        objParametros.pVendFecIng = Convert.ToDateTime(wsc.fechaJulianaToGregoriana(Convert.ToInt64(Valida[5, 1])).ToString());
-                        objParametros.pVendFecRet = Convert.ToDateTime(wsc.fechaJulianaToGregoriana(Convert.ToInt64(Valida[6, 1])).ToString());
-                        objParametros.pVendTipoAse = Valida[7, 1];
-                        objParametros.pVendMail = Valida[8, 1].ToString();
+                       objParametros.pVendIdeNro   =Convert.ToInt64(Valida[2, 1]) ;
+                       objParametros.pRegiCodigo = Convert.ToInt32(Valida[3, 1]);
+                       objParametros.pRegiNombre = Valida[4, 1];
+                        objParametros.pOficCodigo = Convert.ToInt32(Valida[5, 1]);
+                        objParametros.pOficNombre = Valida[6, 1];
+                        objParametros.pVendFecIng = Convert.ToDateTime(wsc.fechaJulianaToGregoriana(Convert.ToInt64(Valida[7, 1])).ToString());
+                        objParametros.pVendFecRet = Convert.ToDateTime(wsc.fechaJulianaToGregoriana(Convert.ToInt64(Valida[8, 1])).ToString());
+                        objParametros.pVendTipoAse = Valida[9, 1];
+                        objParametros.pVendMail = Valida[10, 1].ToString();
+                        
                         listParametro.Add(objParametros);
                     }
                 }
@@ -64,7 +67,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         {
             try
             {
-                string[, ,] Param = new string[9, 3, 1];
+                string[, ,] Param = new string[11, 3, 1];
 
                 Param[0, 0, 0] = ObjEntidad.pVendCodigo.ToString();
                 Param[0, 1, 0] = "@codigoVendedor";
@@ -101,6 +104,14 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[8, 0, 0] = ObjEntidad.pVendMail;
                 Param[8, 1, 0] = "@Email";
                 Param[8, 2, 0] = "varchar(100)";
+
+                Param[9, 0, 0] = ObjEntidad.pRegiCodigo.ToString();
+                Param[9, 1, 0] = "@codRegi";
+                Param[9, 2, 0] = "int";
+
+                Param[10, 0, 0] = ObjEntidad.pRegiNombre;
+                Param[10, 1, 0] = "@nombreRegi";
+                Param[10, 2, 0] = "Varchar(50)";
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
             }
             catch (Exception ex)

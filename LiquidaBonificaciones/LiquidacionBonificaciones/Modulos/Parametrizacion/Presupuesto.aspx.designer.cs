@@ -10,7 +10,7 @@
 namespace LiquidacionBonificaciones.Modulos.Parametrizacion {
     
     
-    public partial class BonificacionEspecial {
+    public partial class Presupuesto {
         
         /// <summary>
         /// upContenido control.
