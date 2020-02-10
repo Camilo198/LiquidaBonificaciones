@@ -264,7 +264,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
 
                             BonificacionEspecialEN ben = new BonificacionEspecialEN();
-                            ben.pId = 4;
+                            ben.pId = listaBonificaciones[j].pId;
                             ben.pIdPlanBonificacion = listaPlanes[i].ID;
                             ben.pUsuActualiza = Session["usuario"].ToString();
                             ben.pDescripcionBono = "";

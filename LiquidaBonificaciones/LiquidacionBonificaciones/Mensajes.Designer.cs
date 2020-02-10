@@ -79,6 +79,15 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se cambio el estado del plan correctamente.
+        /// </summary>
+        internal static string CambioEstadoPlan {
+            get {
+                return ResourceManager.GetString("CambioEstadoPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usted mismo se no se puede eliminar.
         /// </summary>
         internal static string EliminarMismoUsuario {
@@ -129,6 +138,33 @@ namespace LiquidacionBonificaciones {
         internal static string LiquidacionCerrada {
             get {
                 return ResourceManager.GetString("LiquidacionCerrada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se Cambio el estado del plan, por que este no Se encontro en la base de datos.
+        /// </summary>
+        internal static string NoCambioEstadoPlan {
+            get {
+                return ResourceManager.GetString("NoCambioEstadoPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecione una opcion valida.
+        /// </summary>
+        internal static string OpcionInvalida {
+            get {
+                return ResourceManager.GetString("OpcionInvalida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecciones un plan de Bonificacion.
+        /// </summary>
+        internal static string OpcionSeleccion {
+            get {
+                return ResourceManager.GetString("OpcionSeleccion", resourceCulture);
             }
         }
         

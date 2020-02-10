@@ -13,7 +13,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         WcfData wsc = new WcfData();
 
         //Retorna en una lista los parametros de la bonificacion Especial.
-        public IList<PlanDeBonificacionEN> ConsultarPlanBonificacionXidAD(string Procedimiento, AsesoresEN AsesorObj)
+        public IList<PlanDeBonificacionEN> ConsultarPlanBonificacionXidAD(string Procedimiento, PlanDeBonificacionEN PlanObj)
         {
             List<PlanDeBonificacionEN> listParametro = new List<PlanDeBonificacionEN>();
             List<string[,]> lista = new List<string[,]>();
@@ -21,7 +21,7 @@ namespace LiquidaBonificaciones.AD.Consultas
             try
             {
                 string[, ,] Param = new string[1, 3, 1]; // solo cuando el procedimiento almacenado tiene parametros
-                Param[0, 0, 0] = AsesorObj.pId.ToString();
+                Param[0, 0, 0] = PlanObj.ID.ToString();
                 Param[0, 1, 0] = "@Id";
                 Param[0, 2, 0] = "int";
 
@@ -89,6 +89,35 @@ namespace LiquidaBonificaciones.AD.Consultas
             catch (Exception)
             {
                 return listParametro;
+            }
+        }
+
+        public string ActualizarPlanBonificacion(PlanDeBonificacionEN ObjEntidad, string Procedimiento)
+        {
+            try
+            {
+                string[, ,] Param = new string[3, 3, 1];
+
+
+                Param[0, 0, 0] = ObjEntidad.ID.ToString();
+                Param[0, 1, 0] = "@Id";
+                Param[0, 2, 0] = "int";
+
+                Param[1, 0, 0] = ObjEntidad.estado.ToString();
+                Param[1, 1, 0] = "@Estado";
+                Param[1, 2, 0] = "bit";
+
+                Param[2, 0, 0] = ObjEntidad.pUsuActualiza.ToString();
+                Param[2, 1, 0] = "@usuarioActualiza";
+                Param[2, 2, 0] = "Varchar(50)";
+
+
+
+                return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
     }

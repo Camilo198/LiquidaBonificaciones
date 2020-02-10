@@ -13,8 +13,8 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
     public partial class BonificacionEspecial : System.Web.UI.Page
     {
 
-    //Procedimientos almacenados que interactuan con el Gridview
-        private String SP_ConsultaBonificacionesXidPlan = "BON_ConsultaBonificacionEspecialXidPlan";
+   //Procedimientos almacenados que interactuan con el Gridview
+   private String SP_ConsultaBonificacionesXidPlan = "BON_ConsultaBonificacionEspecialXidPlan";
    private  String Sp_EliminaBonificacion  = "BON_BorrarBonificacionEspecial";
    private  String SP_InsertaBonificacion  = "BON_CrearBonificacionEspecial";
    private  String SP_ActualizaBonificacion = "BON_ActBonificacionEspecial";
@@ -23,9 +23,10 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
    private String SP_ConsultaPlanesBonificacionesXrol = "BON_ConsultaPlanesBonificacionXrol";
    private String SP_ConsultaPerfilComercial = "BON_ConsultaPerfilComercial";
 
-//Procedimiento almacenado que retorna los un plan de Bonificacion Especifico
+//Procedimiento almacenado que retorna  un plan de Bonificacion Especifico
 
    private String SP_ConsultaPlanesBonificacionXid = "BON_ConsultaPlanesBonificacionXid";
+   private String SP_ActualizarPlanDeBonificacion = "BON_ActPlanBonificacionEspecial";
 
   protected void Page_Load(object sender, EventArgs e)
         {
@@ -91,10 +92,106 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             Session["Obj_BonificacionEspecialEn"] = "";
             TextBox9.Text = "";
+            Label7.Text = "";
             this.GridViewBonificacionEspecial.DataSource = "";
             GridViewBonificacionEspecial.DataBind();
+            cancelarControlesEditarEstadoPlan();
+            ocultarControlesEstadoPlan();
+
+            
         }
 
+        // Controles Dinamicos que editan la vista en tiempo de ejecucion
+        protected void ocultarControlesEstadoPlan()
+        {
+            this.Label8.Visible = false;
+            this.ImgEditarEstadoPlan.Visible = false;
+            
+        }
+
+        // Controles Dinamicos que editan la vista en tiempo de ejecucion
+        protected void cancelarControlesEditarEstadoPlan()
+        {
+            this.Label8.Visible = true;
+            this.ImgEditarEstadoPlan.Visible = true;
+            this.EstadoLista.Visible = false;
+            this.ImgGuardarEstadoPlan.Visible = false;
+            this.ImgCancelarEdicionEstadoPlan.Visible = false;
+        }
+
+        // Controles Dinamicos que editan la vista en tiempo de ejecucion
+        protected void mostrarControlesEditarEstadoPlan()
+        {
+            this.EstadoLista.Visible = true;
+            this.ImgGuardarEstadoPlan.Visible = true;
+            this.ImgCancelarEdicionEstadoPlan.Visible = true;
+        }
+
+        //Permite Editar el estado del plan
+        protected void ImgEditarEstadoPlan_Click(object sender, ImageClickEventArgs e)
+        {
+            mostrarControlesEditarEstadoPlan();
+            ocultarControlesEstadoPlan();
+          Boolean estadoPlan=Convert.ToBoolean(Session["EstadoPlan"].ToString());
+          
+          if (estadoPlan == true)
+          {
+              this.EstadoLista.SelectedIndex = 1;
+          }
+          else { this.EstadoLista.SelectedIndex = 0; }
+   
+
+        }
+
+        //Permite Guardar el estado del plan
+        protected void ImgGuardarEstadoPlan_Click(object sender, ImageClickEventArgs e)
+        {
+
+            PlanDeBonificacionLN pbln= new PlanDeBonificacionLN();
+            PlanDeBonificacionEN pben = new PlanDeBonificacionEN();
+            pben.ID = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
+            pben.estado = Convert.ToBoolean(this.EstadoLista.SelectedValue);
+            pben.pUsuActualiza = Session["usuario"].ToString();
+            cancelarControlesEditarEstadoPlan();
+
+            try
+            {
+                int result = Convert.ToInt32(pbln.ActualizarPlanBonificacionEspecialLN(pben, SP_ActualizarPlanDeBonificacion));
+                if (result > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.CambioEstadoPlan + "');</script>", false);
+                    IList<PlanDeBonificacionEN> listaplanes = pbln.ConsultarPlanBonificacionEspecialXidLN(SP_ConsultaPlanesBonificacionXid, pben);
+                    if (listaplanes[0].estado == true)
+                    {
+                        this.Label8.Text = "Activo";
+
+                    }
+                    else
+                    {
+                        this.Label8.Text = "Desactivado";
+
+                    }
+                }
+                else {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.NoCambioEstadoPlan + "');</script>", false);
+                }
+            }
+            catch (Exception) {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ErrorProceso+ "');</script>", false);
+            }
+            
+
+
+        }
+        //Permite Cancelar la edicion de el estado del plan
+        protected void ImgCancelarEdicionEstadoPlan_Click(object sender, ImageClickEventArgs e)
+        {
+            cancelarControlesEditarEstadoPlan();
+
+        }
+
+
+        //Entrega la bonificacion seleccionada
         protected void ListBonificacion_SelectedIndexChanged(object sender, EventArgs e)
         {
             TextBox9.Text = ListBonificacion.Text;
@@ -103,13 +200,40 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             this.GridViewBonificacionEspecial.ShowFooter = false; //oculta el footer si esta visible
             this.GridViewBonificacionEspecial.EditIndex = -1; //Devuelve al modo sin edicion 
             PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
-            AsesoresEN asen = new AsesoresEN();
-            asen.pId = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
-            IList<PlanDeBonificacionEN> lista= pbln.ConsultarPlanBonificacionEspecialXidLN(SP_ConsultaPlanesBonificacionXid,asen);
-            this.Label7.Text =lista[0].Descripcion;
+            PlanDeBonificacionEN planBonificacion = new PlanDeBonificacionEN();
+            planBonificacion.ID = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
+            IList<PlanDeBonificacionEN> lista= pbln.ConsultarPlanBonificacionEspecialXidLN(SP_ConsultaPlanesBonificacionXid,planBonificacion);
+            try
+            {
+                if (lista.Count > 0)
+                {
+                    this.Label7.Text = lista[0].Descripcion;
+                    Session["EstadoPlan"] = lista[0].estado;
+                    if (lista[0].estado == true)
+                    {
+                        this.Label8.Text = "Activo";
+
+                    }
+                    else
+                    {
+                        this.Label8.Text = "Desactivado";
+
+                    }
+                    cancelarControlesEditarEstadoPlan();
+                }
+                else {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionSeleccion + "');</script>", false);
+                    ocultarControlesEstadoPlan();
+                    Label7.Text = "";
+                }
+            }
+            catch (Exception) {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionInvalida + "');</script>", false);
+                ocultarControlesEstadoPlan();
+            }
             cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
         }
-
+        //Entrega el rol seleccionado y carga la lista de bonificaciones con este rol
         protected void ListAsesor_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetearPantalla();
@@ -130,8 +254,8 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         // Carga los combos con informacion
         private void cargarComboPlanesBonificaciones(String perfilComercial) {
             PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
-            AsesoresEN asen = new AsesoresEN();
-            asen.pId = Convert.ToInt32(perfilComercial);
+            PlanDeBonificacionEN asen = new PlanDeBonificacionEN();
+            asen.ID = Convert.ToInt32(perfilComercial);
             List<Object> listPb = pbln.ConsultarPlanBonificacionEspecialXidLN(SP_ConsultaPlanesBonificacionesXrol, asen).Cast<Object>().ToList();
             cargarComboGenerico(listPb, this.ListBonificacion);
         }
@@ -156,6 +280,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 combo.DataSource = "";                
                 combo.DataBind();
                 combo.Items.Insert(0, new ListItem("Sin Informacion", "0"));
+                ocultarControlesEstadoPlan();
 
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.SinInformacionDB+"');</script>", false);
 
@@ -403,6 +528,11 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             }
             
         }
+
+
+
+ 
+
 
 
 

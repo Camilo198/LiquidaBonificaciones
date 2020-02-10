@@ -2,6 +2,20 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCabecera" runat="server">
 
+    <style type="text/css">
+        .auto-style1
+        {
+            font-size: 8pt;
+            color: #2C4586;
+            width: 268435440px;
+        }
+        .auto-style2
+        {
+            height: 10px;
+            width: 268435440px;
+        }
+    </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBarraHerramientas" runat="server">
 
@@ -32,14 +46,29 @@
                             <asp:Panel ID="pnlDatos" CssClass="PanelBordesRedondos" runat="server" Width="99%">
                                 <table style="width: 100%" cellpadding="0" cellspacing="2">
                                     <tr>
-                                        <td class="LetraLeyendaColor" colspan="9">Bonificacion Especial </td>              
+                                        <td class="auto-style1" colspan="9">Bonificacion Especial </td>              
                                                           <tr>
-                                        <td colspan="9" style="height: 10px">
+                                        <td colspan="9" class="auto-style2">
                                             <asp:DropDownList ID="ListAsesor" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListAsesor_SelectedIndexChanged">
                                             </asp:DropDownList>
                                             <asp:TextBox ID="TextBox9" runat="server" Width="30px"></asp:TextBox>
                                             <asp:DropDownList ID="ListBonificacion" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListBonificacion_SelectedIndexChanged">
                                             </asp:DropDownList>
+                                                              </td>
+                                                              <td class="EstiloEtiquetas80">
+                                                                      <asp:Label ID="Label8" runat="server" Text="Estado Plan"></asp:Label>
+                                                                  <asp:ImageButton ID="ImgEditarEstadoPlan" runat="server" ImageUrl="~/MarcaVisual/iconos/Editar.png" OnClick="ImgEditarEstadoPlan_Click" />
+                                                                  </td>
+                                                              <td class="EstiloEtiquetas80">
+                                                                     
+                                                                  <asp:DropDownList ID="EstadoLista" runat="server" Height="16px">
+                                                                      <asp:ListItem Value="True">Activar</asp:ListItem>
+                                                                      <asp:ListItem Value="False">Desactivar</asp:ListItem>
+                                                                  </asp:DropDownList>
+                                                                     
+                                                                  <asp:ImageButton ID="ImgGuardarEstadoPlan" runat="server" ImageUrl="~/MarcaVisual/iconos/Guardar.png" OnClick="ImgGuardarEstadoPlan_Click" />
+                                                              <asp:ImageButton ID="ImgCancelarEdicionEstadoPlan" runat="server" ImageUrl="~/MarcaVisual/iconos/Borrar.png" OnClick="ImgCancelarEdicionEstadoPlan_Click" />       
+                                                                  
                                                               </td>
                                                               <tr>
                                                                   <td class="EspaciadoInicial">

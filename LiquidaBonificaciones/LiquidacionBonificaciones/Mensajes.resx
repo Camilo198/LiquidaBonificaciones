@@ -180,4 +180,16 @@
   <data name="seleccioneBonificacion" xml:space="preserve">
     <value>Seleccione una Bonificacion Primero</value>
   </data>
+  <data name="CambioEstadoPlan" xml:space="preserve">
+    <value>Se cambio el estado del plan correctamente</value>
+  </data>
+  <data name="NoCambioEstadoPlan" xml:space="preserve">
+    <value>No se Cambio el estado del plan, por que este no Se encontro en la base de datos</value>
+  </data>
+  <data name="OpcionInvalida" xml:space="preserve">
+    <value>Selecione una opcion valida</value>
+  </data>
+  <data name="OpcionSeleccion" xml:space="preserve">
+    <value>Selecciones un plan de Bonificacion</value>
+  </data>
 </root>
