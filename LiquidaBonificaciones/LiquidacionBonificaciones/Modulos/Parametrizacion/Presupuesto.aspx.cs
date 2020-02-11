@@ -13,19 +13,14 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
     {
 
         //Procedimientos almacenados que interactuan con el Gridview
-        private String SP_ConsultaBonificacionesXidPlan = "BON_ConsultaBonificacionEspecialXidPlan";
-        private String Sp_EliminaBonificacion = "BON_BorrarBonificacionEspecial";
-        private String SP_InsertaBonificacion = "BON_CrearBonificacionEspecial";
-        private String SP_ActualizaBonificacion = "BON_ActBonificacionEspecial";
+        private String SP_ConsultaPresupuestoXanoPeriodo = "BON_ConsultaPresupuesto";
+        private String Sp_EliminaBonificacion = "BON_BorrarPresupuesto";
+        private String SP_InsertaBonificacion = "BON_CrearPresupuesto";
+        private String SP_ActualizaBonificacion = "BON_ActPresupuesto";
 
         //Procedimientos almacenados que interactuan con los Combos
-        private String SP_ConsultaPlanesBonificacionesXrol = "BON_ConsultaPlanesBonificacionXrol";
-        private String SP_ConsultaPerfilComercial = "BON_ConsultaPerfilComercial";
-
-        //Procedimiento almacenado que retorna  un plan de Bonificacion Especifico
-
-        private String SP_ConsultaPlanesBonificacionXid = "BON_ConsultaPlanesBonificacionXid";
-        private String SP_ActualizarPlanDeBonificacion = "BON_ActPlanBonificacionEspecial";
+        private String SP_ConsultaPeriodosPresupuestoXano = "BON_ConsultaPeriodosPresupuestosXano";
+        private String SP_ConsultaAnosPresupuesto = "BON_ConsultaAnosPresupuestos";
         
         
         protected void Page_Load(object sender, EventArgs e)
@@ -76,7 +71,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 try
                 {
 
-                    cargarComboPerfilComercial();
+                    cargarComboAnosPresupuesto();
                     resetearPantalla();
 
                 }
@@ -90,158 +85,56 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         // Reinicia Los Valores de la Pantalla
         private void resetearPantalla()
         {
-            Session["Obj_BonificacionEspecialEn"] = "";
+            Session["Obj_Periodo"] = "";
+            Session["Obj_Ano"] = "";
             TextBoxIdPlan.Text = "";
             LabelDescipcionPlan.Text = "";
-            this.GridViewBonificacionEspecial.DataSource = "";
-            GridViewBonificacionEspecial.DataBind();
-            cancelarControlesEditarEstadoPlan();
-            ocultarControlesEstadoPlan();
+            this.GridViewPresupuesto.DataSource = "";
+            GridViewPresupuesto.DataBind();
 
 
-        }
-
-        // Controles Dinamicos que editan la vista en tiempo de ejecucion
-        protected void ocultarControlesEstadoPlan()
-        {
-            this.LabelEstadoPlan.Visible = false;
-            this.ImgEditarEstadoPlan.Visible = false;
-
-        }
-
-        // Controles Dinamicos que editan la vista en tiempo de ejecucion
-        protected void cancelarControlesEditarEstadoPlan()
-        {
-            this.LabelEstadoPlan.Visible = true;
-            this.ImgEditarEstadoPlan.Visible = true;
-            this.EstadoLista.Visible = false;
-            this.ImgGuardarEstadoPlan.Visible = false;
-            this.ImgCancelarEdicionEstadoPlan.Visible = false;
-        }
-
-        // Controles Dinamicos que editan la vista en tiempo de ejecucion
-        protected void mostrarControlesEditarEstadoPlan()
-        {
-            this.EstadoLista.Visible = true;
-            this.ImgGuardarEstadoPlan.Visible = true;
-            this.ImgCancelarEdicionEstadoPlan.Visible = true;
-        }
-
-        //Permite Editar el estado del plan
-        protected void ImgEditarEstadoPlan_Click(object sender, ImageClickEventArgs e)
-        {
-            mostrarControlesEditarEstadoPlan();
-            ocultarControlesEstadoPlan();
-            Boolean estadoPlan = Convert.ToBoolean(Session["EstadoPlan"].ToString());
-
-            if (estadoPlan == true)
-            {
-                this.EstadoLista.SelectedIndex = 1;
-            }
-            else { this.EstadoLista.SelectedIndex = 0; }
-
-
-        }
-
-        //Permite Guardar el estado del plan
-        protected void ImgGuardarEstadoPlan_Click(object sender, ImageClickEventArgs e)
-        {
-
-            PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
-            PlanDeBonificacionEN pben = new PlanDeBonificacionEN();
-            pben.ID = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
-            pben.estado = Convert.ToBoolean(this.EstadoLista.SelectedValue);
-            pben.pUsuActualiza = Session["usuario"].ToString();
-            cancelarControlesEditarEstadoPlan();
-
-            try
-            {
-                int result = Convert.ToInt32(pbln.ActualizarPlanBonificacionEspecialLN(pben, SP_ActualizarPlanDeBonificacion));
-                if (result > 0)
-                {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.CambioEstadoPlan + "');</script>", false);
-                    IList<PlanDeBonificacionEN> listaplanes = pbln.ConsultarPlanBonificacionEspecialXidLN(SP_ConsultaPlanesBonificacionXid, pben);
-                    if (listaplanes[0].estado == true)
-                    {
-                        this.LabelEstadoPlan.Text = "Activo";
-
-                    }
-                    else
-                    {
-                        this.LabelEstadoPlan.Text = "Desactivado";
-
-                    }
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.NoCambioEstadoPlan + "');</script>", false);
-                }
-            }
-            catch (Exception)
-            {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ErrorProceso + "');</script>", false);
-            }
-
-
-
-        }
-        //Permite Cancelar la edicion de el estado del plan
-        protected void ImgCancelarEdicionEstadoPlan_Click(object sender, ImageClickEventArgs e)
-        {
-            cancelarControlesEditarEstadoPlan();
 
         }
 
 
         //Entrega la bonificacion seleccionada
-        protected void ListBonificacion_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ListPeriodos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TextBoxIdPlan.Text = ListBonificacion.Text;
-            Session["Obj_BonificacionEspecialEn"] = ListBonificacion.Text; //Se envia el resultado del Combo a sesion para que funcione en los otros eventos del GridView
+            TextBoxIdPlan.Text = ListPeriodos.Text;
+            Session["Obj_Periodo"] = ListPeriodos.Text; //Se envia el resultado del Combo a sesion para que funcione en los otros eventos del GridView
             //Carga los grid view con informacion
-            this.GridViewBonificacionEspecial.ShowFooter = false; //oculta el footer si esta visible
-            this.GridViewBonificacionEspecial.EditIndex = -1; //Devuelve al modo sin edicion 
-            PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
-            PlanDeBonificacionEN planBonificacion = new PlanDeBonificacionEN();
-            planBonificacion.ID = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
-            IList<PlanDeBonificacionEN> lista = pbln.ConsultarPlanBonificacionEspecialXidLN(SP_ConsultaPlanesBonificacionXid, planBonificacion);
+            this.GridViewPresupuesto.ShowFooter = false; //oculta el footer si esta visible
+            this.GridViewPresupuesto.EditIndex = -1; //Devuelve al modo sin edicion 
+            PresupuestoLN preLn = new PresupuestoLN();
+            PresupuestoEN preEn = new PresupuestoEN();
+            preEn.periodo = Convert.ToInt32(Session["Obj_Periodo"].ToString());
+            preEn.ano = Convert.ToInt32(Session["Obj_Ano"].ToString());
+            IList<PresupuestoEN> lista = preLn.ConsultarPresupuestoLN(SP_ConsultaPresupuestoXanoPeriodo, preEn);
             try
             {
                 if (lista.Count > 0)
                 {
-                    this.LabelDescipcionPlan.Text = lista[0].Descripcion;
-                    Session["EstadoPlan"] = lista[0].estado;
-                    if (lista[0].estado == true)
-                    {
-                        this.LabelEstadoPlan.Text = "Activo";
+                    this.LabelDescipcionPlan.Text = "Presupuesto: "+lista[0].ano.ToString()+"-"+lista[0].periodo;
 
-                    }
-                    else
-                    {
-                        this.LabelEstadoPlan.Text = "Desactivado";
-
-                    }
-                    cancelarControlesEditarEstadoPlan();
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionSeleccion + "');</script>", false);
-                    ocultarControlesEstadoPlan();
                     LabelDescipcionPlan.Text = "";
                 }
             }
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionInvalida + "');</script>", false);
-                ocultarControlesEstadoPlan();
             }
-            cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
+            cargarGridviewPresupuesto(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
         }
         //Entrega el rol seleccionado y carga la lista de bonificaciones con este rol
-        protected void ListAsesor_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ListAnos_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetearPantalla();
-            cargarComboPlanesBonificaciones(ListAsesor.Text);
+            cargarComboPeriodosPresupuesto(ListAnos.Text);
+            Session["Obj_Ano"] = ListAnos.Text;
         }
 
 
@@ -249,21 +142,21 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
 
         // Carga los combos con informacion
-        private void cargarComboPerfilComercial()
+        private void cargarComboAnosPresupuesto()
         {
-            PerfilComercialLN pcln = new PerfilComercialLN();
-            List<Object> listPc = pcln.ConsultarPerfilesComercialesLN(SP_ConsultaPerfilComercial).Cast<Object>().ToList();
-            cargarComboGenerico(listPc, this.ListAsesor);
+            PresupuestoLN preln = new PresupuestoLN();
+            List<Object> listPc = preln.ConsultarAnosPresupuestoLN(SP_ConsultaAnosPresupuesto).Cast<Object>().ToList();
+            cargarComboGenerico(listPc, this.ListAnos);
 
         }
         // Carga los combos con informacion
-        private void cargarComboPlanesBonificaciones(String perfilComercial)
+        private void cargarComboPeriodosPresupuesto(String ano)
         {
-            PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
-            PlanDeBonificacionEN asen = new PlanDeBonificacionEN();
-            asen.ID = Convert.ToInt32(perfilComercial);
-            List<Object> listPb = pbln.ConsultarPlanBonificacionEspecialXidLN(SP_ConsultaPlanesBonificacionesXrol, asen).Cast<Object>().ToList();
-            cargarComboGenerico(listPb, this.ListBonificacion);
+            PresupuestoLN preLn = new PresupuestoLN();
+            PresupuestoEN preEn = new PresupuestoEN();
+            preEn.ID = Convert.ToInt32(ano);
+           List<Object> listPre = preLn.ConsultarPeriodosPresupuestoXanoLN(SP_ConsultaPeriodosPresupuestoXano, preEn).Cast<Object>().ToList();
+            cargarComboGenerico(listPre, this.ListPeriodos);
         }
 
         // Metodo que permite cargar combos
@@ -286,7 +179,6 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 combo.DataSource = "";
                 combo.DataBind();
                 combo.Items.Insert(0, new ListItem("Sin Informacion", "0"));
-                ocultarControlesEstadoPlan();
 
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.SinInformacionDB + "');</script>", false);
 
@@ -304,41 +196,26 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         /// </summary>
         /// 
 
-        private int cargarGridviewBonificacionEspecial(String SP_Consulta, GridView gr, String planBonificacion)
+        private int cargarGridviewPresupuesto(String SP_Consulta, GridView gr, String Periodo, String Ano)
         {
-            BonificacionEspecialLN beln = new BonificacionEspecialLN();
-            BonificacionEspecialEN ben = new BonificacionEspecialEN();
-            ben.pIdPlanBonificacion = Convert.ToInt32(planBonificacion);
-            IList<BonificacionEspecialEN> DatosParametros = beln.ConsultarBonificacionEspecialXidPlanLN(SP_Consulta, ben);
+            PresupuestoLN preLn = new PresupuestoLN();
+            PresupuestoEN preEn = new PresupuestoEN();
+            preEn.periodo = Convert.ToInt32(Periodo);
+            preEn.ano = Convert.ToInt32(Ano);
+            IList<PresupuestoEN> DatosParametros = preLn.ConsultarPresupuestoLN(SP_Consulta, preEn);
             if (DatosParametros.Count > 0)
             {
                 //Carga la tabla de parametros al GridView
                 gr.DataSource = DatosParametros;
                 gr.DataBind();
 
-                //Modifica Los Heaters del Grid View Segun el plan de Bonificaion Seleccionado
-                String indexBonificacionEspecial = Session["Obj_BonificacionEspecialEn"].ToString();
-                if (indexBonificacionEspecial == "1")
-                {
-                    this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Minimos";
-                    this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Maximos";
-                }
-                else if (indexBonificacionEspecial == "2")
-                {
-                    this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Desde";
-                    this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Hasta";
-                }
-                else if (indexBonificacionEspecial == "3")
-                {
-                    this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "% Minimo de Cumplimiento";
-                    this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "% Maximo de Cumplimiento";
-                }
+                //---Edicion de Heater del grid view
 
             }
             else
             {
                 //gr.Columns[8].Visible = false; Ocular una columna
-                BonificacionEspecialEN be = new BonificacionEspecialEN();
+                PresupuestoEN be = new PresupuestoEN();
                 DatosParametros.Add(be);
                 gr.DataSource = DatosParametros;
                 gr.DataBind();
@@ -350,21 +227,25 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         }
 
 
-        private void ElminarFila(String SP_Elimina, String SP_Consulta, GridView gr, GridViewDeleteEventArgs e, String planBonificacion)
+        private void ElminarFila(String SP_Elimina, String SP_Consulta, GridView gr, GridViewDeleteEventArgs e, String Periodo, String Ano)
         {
             int id = e.RowIndex;
-            Label l1ID = (Label)gr.Rows[id].FindControl("Label0"); //Llave de la tabla control oculto
-            BonificacionEspecialEN be = new BonificacionEspecialEN();
-            be.pId = Convert.ToInt32(l1ID.Text);
-            BonificacionEspecialLN beln = new BonificacionEspecialLN();
+            Label l1CodOfic = (Label)gr.Rows[id].FindControl("Label0");
+            Label l2Periodo = (Label)gr.Rows[id].FindControl("Label2");
+            Label l3ano = (Label)gr.Rows[id].FindControl("Label3"); 
+            PresupuestoEN preEn = new PresupuestoEN();
+            preEn.codigoOficina = Convert.ToInt32(l1CodOfic.Text);
+            preEn.periodo = Convert.ToInt32(l2Periodo.Text);
+            preEn.ano = Convert.ToInt32(l3ano.Text);
+            PresupuestoLN preLn = new PresupuestoLN();
 
             try
             {
-                String retorno = beln.EliminarBonificacionEspecialLN(be, SP_Elimina);
+                String retorno = preLn.EliminarPresupuestoLN(preEn, SP_Elimina);
                 int reg = Convert.ToInt32(retorno);
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + "Se Elimino " + reg + " Registro Correctamente" + "');</script>", false);
                 gr.EditIndex = -1; //Devuelve al modo sin edicion
-                this.cargarGridviewBonificacionEspecial(SP_Consulta, gr, planBonificacion);//Refresca el gridview
+                this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);//Refresca el gridview
             }
             catch (Exception ex)
             {
@@ -373,36 +254,31 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
         }
 
-        private void InsertarFila(String SP_Inserta, String SP_Consulta, GridView gr, GridViewCommandEventArgs e, String planBonificacion)
+        private void InsertarFila(String SP_Inserta, String SP_Consulta, GridView gr, GridViewCommandEventArgs e, String Periodo, String Ano)
         {
 
             if (e.CommandName == "Insert")
             {
-                BonificacionEspecialEN be = new BonificacionEspecialEN();
-                BonificacionEspecialLN beln = new BonificacionEspecialLN(); ;
-                TextBox t5Fdes = (TextBox)gr.FooterRow.FindControl("TextBox5");
-                TextBox t6Fpmin = (TextBox)gr.FooterRow.FindControl("TextBox6");
-                TextBox t7Fpmax = (TextBox)gr.FooterRow.FindControl("TextBox7");
-                TextBox t8Fvbon = (TextBox)gr.FooterRow.FindControl("TextBox8");
-                CheckBox c2Fapl = (CheckBox)gr.FooterRow.FindControl("CheckBox2");
-
-
+                PresupuestoEN preEN = new PresupuestoEN();
+                PresupuestoLN preLn = new PresupuestoLN();
+                TextBox t4FcodOfic = (TextBox)gr.FooterRow.FindControl("TextBox4");
+                TextBox t5Fpresupuesto = (TextBox)gr.FooterRow.FindControl("TextBox5");
+                TextBox t6FPeriodo = (TextBox)gr.FooterRow.FindControl("TextBox6");
+                TextBox t7Fano = (TextBox)gr.FooterRow.FindControl("TextBox7");
 
                 try
                 {
-                    be.pDescripcionBono = t5Fdes.Text;
-                    be.pPlanesMinimos = Convert.ToDouble(t6Fpmin.Text);
-                    be.pPlanesMaximos = Convert.ToDouble(t7Fpmax.Text);
-                    be.pValorBono = Convert.ToDouble(t8Fvbon.Text);
-                    be.pEstado = Convert.ToBoolean(c2Fapl.Checked);
-                    be.pUsuActualiza = Session["Usuario"].ToString();
-                    be.pIdPlanBonificacion = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
-                    String retorno = beln.InsertarBonificacionEspecialLN(be, SP_Inserta);
+                    preEN.codigoOficina = Convert.ToInt32(t4FcodOfic.Text);
+                    preEN.presupuesto = Convert.ToInt32(t5Fpresupuesto.Text);
+                    preEN.periodo = Convert.ToInt32(t6FPeriodo.Text);
+                    preEN.ano = Convert.ToInt32(t7Fano.Text);
+                    preEN.usuarioActualiza = Session["Usuario"].ToString();
+                    String retorno = preLn.InsertarPresupuestoLN(preEN, SP_Inserta);
                     int reg = Convert.ToInt32(retorno);// Si ejecuta con exito
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + "Se Agrego " + reg + " Registro Correctamente" + "');</script>", false);
 
                     gr.ShowFooter = false; //Oculta El Footer
-                    this.cargarGridviewBonificacionEspecial(SP_Consulta, gr, planBonificacion);//Refresca el gridview
+                    this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);//Refresca el gridview
                 }
                 catch (Exception)
                 {
@@ -411,41 +287,40 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             }
         }
 
-        private void EditarFila(String SP_Consulta, GridView gr, GridViewEditEventArgs e, String planBonificacion)
+        private void EditarFila(String SP_Consulta, GridView gr, GridViewEditEventArgs e, String Periodo, String Ano)
         {
 
             gr.EditIndex = e.NewEditIndex; //Activa el modo edicion
-            this.cargarGridviewBonificacionEspecial(SP_Consulta, gr, planBonificacion);
+            this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);
         }
 
-        private void ActualizaFila(String SP_Actualiza, String SP_Consulta, GridView gr, GridViewUpdateEventArgs e, String planBonificacion)
+        private void ActualizaFila(String SP_Actualiza, String SP_Consulta, GridView gr, GridViewUpdateEventArgs e, String Periodo, String Ano)
         {
             //CApturar Controles
 
             int id = e.RowIndex; //iterador de la fil
-            Label l1ID = (Label)gr.Rows[id].FindControl("Label0"); //Llave de la tabla control oculto
-            TextBox t1Des = (TextBox)gr.Rows[id].FindControl("Textbox1"); //Sirve para Templates
-            TextBox t2pmin = (TextBox)gr.Rows[id].FindControl("Textbox2");
-            TextBox t3pmax = (TextBox)gr.Rows[id].FindControl("Textbox3");
-            TextBox t4vbon = (TextBox)gr.Rows[id].FindControl("Textbox4");
-            CheckBox c1apl = (CheckBox)gr.Rows[id].FindControl("CheckBox1");
-            BonificacionEspecialEN be = new BonificacionEspecialEN();
-            BonificacionEspecialLN beln = new BonificacionEspecialLN();
+            /*Label l1CodOfic = (Label)gr.Rows[id].FindControl("Label0");
+            Label l2Periodo = (Label)gr.Rows[id].FindControl("Label2");
+            Label l3ano = (Label)gr.Rows[id].FindControl("Label3");*/ 
+            Label l1CodOfic = (Label)gr.Rows[id].FindControl("Label0"); //Llave de la tabla control oculto
+            TextBox t1Presupuesto = (TextBox)gr.Rows[id].FindControl("Textbox1"); //Sirve para Templates
+            Label l2Periodo = (Label)gr.Rows[id].FindControl("Label2");
+            Label l3ano = (Label)gr.Rows[id].FindControl("Label3");
+
+            PresupuestoEN preEn = new PresupuestoEN();
+            PresupuestoLN beln = new PresupuestoLN();
             try
             {
-                be.pId = Convert.ToInt32(l1ID.Text);
-                be.pDescripcionBono = t1Des.Text;
-                be.pPlanesMinimos = Convert.ToDouble(t2pmin.Text);
-                be.pPlanesMaximos = Convert.ToDouble(t3pmax.Text);
-                be.pValorBono = Convert.ToDouble(t4vbon.Text);
-                be.pEstado = Convert.ToBoolean(c1apl.Checked);
-                be.pUsuActualiza = Session["Usuario"].ToString();
-                be.pIdPlanBonificacion = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
-                string retorno = beln.ActualizarBonificacionEspecialLN(be, SP_Actualiza);
+                preEn.codigoOficina = Convert.ToInt32(l1CodOfic.Text);
+                preEn.presupuesto = Convert.ToInt32(t1Presupuesto.Text);
+                preEn.periodo = Convert.ToInt32(l2Periodo.Text);
+                preEn.ano = Convert.ToInt32(l3ano.Text);
+                preEn.usuarioActualiza = Session["Usuario"].ToString();
+                string retorno = beln.ActualizarPresupuestoLN(preEn, SP_Actualiza);
                 int reg = Convert.ToInt32(retorno);// Si ejecuta con exito
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + "Se Actualizo " + reg + " Registro Correctamente" + "');</script>", false);
                 gr.EditIndex = -1; //Devuelve al modo sin edicion
-                this.cargarGridviewBonificacionEspecial(SP_Consulta, gr, planBonificacion);//Refresca el gridview
+                this.cargarGridviewPresupuesto(SP_Consulta, gr,  Periodo,  Ano);//Refresca el gridview
 
             }
             catch (Exception)
@@ -454,18 +329,18 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             }
         }
 
-        private void CancelarEdicionFila(String SP_Consulta, GridView gr, GridViewCancelEditEventArgs e, String planBonificacion)
+        private void CancelarEdicionFila(String SP_Consulta, GridView gr, GridViewCancelEditEventArgs e, String Periodo, String Ano)
         {
             gr.ShowFooter = false; //oculta el footer si esta visible
             gr.EditIndex = -1; //Devuelve al modo sin edicion            
-            this.cargarGridviewBonificacionEspecial(SP_Consulta, gr, planBonificacion);//Refresca el gridview
+            this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo,  Ano);//Refresca el gridview
         }
 
-        private void agregarNuevaFila(String SP_Consulta, GridView gr, String planBonificacion)
+        private void agregarNuevaFila(String SP_Consulta, GridView gr, String Periodo, String Ano)
         {
 
             gr.ShowFooter = true;//muestra el Footer del Gridview
-            cargarGridviewBonificacionEspecial(SP_Consulta, gr, planBonificacion);//Refresca el gridview}
+            cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);//Refresca el gridview}
 
 
         }
@@ -473,11 +348,11 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         //-------------------------------------- MEtodos Propios del GridView que responden a los eventos---------------------------
         //Eliminar, Insertar, Editar,Actualizar,Cancelar, Agregar
 
-        protected void GridViewBeCantidadPlanes_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void GridViewPresupuesto_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             try
             {
-                ElminarFila(Sp_EliminaBonificacion, SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, e, Session["Obj_BonificacionEspecialEn"].ToString());
+                ElminarFila(Sp_EliminaBonificacion, SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
             }
             catch (Exception)
             {
@@ -487,11 +362,11 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
 
 
-        protected void GridViewBeCantidadPlanes_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void GridViewPresupuesto_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
             {
-                InsertarFila(SP_InsertaBonificacion, SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, e, Session["Obj_BonificacionEspecialEn"].ToString());
+                InsertarFila(SP_InsertaBonificacion, SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
             }
             catch (Exception)
             {
@@ -499,11 +374,11 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             }
         }
 
-        protected void GridViewBeCantidadPlanes_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void GridViewPresupuesto_RowEditing(object sender, GridViewEditEventArgs e)
         {
             try
             {
-                EditarFila(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, e, Session["Obj_BonificacionEspecialEn"].ToString());
+                EditarFila(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
             }
             catch (Exception)
             {
@@ -511,11 +386,11 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             }
         }
 
-        protected void GridViewBeCantidadPlanes_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void GridViewPresupuesto_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             try
             {
-                ActualizaFila(SP_ActualizaBonificacion, SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, e, Session["Obj_BonificacionEspecialEn"].ToString());
+                ActualizaFila(SP_ActualizaBonificacion, SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
             }
             catch (Exception)
             {
@@ -525,11 +400,11 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         }
 
 
-        protected void GridViewBeCantidadPlanes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void GridViewPresupuesto_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             try
             {
-                CancelarEdicionFila(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, e, Session["Obj_BonificacionEspecialEn"].ToString());
+                CancelarEdicionFila(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
             }
             catch (Exception)
             {
@@ -538,11 +413,11 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         }
 
 
-        protected void ImgBtnAddCantidadPlanes_Click(object sender, ImageClickEventArgs e)
+        protected void ImgBtnAddPresupuesto_Click(object sender, ImageClickEventArgs e)
         {
             try
             {
-                agregarNuevaFila(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
+                agregarNuevaFila(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
 
             }
             catch (Exception)

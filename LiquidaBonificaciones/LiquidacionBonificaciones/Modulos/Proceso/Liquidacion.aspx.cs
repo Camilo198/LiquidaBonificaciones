@@ -104,14 +104,14 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                     #endregion
 
                     #region ESTADO LIQUIDACION
-                    ParametrosEN ObjParaLiqui = new ParametrosEN();
-                    ObjParaLiqui.pTipo = "Estado";
-                    IList<ParametrosEN> DatosParametrosLiqui = new ParametrosLN().Consulta(ObjParaLiqui, "BON_ConsultaParametros");
+                    ParametrosEN ObjParaEstadoLiqui = new ParametrosEN();
+                    ObjParaEstadoLiqui.pTipo = "Estado";
+                    IList<ParametrosEN> DatosParametrosEstadoLiqui = new ParametrosLN().Consulta(ObjParaEstadoLiqui, "BON_ConsultaParametros");
 
-                    if (DatosParametrosLiqui.Count > 0)
+                    if (DatosParametrosEstadoLiqui.Count > 0)
                     {
-                        this.txbEstado.Text = DatosParametrosLiqui[0].pValor;
-                        if (DatosParametrosLiqui[0].pValor == "Cerrado")
+                        this.txbEstado.Text = DatosParametrosEstadoLiqui[0].pValor;
+                        if (DatosParametrosEstadoLiqui[0].pValor == "Cerrado")
                         {
                             this.pnlProcesos.Enabled = false;
                             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.LiquidacionCerrada + "');</script>", false);
@@ -122,6 +122,31 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ParametrosNo + "');</script>", false);
                     }
                     #endregion
+
+                    #region PERIODO LIQUIDACION
+                    ParametrosEN ObjParaFechaLiqui = new ParametrosEN();
+                    ObjParaFechaLiqui.pTipo = "Liquidacion";
+                    IList<ParametrosEN> DatosParametrosFechaLiqui = new ParametrosLN().Consulta(ObjParaFechaLiqui, "BON_ConsultaParametros");
+
+                    if (DatosParametrosFechaLiqui.Count > 0)
+                    {
+                  
+                        this.txbPeriodo.Text = DatosParametrosFechaLiqui[0].pValor;
+                        this.txbano.Text = DatosParametrosFechaLiqui[1].pValor;
+                        if (DatosParametrosFechaLiqui[0].pValor == "Cerrado")
+                        {
+                            this.pnlProcesos.Enabled = false;
+                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.LiquidacionCerrada + "');</script>", false);
+                        }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ParametrosNo + "');</script>", false);
+                    }
+                    #endregion
+
+
+
                 }
                 catch (Exception)
                 {

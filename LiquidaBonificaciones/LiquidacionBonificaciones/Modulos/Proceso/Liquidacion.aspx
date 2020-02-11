@@ -220,9 +220,13 @@
                                         <td class="EspaciadoIntermedio"></td>
                                         <td class="auto-style5"></td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td style="width: 20%" class="EstiloEtiquetas80"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            <asp:Label ID="lblPeriodo" runat="server" Text="Periodo:"></asp:Label>
+                                        </td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td class="EspaciadoCeldaControl"></td>
+                                        <td class="EspaciadoCeldaControl">
+                                            <asp:TextBox ID="txbPeriodo" runat="server" CssClass="BordeControles" Enabled="false" Width="89px"></asp:TextBox>
+                                        </td>
                                         <td class="EspaciadoFinal"></td>
                                     </tr>
                                     <tr>
@@ -238,11 +242,12 @@
                                         </td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td style="width: 20%" class="EstiloEtiquetas80">
-                                            <asp:Button ID="btnConfirmaLiquidacion" runat="server" ToolTip="Confirmar Liquidación" ValidationGroup="1" Text="Confirmar Liquidación" OnClick="btnConfirmaLiquida_Click" />
-                                            <asp:ImageButton ID="ImageButton3" Enabled="false" runat="server" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/aceptar.png" Width="20px" />
+                                            <asp:Label ID="lblano" runat="server" Text="Año:"></asp:Label>
                                         </td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td class="EspaciadoCeldaControl"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            <asp:TextBox ID="txbano" runat="server" CssClass="BordeControles" Enabled="false" Width="89px"></asp:TextBox>
+                                        </td>
                                         <td class="EspaciadoFinal"></td>
                                     </tr>
                                     <tr>
@@ -254,10 +259,15 @@
                                         <td class="EspaciadoIntermedio"></td>
                                         <td class="auto-style5"></td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td style="width: 20%" class="EstiloEtiquetas80">&nbsp;</td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            &nbsp;</td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td class="EspaciadoCeldaControl"></td>
-                                        <td class="EspaciadoFinal"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            <asp:Button ID="btnConfirmaLiquidacion" runat="server" OnClick="btnConfirmaLiquida_Click" Text="Confirmar Liquidación" ToolTip="Confirmar Liquidación" ValidationGroup="1" />
+                                        </td>
+                                        <td class="EspaciadoFinal">
+                                            <asp:ImageButton ID="ImageButton3" runat="server" Enabled="false" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/aceptar.png" Width="20px" />
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="height: 10px" colspan="9"></td>

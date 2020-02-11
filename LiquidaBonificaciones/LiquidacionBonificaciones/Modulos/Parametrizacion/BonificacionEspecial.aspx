@@ -105,6 +105,7 @@
                                                                                   <HeaderStyle CssClass="OcultarControles" />
                                                                                   <ItemStyle CssClass="OcultarControles" HorizontalAlign="Center" />
                                                                                   <FooterStyle CssClass="OcultarControles" />
+                                                                                  <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="Descripcion">
                                                                                   <EditItemTemplate>
@@ -117,6 +118,7 @@
                                                                                       <asp:Label ID="Label1" runat="server" Text='<%# Bind("pDescripcionBono") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
+
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="Planes Minimos">
                                                                                   <EditItemTemplate>
@@ -154,6 +156,7 @@
                                                                                   <ItemTemplate>
                                                                                       <asp:Label ID="Label4" runat="server" Text='<%# Bind("pValorBono") %>'></asp:Label>
                                                                                   </ItemTemplate>
+                                                                                  <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="Estado" SortExpression="pAplica">
                                                                                   <EditItemTemplate>
@@ -165,6 +168,7 @@
                                                                                   <ItemTemplate>
                                                                                       <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("pEstado") %>' Enabled="false" />
                                                                                   </ItemTemplate>
+                                                                                  <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="Usuario Modifica">
                                                                                   <ItemTemplate>
@@ -175,6 +179,7 @@
                                                                                   <ItemTemplate>
                                                                                       <asp:Label ID="Label6" runat="server" Text='<%# Bind("pFecActualiza") %>'></asp:Label>
                                                                                   </ItemTemplate>
+                                                                                  <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="Editar Fila">
                                                                                   <ItemTemplate>
@@ -189,6 +194,7 @@
                                                                                       <asp:ImageButton ID="ImgBtnCancel" runat="server" CommandName="Cancel" ImageUrl="~/MarcaVisual/iconos/borrar.png" ToolTip="Cancelar" />
                                                                                       <asp:ImageButton ID="ImgBtnInsert" runat="server" CommandName="Insert" ImageUrl="~/MarcaVisual/iconos/Guardar.png" ToolTip="Insertar" />
                                                                                   </FooterTemplate>
+                                                                                  <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                           </Columns>
                                                                           <PagerStyle BackColor="White" Height="2px" HorizontalAlign="Center" />

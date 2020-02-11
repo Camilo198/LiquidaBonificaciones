@@ -40,13 +40,13 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion {
         protected global::System.Web.UI.WebControls.Panel pnlDatos;
         
         /// <summary>
-        /// ListAsesor control.
+        /// ListAnos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ListAsesor;
+        protected global::System.Web.UI.WebControls.DropDownList ListAnos;
         
         /// <summary>
         /// TextBoxIdPlan control.
@@ -58,58 +58,13 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion {
         protected global::System.Web.UI.WebControls.TextBox TextBoxIdPlan;
         
         /// <summary>
-        /// ListBonificacion control.
+        /// ListPeriodos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ListBonificacion;
-        
-        /// <summary>
-        /// LabelEstadoPlan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelEstadoPlan;
-        
-        /// <summary>
-        /// ImgEditarEstadoPlan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgEditarEstadoPlan;
-        
-        /// <summary>
-        /// EstadoLista control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EstadoLista;
-        
-        /// <summary>
-        /// ImgGuardarEstadoPlan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgGuardarEstadoPlan;
-        
-        /// <summary>
-        /// ImgCancelarEdicionEstadoPlan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgCancelarEdicionEstadoPlan;
+        protected global::System.Web.UI.WebControls.DropDownList ListPeriodos;
         
         /// <summary>
         /// LabelDescipcionPlan control.
@@ -121,21 +76,21 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion {
         protected global::System.Web.UI.WebControls.Label LabelDescipcionPlan;
         
         /// <summary>
-        /// ImgBtnAddCantidadPlanes control.
+        /// ImgBtnAddPresupuesto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgBtnAddCantidadPlanes;
+        protected global::System.Web.UI.WebControls.ImageButton ImgBtnAddPresupuesto;
         
         /// <summary>
-        /// GridViewBonificacionEspecial control.
+        /// GridViewPresupuesto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewBonificacionEspecial;
+        protected global::System.Web.UI.WebControls.GridView GridViewPresupuesto;
     }
 }

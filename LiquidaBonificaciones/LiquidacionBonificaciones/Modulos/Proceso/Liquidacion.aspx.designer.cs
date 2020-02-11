@@ -220,6 +220,24 @@ namespace LiquidacionBonificaciones.Modulos.Proceso {
         protected global::System.Web.UI.WebControls.TextBox txbEstado;
         
         /// <summary>
+        /// lblPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPeriodo;
+        
+        /// <summary>
+        /// txbPeriodo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txbPeriodo;
+        
+        /// <summary>
         /// btnSubirVentas control.
         /// </summary>
         /// <remarks>
@@ -247,22 +265,22 @@ namespace LiquidacionBonificaciones.Modulos.Proceso {
         protected global::System.Web.UI.WebControls.TextBox TextVentasValidas;
         
         /// <summary>
-        /// btnConfirmaLiquidacion control.
+        /// lblano control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirmaLiquidacion;
+        protected global::System.Web.UI.WebControls.Label lblano;
         
         /// <summary>
-        /// ImageButton3 control.
+        /// txbano control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
+        protected global::System.Web.UI.WebControls.TextBox txbano;
         
         /// <summary>
         /// btnLiquidar control.
@@ -281,6 +299,24 @@ namespace LiquidacionBonificaciones.Modulos.Proceso {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
+        
+        /// <summary>
+        /// btnConfirmaLiquidacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmaLiquidacion;
+        
+        /// <summary>
+        /// ImageButton3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
         
         /// <summary>
         /// rceBanco control.

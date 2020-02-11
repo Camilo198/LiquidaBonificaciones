@@ -47,6 +47,7 @@
     <Compile Include="Consultas\PerfilAD.cs" />
     <Compile Include="Consultas\PerfilComercialAD.cs" />
     <Compile Include="Consultas\PlanDeBonificacionAD.cs" />
+    <Compile Include="Consultas\PresupuestoAD.cs" />
     <Compile Include="Consultas\UsuarioAD.cs" />
     <Compile Include="Consultas\VentasAD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
