@@ -89,7 +89,7 @@
                                                                   <td class="EspaciadoIntermedio"></td>
                                                                   <td colspan="9" style="height: 10px">
                                                                       <asp:ImageButton ID="ImgBtnAddCantidadPlanes" runat="server" ImageUrl="~/MarcaVisual/iconos/agregar.png" OnClick="ImgBtnAddCantidadPlanes_Click" />
-                                                                      Añadir Nueva Bonificacion Especial </td>
+                                                                      <asp:Label ID="Label9" runat="server" Text="Añadir Nueva Bonificación"></asp:Label></td>
                                                               </tr>
                                                               <tr>
                                                                   <td class="EspaciadoInicial"></td>
@@ -226,7 +226,18 @@
         </ContentTemplate>
 
     </asp:UpdatePanel>
-
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="upContenido">
+                <ProgressTemplate>
+                    <div class="contenedor">
+                        <div class="centrado">
+                            <div class="contenido" style="width: 100px; height: 20px">
+                                <asp:Image ID="Image1" runat="server" ImageUrl="~/MarcaVisual/iconos/loading.gif"
+                                    Height="20px" Width="100px" ImageAlign="Middle" />
+                            </div>
+                        </div>
+                    </div>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
        
 
 </asp:Content>

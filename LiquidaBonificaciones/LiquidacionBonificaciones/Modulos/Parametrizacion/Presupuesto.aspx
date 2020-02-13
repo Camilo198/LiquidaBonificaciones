@@ -60,7 +60,8 @@
                                                                   <td class="EspaciadoIntermedio"></td>
                                                                   <td colspan="9" style="height: 10px">
                                                                       <asp:ImageButton ID="ImgBtnAddPresupuesto" runat="server" ImageUrl="~/MarcaVisual/iconos/agregar.png" OnClick="ImgBtnAddPresupuesto_Click" />
-                                                                      Añadir Nueva Oficina al Presupuesto </td>
+                                                                      <asp:Label ID="Label9" runat="server" Text="Añadir Nueva Oficina al Presupuesto "></asp:Label>
+                                                                  </td>
                                                               </tr>
                                                               <tr>
                                                                   <td class="EspaciadoInicial"></td>
@@ -145,7 +146,19 @@
                                                                   <td colspan="9">&nbsp;</td>
                                                               </tr>
                                                               <tr>
-                                                                  <td colspan="7" style="height: 10px">&nbsp;</td>
+                                                                  <td colspan="7" style="height: 10px"  class="EstiloEtiquetas80">                                                                     
+                                                                      <br>
+                                                                      <br></br>
+                                                                      <asp:Label ID="Label7" runat="server" Text="Cargar Presupúesto desde Excel"></asp:Label>
+                                                                      <asp:FileUpload ID="FileUploadControl" runat="server" />
+                                                                      <asp:Button ID="UploadButton" runat="server" onclick="UploadButton_Click" text="Subir Archivo" />
+                                                                      <br />
+                                                                      <br />
+                                                                      <asp:Label ID="Label8" runat="server" Text="Error Estatus"></asp:Label>
+                                                              </br>
+                                                                      
+                                                                      
+                                                                  </td>
                                                               </tr>
                                     </tr>
                                 </table>
@@ -163,9 +176,24 @@
             </table>
  
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID="UploadButton" />
+
+        </Triggers>
 
     </asp:UpdatePanel>
-
+               <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="upContenido">
+                <ProgressTemplate>
+                    <div class="contenedor">
+                        <div class="centrado">
+                            <div class="contenido" style="width: 100px; height: 20px">
+                                <asp:Image ID="Image1" runat="server" ImageUrl="~/MarcaVisual/iconos/loading.gif"
+                                    Height="20px" Width="100px" ImageAlign="Middle" />
+                            </div>
+                        </div>
+                    </div>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphBarraEstado" runat="server">
 </asp:Content>

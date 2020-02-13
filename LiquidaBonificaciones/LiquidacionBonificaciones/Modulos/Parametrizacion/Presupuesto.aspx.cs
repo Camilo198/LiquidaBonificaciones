@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LiquidaBonificaciones.EN.Tablas;
 using LiquidaBonificaciones.LN.Consultas;
+using SpreadsheetLight;
 
 namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 {
@@ -14,15 +16,15 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
         //Procedimientos almacenados que interactuan con el Gridview
         private String SP_ConsultaPresupuestoXanoPeriodo = "BON_ConsultaPresupuesto";
-        private String Sp_EliminaBonificacion = "BON_BorrarPresupuesto";
-        private String SP_InsertaBonificacion = "BON_CrearPresupuesto";
-        private String SP_ActualizaBonificacion = "BON_ActPresupuesto";
+        private String Sp_EliminaPresupuesto = "BON_BorrarPresupuesto";
+        private String SP_InsertaPresupuesto = "BON_CrearPresupuesto";
+        private String SP_ActualizaPresupuesto = "BON_ActPresupuesto";
 
         //Procedimientos almacenados que interactuan con los Combos
         private String SP_ConsultaPeriodosPresupuestoXano = "BON_ConsultaPeriodosPresupuestosXano";
         private String SP_ConsultaAnosPresupuesto = "BON_ConsultaAnosPresupuestos";
-        
-        
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -87,11 +89,12 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             Session["Obj_Periodo"] = "";
             Session["Obj_Ano"] = "";
-            TextBoxIdPlan.Text = "";
-            LabelDescipcionPlan.Text = "";
+            TextBoxIdPlan.Text = "";            
             this.GridViewPresupuesto.DataSource = "";
             GridViewPresupuesto.DataBind();
-
+            this.Label8.Visible = false;
+            ocultarControlesAnadirNuevo();
+        
 
 
         }
@@ -114,20 +117,25 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             {
                 if (lista.Count > 0)
                 {
-                    this.LabelDescipcionPlan.Text = "Presupuesto: "+lista[0].ano.ToString()+"-"+lista[0].periodo;
-
+                    this.LabelDescipcionPlan.Text = "Presupuesto: " + lista[0].ano.ToString() + "-" + lista[0].periodo;
+                    cargarGridviewPresupuesto(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
                 }
                 else
                 {
+                    cargarGridviewPresupuesto(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+                    ocultarControlesAnadirNuevo();
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionSeleccion + "');</script>", false);
-                    LabelDescipcionPlan.Text = "";
+                    
                 }
             }
             catch (Exception)
             {
+                cargarGridviewPresupuesto(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+                ocultarControlesAnadirNuevo();
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionInvalida + "');</script>", false);
+               
             }
-            cargarGridviewPresupuesto(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+            
         }
         //Entrega el rol seleccionado y carga la lista de bonificaciones con este rol
         protected void ListAnos_SelectedIndexChanged(object sender, EventArgs e)
@@ -138,8 +146,19 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         }
 
 
+        //Muestra Los Controles para añadir un Elemento nuevo al gridview
+        private void mostrarControlesAnadirNuevo() {
+            this.Label9.Visible = true;
+            this.ImgBtnAddPresupuesto.Visible = true;
+        }
 
-
+        //Oculta Los Controles para añadir un Elemento nuevo al gridview
+        private void ocultarControlesAnadirNuevo()
+        {
+            LabelDescipcionPlan.Text = "";
+            this.Label9.Visible = false;
+            this.ImgBtnAddPresupuesto.Visible = false;
+        }
 
         // Carga los combos con informacion
         private void cargarComboAnosPresupuesto()
@@ -155,7 +174,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             PresupuestoLN preLn = new PresupuestoLN();
             PresupuestoEN preEn = new PresupuestoEN();
             preEn.ID = Convert.ToInt32(ano);
-           List<Object> listPre = preLn.ConsultarPeriodosPresupuestoXanoLN(SP_ConsultaPeriodosPresupuestoXano, preEn).Cast<Object>().ToList();
+            List<Object> listPre = preLn.ConsultarPeriodosPresupuestoXanoLN(SP_ConsultaPeriodosPresupuestoXano, preEn).Cast<Object>().ToList();
             cargarComboGenerico(listPre, this.ListPeriodos);
         }
 
@@ -198,6 +217,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
         private int cargarGridviewPresupuesto(String SP_Consulta, GridView gr, String Periodo, String Ano)
         {
+            mostrarControlesAnadirNuevo();
             PresupuestoLN preLn = new PresupuestoLN();
             PresupuestoEN preEn = new PresupuestoEN();
             preEn.periodo = Convert.ToInt32(Periodo);
@@ -232,7 +252,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             int id = e.RowIndex;
             Label l1CodOfic = (Label)gr.Rows[id].FindControl("Label0");
             Label l2Periodo = (Label)gr.Rows[id].FindControl("Label2");
-            Label l3ano = (Label)gr.Rows[id].FindControl("Label3"); 
+            Label l3ano = (Label)gr.Rows[id].FindControl("Label3");
             PresupuestoEN preEn = new PresupuestoEN();
             preEn.codigoOficina = Convert.ToInt32(l1CodOfic.Text);
             preEn.periodo = Convert.ToInt32(l2Periodo.Text);
@@ -299,9 +319,6 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             //CApturar Controles
 
             int id = e.RowIndex; //iterador de la fil
-            /*Label l1CodOfic = (Label)gr.Rows[id].FindControl("Label0");
-            Label l2Periodo = (Label)gr.Rows[id].FindControl("Label2");
-            Label l3ano = (Label)gr.Rows[id].FindControl("Label3");*/ 
             Label l1CodOfic = (Label)gr.Rows[id].FindControl("Label0"); //Llave de la tabla control oculto
             TextBox t1Presupuesto = (TextBox)gr.Rows[id].FindControl("Textbox1"); //Sirve para Templates
             Label l2Periodo = (Label)gr.Rows[id].FindControl("Label2");
@@ -320,7 +337,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 int reg = Convert.ToInt32(retorno);// Si ejecuta con exito
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + "Se Actualizo " + reg + " Registro Correctamente" + "');</script>", false);
                 gr.EditIndex = -1; //Devuelve al modo sin edicion
-                this.cargarGridviewPresupuesto(SP_Consulta, gr,  Periodo,  Ano);//Refresca el gridview
+                this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);//Refresca el gridview
 
             }
             catch (Exception)
@@ -333,7 +350,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             gr.ShowFooter = false; //oculta el footer si esta visible
             gr.EditIndex = -1; //Devuelve al modo sin edicion            
-            this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo,  Ano);//Refresca el gridview
+            this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);//Refresca el gridview
         }
 
         private void agregarNuevaFila(String SP_Consulta, GridView gr, String Periodo, String Ano)
@@ -352,7 +369,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             try
             {
-                ElminarFila(Sp_EliminaBonificacion, SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+                ElminarFila(Sp_EliminaPresupuesto, SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
             }
             catch (Exception)
             {
@@ -366,7 +383,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             try
             {
-                InsertarFila(SP_InsertaBonificacion, SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+                InsertarFila(SP_InsertaPresupuesto, SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
             }
             catch (Exception)
             {
@@ -390,7 +407,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             try
             {
-                ActualizaFila(SP_ActualizaBonificacion, SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+                ActualizaFila(SP_ActualizaPresupuesto, SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
             }
             catch (Exception)
             {
@@ -427,6 +444,104 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
         }
 
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                resetearPantalla();
+                if (Path.GetExtension(FileUploadControl.FileName) == ".xlsx" || Path.GetExtension(FileUploadControl.FileName) == ".xls")
+                {
+                    if (this.FileUploadControl.HasFile)
+                    {
+                        try
+                        {
+                            SLDocument sl = new SLDocument(FileUploadControl.PostedFile.InputStream);
+                            string filename = Path.GetFileName(FileUploadControl.FileName);
+                            //   FileUploadControl.SaveAs(Server.MapPath("~/") + filename); Guarda el archivo en una ruta
 
-    }
+                            if (sl.GetCellValueAsString(1, 1) != null && sl.GetCellValueAsString(1, 1) != "")
+                            {
+                                String LogErrores = "";
+                                PresupuestoLN preLn = new PresupuestoLN();
+                                for (int i = 2; sl.GetCellValueAsString(i, 1) != null && sl.GetCellValueAsString(i, 1) != ""; i++)
+                                {
+                                    String ret = sl.GetCellValueAsString(i, 1);
+                                    PresupuestoEN preEn = new PresupuestoEN();
+                                    preEn.codigoOficina = Convert.ToInt32(sl.GetCellValueAsString(i, 1));                                    
+                                    preEn.periodo= Convert.ToInt32(sl.GetCellValueAsString(i, 2));
+                                    preEn.ano = Convert.ToInt32(sl.GetCellValueAsString(i, 3));
+                                    preEn.presupuesto = Convert.ToInt32(sl.GetCellValueAsString(i, 4));
+                                    preEn.usuarioActualiza = Session["usuario"].ToString();
+                               String  result=    preLn.InsertarPresupuestoLN(preEn, SP_InsertaPresupuesto);
+                               if (result == "0") {
+                                   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ErrorProceso + "');</script>", false);
+
+                               }
+                               else if (result != "1") {
+
+                                   LogErrores += result.Substring(140,47) +"</br>";
+
+                               }
+
+                                }
+                                if (LogErrores != "")
+                                {
+                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" +Mensajes.clavesDuplicadas + "');</script>", false);
+                                   
+                                    resetearPantalla();
+                                    cargarComboAnosPresupuesto();
+                                    Label8.Visible = true;
+                                    Label8.Text = LogErrores;
+                                    this.ListPeriodos.DataSource = "";
+                                    this.ListPeriodos.DataBind();
+                                    this.ListPeriodos.Items.Insert(0, new ListItem("Sin Informacion", "0"));
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpOk + "');</script>", false);
+                                    resetearPantalla();
+                                    cargarComboAnosPresupuesto();
+                                    this.ListPeriodos.DataSource = "";
+                                    this.ListPeriodos.DataBind();
+                                    this.ListPeriodos.Items.Insert(0, new ListItem("Sin Informacion", "0"));
+                                }
+
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.archivoVacio + "');</script>", false);
+                                resetearPantalla();
+                                cargarComboAnosPresupuesto();
+                                this.ListPeriodos.DataSource = "";
+                                this.ListPeriodos.DataBind();
+                                this.ListPeriodos.Items.Insert(0, new ListItem("Sin Informacion", "0"));
+                            }
+
+
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpFail + " " + ex.Message + "');</script>", false);
+
+                        }
+                    }
+                    else { ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.sinArchivo + "');</script>", false); }
+                }
+                else { ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.soloExcel + "');</script>", false); }
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.archivoMax + "');</script>", false);
+            }
+        }
+
+
+
+
+        }
+
+
+
 }

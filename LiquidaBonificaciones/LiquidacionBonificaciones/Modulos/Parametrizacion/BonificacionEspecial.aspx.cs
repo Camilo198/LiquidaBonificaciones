@@ -92,13 +92,28 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             Session["Obj_BonificacionEspecialEn"] = "";
             TextBoxIdPlan.Text = "";
-            LabelDescipcionPlan.Text = "";
             this.GridViewBonificacionEspecial.DataSource = "";
             GridViewBonificacionEspecial.DataBind();
             cancelarControlesEditarEstadoPlan();
             ocultarControlesEstadoPlan();
-
+            ocultarControlesAnadirNuevo();
             
+        }
+
+
+        //Muestra Los Controles para añadir un Elemento nuevo al gridview
+        private void mostrarControlesAnadirNuevo()
+        {
+            this.Label9.Visible = true;
+            this.ImgBtnAddCantidadPlanes.Visible = true;
+        }
+
+        //Oculta Los Controles para añadir un Elemento nuevo al gridview
+        private void ocultarControlesAnadirNuevo()
+        {
+            LabelDescipcionPlan.Text = "";
+            this.Label9.Visible = false;
+            this.ImgBtnAddCantidadPlanes.Visible = false;
         }
 
         // Controles Dinamicos que editan la vista en tiempo de ejecucion
@@ -194,6 +209,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         //Entrega la bonificacion seleccionada
         protected void ListBonificacion_SelectedIndexChanged(object sender, EventArgs e)
         {
+            mostrarControlesAnadirNuevo();
             TextBoxIdPlan.Text = ListBonificacion.Text;
             Session["Obj_BonificacionEspecialEn"] = ListBonificacion.Text; //Se envia el resultado del Combo a sesion para que funcione en los otros eventos del GridView
             //Carga los grid view con informacion
@@ -219,19 +235,23 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                         this.LabelEstadoPlan.Text = "Desactivado";
 
                     }
+                    cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
                     cancelarControlesEditarEstadoPlan();
                 }
                 else {
+                    cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionSeleccion + "');</script>", false);
+                    ocultarControlesAnadirNuevo();
                     ocultarControlesEstadoPlan();
-                    LabelDescipcionPlan.Text = "";
                 }
             }
             catch (Exception) {
+                cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionInvalida + "');</script>", false);
+                ocultarControlesAnadirNuevo();
                 ocultarControlesEstadoPlan();
             }
-            cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
+            
         }
         //Entrega el rol seleccionado y carga la lista de bonificaciones con este rol
         protected void ListAsesor_SelectedIndexChanged(object sender, EventArgs e)

@@ -192,4 +192,25 @@
   <data name="OpcionSeleccion" xml:space="preserve">
     <value>Selecciones un plan de Bonificacion</value>
   </data>
+  <data name="ArchivoUpFail" xml:space="preserve">
+    <value>El archivo no pudo ser cargado, Se presento el siguiente error: </value>
+  </data>
+  <data name="ArchivoUpOk" xml:space="preserve">
+    <value>Archivo Cargado Exitosamente!</value>
+  </data>
+  <data name="sinArchivo" xml:space="preserve">
+    <value>No se identifico ningun archivo</value>
+  </data>
+  <data name="archivoMax" xml:space="preserve">
+    <value>El archivo pesa mas de 10 Mb</value>
+  </data>
+  <data name="archivoVacio" xml:space="preserve">
+    <value>El archivo esta Vacio o la primera Casilla lo esta</value>
+  </data>
+  <data name="soloExcel" xml:space="preserve">
+    <value>Solo Se admiten Archivos de Excel</value>
+  </data>
+  <data name="clavesDuplicadas" xml:space="preserve">
+    <value>Se encontraron claves duplicadas ya cargadas al sistema, revise por favor</value>
+  </data>
 </root>

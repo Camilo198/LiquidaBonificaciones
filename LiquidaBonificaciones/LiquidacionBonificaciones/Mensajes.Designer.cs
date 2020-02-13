@@ -61,6 +61,42 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El archivo pesa mas de 10 Mb.
+        /// </summary>
+        internal static string archivoMax {
+            get {
+                return ResourceManager.GetString("archivoMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El archivo no pudo ser cargado, Se presento el siguiente error: .
+        /// </summary>
+        internal static string ArchivoUpFail {
+            get {
+                return ResourceManager.GetString("ArchivoUpFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Archivo Cargado Exitosamente!.
+        /// </summary>
+        internal static string ArchivoUpOk {
+            get {
+                return ResourceManager.GetString("ArchivoUpOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El archivo esta Vacio o la primera Casilla lo esta.
+        /// </summary>
+        internal static string archivoVacio {
+            get {
+                return ResourceManager.GetString("archivoVacio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Asesores Cargados Correctamente.
         /// </summary>
         internal static string asesoresOK {
@@ -84,6 +120,15 @@ namespace LiquidacionBonificaciones {
         internal static string CambioEstadoPlan {
             get {
                 return ResourceManager.GetString("CambioEstadoPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se encontraron claves duplicadas ya cargadas al sistema, revise por favor.
+        /// </summary>
+        internal static string clavesDuplicadas {
+            get {
+                return ResourceManager.GetString("clavesDuplicadas", resourceCulture);
             }
         }
         
@@ -223,6 +268,15 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se identifico ningun archivo.
+        /// </summary>
+        internal static string sinArchivo {
+            get {
+                return ResourceManager.GetString("sinArchivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No se encontraron Asesores en Sico para Cargar.
         /// </summary>
         internal static string sinAsesores {
@@ -264,6 +318,15 @@ namespace LiquidacionBonificaciones {
         internal static string sinVentas {
             get {
                 return ResourceManager.GetString("sinVentas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solo Se admiten Archivos de Excel.
+        /// </summary>
+        internal static string soloExcel {
+            get {
+                return ResourceManager.GetString("soloExcel", resourceCulture);
             }
         }
         

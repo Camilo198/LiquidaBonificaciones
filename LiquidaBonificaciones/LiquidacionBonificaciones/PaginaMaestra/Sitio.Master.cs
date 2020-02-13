@@ -12,6 +12,9 @@ namespace LiquidacionBonificaciones.PaginaMaestra
         protected void Page_Load(object sender, EventArgs e)
         {
             this.lbUsuario.Text = Session["Usuario"].ToString();
+
         }
+
+
     }
 }

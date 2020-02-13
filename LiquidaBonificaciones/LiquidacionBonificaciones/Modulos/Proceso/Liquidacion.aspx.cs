@@ -246,7 +246,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                         this.pnlProcesos.Enabled = false;
 
                         String GuardarHistorico = String.Empty;
-                        GuardarHistorico = new ParametrosLN().GuardarHist("BON_GuardarHistorico");
+                        GuardarHistorico = new ParametrosLN().GuardarHist("BON_GuardarHistoricoParametros");
 
                         if (GuardarHistorico.Substring(0,1) == "0")
                         {

@@ -62,3 +62,4 @@ C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaci
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csproj.GenerateResource.Cache
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.dll
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.pdb
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\bin\SpreadsheetLight.xml
