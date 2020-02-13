@@ -286,6 +286,15 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se identificaron ventas participantes en la Ceremonia de Sueños.
+        /// </summary>
+        internal static string sinCeremonia {
+            get {
+                return ResourceManager.GetString("sinCeremonia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No se encontro informacion en base de datos.
         /// </summary>
         internal static string SinInformacionDB {

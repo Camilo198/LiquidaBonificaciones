@@ -213,4 +213,7 @@
   <data name="clavesDuplicadas" xml:space="preserve">
     <value>Se encontraron claves duplicadas ya cargadas al sistema, revise por favor</value>
   </data>
+  <data name="sinCeremonia" xml:space="preserve">
+    <value>No se identificaron ventas participantes en la Ceremonia de Sueños</value>
+  </data>
 </root>

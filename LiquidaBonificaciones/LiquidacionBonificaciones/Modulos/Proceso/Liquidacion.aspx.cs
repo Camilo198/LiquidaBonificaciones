@@ -191,6 +191,10 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                             if (dtgItem.Cells[3].Text == "0" && dtgItem.Cells[0].Text=="21" ) {
                                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.sinPersistencia + "');</script>", false);
                             }
+                            if (dtgItem.Cells[3].Text == "0" && dtgItem.Cells[0].Text == "3")
+                            {
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.sinCeremonia + "');</script>", false);
+                            }
                         }
                     }
                     
@@ -293,6 +297,8 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                             ben.pIdPlanBonificacion = listaPlanes[i].ID;
                             ben.pUsuActualiza = Session["usuario"].ToString();
                             ben.pDescripcionBono = "";
+                            ben.pPlanesMinimos = Convert.ToInt32(txbPeriodo.Text);
+                            ben.pPlanesMaximos = Convert.ToInt32(txbano.Text);
                             String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion");
                             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
                         }

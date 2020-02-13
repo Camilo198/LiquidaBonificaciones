@@ -317,6 +317,25 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         //Recibe como parametro un String que trae el plan de Bonificacion del procedimiento Almacenado
         /// </summary>
         /// 
+        private void modificacionHeadersGridview() {
+            //Modifica Los Heaters del Grid View Segun el plan de Bonificaion Seleccionado
+            String indexBonificacionEspecial = Session["Obj_BonificacionEspecialEn"].ToString();
+            if (indexBonificacionEspecial == "1")
+            {
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Minimos";
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Maximos";
+            }
+            else if (indexBonificacionEspecial == "2")
+            {
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Desde";
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Hasta";
+            }
+            else if (indexBonificacionEspecial == "3")
+            {
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "% Minimo de Cumplimiento";
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "% Maximo de Cumplimiento";
+            }
+        }
 
         private int cargarGridviewBonificacionEspecial (String SP_Consulta,GridView gr,String planBonificacion){
             BonificacionEspecialLN beln = new BonificacionEspecialLN();
@@ -330,22 +349,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                     gr.DataBind();
 
                     //Modifica Los Heaters del Grid View Segun el plan de Bonificaion Seleccionado
-                    String indexBonificacionEspecial=Session["Obj_BonificacionEspecialEn"].ToString();
-                    if ( indexBonificacionEspecial== "1")
-                    {
-                        this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Minimos";
-                        this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Maximos";
-                    }
-                    else if (indexBonificacionEspecial == "2")
-                    {
-                        this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Desde";
-                        this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Hasta";
-                    }
-                    else if (indexBonificacionEspecial == "3")
-                    {
-                        this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "% Minimo de Cumplimiento";
-                        this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "% Maximo de Cumplimiento";
-                    }
+                    modificacionHeadersGridview();
 
                 }
                 else
@@ -355,6 +359,9 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                     DatosParametros.Add(be);
                     gr.DataSource = DatosParametros;
                     gr.DataBind();
+
+                    //Modifica Los Heaters del Grid View Segun el plan de Bonificaion Seleccionado
+                    modificacionHeadersGridview();
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.SinParametros + " Por Cantidad Planes" + "');</script>", false);
                 }
                 

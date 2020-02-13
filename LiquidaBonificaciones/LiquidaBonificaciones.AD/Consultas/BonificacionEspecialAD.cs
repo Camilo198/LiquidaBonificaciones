@@ -211,7 +211,7 @@ namespace LiquidaBonificaciones.AD.Consultas
 
             try
             {
-                string[, ,] Param = new string[4, 3, 1];
+                string[, ,] Param = new string[6, 3, 1];
 
                 Param[0, 0, 0] = bonEs.pIdPlanBonificacion.ToString();
                 Param[0, 1, 0] = "@idPlan";
@@ -228,6 +228,14 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[3, 0, 0] = bonEs.pDescripcionBono.ToString();
                 Param[3, 1, 0] = "@Observacion";
                 Param[3, 2, 0] = "Varchar(max)";
+
+                Param[4, 0, 0] = bonEs.pPlanesMinimos.ToString();
+                Param[4, 1, 0] = "@periodo";
+                Param[4, 2, 0] = "int";
+
+                Param[5, 0, 0] = bonEs.pPlanesMaximos.ToString();
+                Param[5, 1, 0] = "@ano";
+                Param[5, 2, 0] = "int";
 
         
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
