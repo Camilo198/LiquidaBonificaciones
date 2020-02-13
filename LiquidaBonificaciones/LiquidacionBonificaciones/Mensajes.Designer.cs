@@ -286,7 +286,7 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No se encontro informacion en base de datos, consulte el administrador del sistema.
+        ///   Looks up a localized string similar to No se encontro informacion en base de datos.
         /// </summary>
         internal static string SinInformacionDB {
             get {

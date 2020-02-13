@@ -165,6 +165,9 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             PresupuestoLN preln = new PresupuestoLN();
             List<Object> listPc = preln.ConsultarAnosPresupuestoLN(SP_ConsultaAnosPresupuesto).Cast<Object>().ToList();
+            this.ListPeriodos.DataSource = "";
+            this.ListPeriodos.DataBind();
+            this.ListPeriodos.Items.Insert(0, new ListItem("Sin Informacion", "0"));
             cargarComboGenerico(listPc, this.ListAnos);
 
         }
@@ -266,6 +269,8 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + "Se Elimino " + reg + " Registro Correctamente" + "');</script>", false);
                 gr.EditIndex = -1; //Devuelve al modo sin edicion
                 this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);//Refresca el gridview
+                cargarComboPeriodosPresupuesto(Session["Obj_Ano"].ToString());
+                cargarComboAnosPresupuesto();
             }
             catch (Exception ex)
             {
@@ -299,6 +304,8 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
                     gr.ShowFooter = false; //Oculta El Footer
                     this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);//Refresca el gridview
+                    cargarComboPeriodosPresupuesto(Session["Obj_Ano"].ToString());
+                    cargarComboAnosPresupuesto();
                 }
                 catch (Exception)
                 {
@@ -486,35 +493,26 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                                 }
                                 if (LogErrores != "")
                                 {
-                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" +Mensajes.clavesDuplicadas + "');</script>", false);
+                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.clavesDuplicadas + "');</script>", false);
                                    
                                     resetearPantalla();
                                     cargarComboAnosPresupuesto();
                                     Label8.Visible = true;
                                     Label8.Text = LogErrores;
-                                    this.ListPeriodos.DataSource = "";
-                                    this.ListPeriodos.DataBind();
-                                    this.ListPeriodos.Items.Insert(0, new ListItem("Sin Informacion", "0"));
+
                                 }
                                 else
                                 {
-                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpOk + "');</script>", false);
-                                    resetearPantalla();
-                                    cargarComboAnosPresupuesto();
-                                    this.ListPeriodos.DataSource = "";
-                                    this.ListPeriodos.DataBind();
-                                    this.ListPeriodos.Items.Insert(0, new ListItem("Sin Informacion", "0"));
+                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpOk + "');" + "  window.location.href='/Modulos/Parametrizacion/Presupuesto.aspx'</script>", false);
+
                                 }
 
                             }
                             else
                             {
-                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.archivoVacio + "');</script>", false);
-                                resetearPantalla();
-                                cargarComboAnosPresupuesto();
-                                this.ListPeriodos.DataSource = "";
-                                this.ListPeriodos.DataBind();
-                                this.ListPeriodos.Items.Insert(0, new ListItem("Sin Informacion", "0"));
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.archivoVacio + "');" + "  window.location.href='/Modulos/Parametrizacion/Presupuesto.aspx'</script>", false);
+
+                           
                             }
 
 
