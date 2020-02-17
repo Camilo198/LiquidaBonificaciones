@@ -320,7 +320,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         private void modificacionHeadersGridview() {
             //Modifica Los Heaters del Grid View Segun el plan de Bonificaion Seleccionado
             String indexBonificacionEspecial = Session["Obj_BonificacionEspecialEn"].ToString();
-            if (indexBonificacionEspecial == "1")
+            if (indexBonificacionEspecial == "1" || indexBonificacionEspecial == "6")
             {
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Minimos";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Maximos";
@@ -330,7 +330,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Desde";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Hasta";
             }
-            else if (indexBonificacionEspecial == "3")
+            else if (indexBonificacionEspecial == "3" || indexBonificacionEspecial == "4" || indexBonificacionEspecial == "5")
             {
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "% Minimo de Cumplimiento";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "% Maximo de Cumplimiento";
