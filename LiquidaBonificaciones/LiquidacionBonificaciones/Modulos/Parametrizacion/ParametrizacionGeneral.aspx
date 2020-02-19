@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra/Sitio.Master" AutoEventWireup="true" CodeBehind="Parametrizacion.aspx.cs" Inherits="LiquidacionBonificaciones.Modulos.Proceso.Parametrizacion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra/Sitio.Master" AutoEventWireup="true" CodeBehind="ParametrizacionGeneral.aspx.cs" Inherits="LiquidacionBonificaciones.Modulos.Parametrizacion.ParametrizacionGeneral" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCabecera" runat="server">

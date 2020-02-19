@@ -329,7 +329,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                     AsesoresEN objAsesor = new AsesoresEN();
                     objAsesor.pAsistenciaFin = Convert.ToDateTime(this.txbFechaFin.Text);
                 objAsesor.pAsistenciaInicio = Convert.ToDateTime(this.txbFechaInicio.Text);
-               int retorno=Convert.ToInt32(aseln.cargarAsistencia(objAsesor)); //Carga la asistencia de los asesores
+               int retorno=Convert.ToInt32(aseln.cargarAsistencia(objAsesor)); //Carga la asistencia de los asesores en kactus
                     
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.asesoresOK + "');</script>", false);
                 }

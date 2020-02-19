@@ -216,4 +216,7 @@
   <data name="sinCeremonia" xml:space="preserve">
     <value>No se identificaron ventas participantes en la Ceremonia de Sueños</value>
   </data>
+  <data name="SesionExpirada" xml:space="preserve">
+    <value>Sesión Expirada, por favor refresque la pagina</value>
+  </data>
 </root>

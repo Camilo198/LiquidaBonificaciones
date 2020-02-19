@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra/Sitio.Master" AutoEventWireup="true" CodeBehind="Liquidacion.aspx.cs" Inherits="LiquidacionBonificaciones.Modulos.Proceso.Liquidacion" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaMaestra/Sitio.Master" AutoEventWireup="true" CodeBehind="Liquidacion.aspx.cs" Inherits="LiquidacionBonificaciones.Modulos.Proceso.Liquidacion" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
@@ -38,46 +38,7 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContenido" runat="server">
-    <script type="text/javascript" language="javascript">
 
-
-        /* Permite digitar únicamente números en el texto */
-        function soloNumeros(control) {
-            limitarCaracteres(control, "^[0-9]+$");
-        }
-
-        /* Únicamente permite digitar los caracteres que cumplan la expresión regular */
-        function limitarCaracteres(control, expresion) {
-            document.getElementById(control).addEventListener('keypress', function (event) {
-                var regex = new RegExp(expresion);
-                if (esCaracterEspecial(event)) {
-                    return true;
-                }
-                else {
-                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                    if (!regex.test(key)) {
-                        event.preventDefault();
-                        return false;
-                    }
-                }
-            }
-            );
-        }
-
-        function esCaracterEspecial(event) {
-            var whichCode = !event.charCode ? event.which : event.charCode;
-
-            if (whichCode == 0) return true;
-            if (whichCode == 8) return true;
-            if (whichCode == 9) return true;
-            if (whichCode == 13) return true;
-            if (whichCode == 16) return true;
-            if (whichCode == 17) return true;
-            if (whichCode == 27) return true;
-            return false;
-        }
-
-    </script>
 
     <asp:UpdatePanel ID="upContenido" runat="server">
         <ContentTemplate>
@@ -115,7 +76,7 @@
                                         <td>
                                             <asp:GridView ID="gvParametros" runat="server" AutoGenerateColumns="False" Width="450px" Font-Size="Small"
                                                 AllowSorting="True" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Center"
-                                                GridLines="Horizontal" CssClass="EstiloEtiquetas81">
+                                                GridLines="Horizontal" CssClass="EstiloEtiquetas81" OnSelectedIndexChanged="gvParametros_SelectedIndexChanged">
                                                 <Columns>
                                                     <asp:BoundField HeaderText="Id" DataField="pId" ItemStyle-CssClass="OcultarControles"
                                                         HeaderStyle-CssClass="OcultarControles">
@@ -234,7 +195,10 @@
                                     </tr>
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
-                                        <td style="width: 20%" class="EstiloEtiquetas80"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            <asp:Button ID="btnSubirAsesores" runat="server" OnClick="btnSubirAsesores_Click" Text="Subir Asesores" ToolTip="Subir Asesores" ValidationGroup="1" />
+                                            <asp:ImageButton ID="ImageButton1" runat="server" Enabled="false" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/usuario.png" Width="20px" />
+                                        </td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td class="auto-style5"></td>
                                         <td class="EspaciadoIntermedio"></td>
@@ -252,32 +216,38 @@
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
                                         <td style="width: 20%" class="EstiloEtiquetas80">
-                                            <asp:Button ID="btnSubirVentas" runat="server" ToolTip="Subir Ventas" ValidationGroup="1" Text="Subir Ventas" OnClick="btnSubirVentas_Click" />
-                                            <asp:ImageButton runat="server" Enabled="false" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/activar_sel.png" Width="20px" />
-                                        </td>
+                                            &nbsp;</td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td class="auto-style5"></td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td style="width: 20%" class="EstiloEtiquetas80"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            <asp:Label ID="lblPeriodo" runat="server" Text="Periodo:"></asp:Label>
+                                        </td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td class="EspaciadoCeldaControl"></td>
+                                        <td class="EspaciadoCeldaControl">
+                                            <asp:TextBox ID="txbPeriodo" runat="server" CssClass="BordeControles" Enabled="false" Width="89px"></asp:TextBox>
+                                        </td>
                                         <td class="EspaciadoFinal"></td>
                                     </tr>
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
                                         <td style="width: 20%" class="EstiloEtiquetas80">
-                                            <asp:Button ID="btnSubirAsesores" runat="server" ToolTip="Subir Asesores" ValidationGroup="1" Text="Subir Asesores" OnClick="btnSubirAsesores_Click" />
-                                            <asp:ImageButton ID="ImageButton1" Enabled="false" runat="server" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/usuario.png" Width="20px" />
+                                            <asp:Button ID="btnSubirVentas" runat="server" OnClick="btnSubirVentas_Click" Text="Subir Ventas" ToolTip="Subir Ventas" ValidationGroup="1" />
+                                            <asp:ImageButton runat="server" Enabled="false" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/activar_sel.png" Width="20px" />
                                         </td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td class="auto-style5"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80"">
+                                            <asp:Label ID="LabelVentasValidas" runat="server" Text="Ventas Validas"></asp:Label>
+                                            <asp:TextBox ID="TextVentasValidas" runat="server" Width="89px"></asp:TextBox>
+                                        </td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td style="width: 20%" class="EstiloEtiquetas80">
-                                            <asp:Button ID="btnConfirmaLiquidacion" runat="server" ToolTip="Confirmar Liquidación" ValidationGroup="1" Text="Confirmar Liquidación" OnClick="btnConfirmaLiquida_Click" />
-                                            <asp:ImageButton ID="ImageButton3" Enabled="false" runat="server" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/aceptar.png" Width="20px" />
+                                            <asp:Label ID="lblano" runat="server" Text="Año:"></asp:Label>
                                         </td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td class="EspaciadoCeldaControl"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            <asp:TextBox ID="txbano" runat="server" CssClass="BordeControles" Enabled="false" Width="89px"></asp:TextBox>
+                                        </td>
                                         <td class="EspaciadoFinal"></td>
                                     </tr>
                                     <tr>
@@ -289,10 +259,15 @@
                                         <td class="EspaciadoIntermedio"></td>
                                         <td class="auto-style5"></td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td style="width: 20%" class="EstiloEtiquetas80">&nbsp;</td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            &nbsp;</td>
                                         <td class="EspaciadoIntermedio"></td>
-                                        <td class="EspaciadoCeldaControl"></td>
-                                        <td class="EspaciadoFinal"></td>
+                                        <td style="width: 20%" class="EstiloEtiquetas80">
+                                            <asp:Button ID="btnConfirmaLiquidacion" runat="server" OnClick="btnConfirmaLiquida_Click" Text="Confirmar Liquidación" ToolTip="Confirmar Liquidación" ValidationGroup="1" />
+                                        </td>
+                                        <td class="EspaciadoFinal">
+                                            <asp:ImageButton ID="ImageButton3" runat="server" Enabled="false" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/aceptar.png" Width="20px" />
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="height: 10px" colspan="9"></td>

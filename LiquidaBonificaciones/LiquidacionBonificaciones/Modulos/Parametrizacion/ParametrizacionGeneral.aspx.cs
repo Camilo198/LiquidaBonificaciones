@@ -8,9 +8,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace LiquidacionBonificaciones.Modulos.Proceso
+namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 {
-    public partial class Parametrizacion : System.Web.UI.Page
+    public partial class ParametrizacionGeneral : System.Web.UI.Page
     {
         GridViewRow dgi;
         TextBox TexValor;

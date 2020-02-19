@@ -582,7 +582,8 @@
                                                
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                
-                                                <asp:ImageButton ID="imgBuscar" Enabled="false" AutoPostBack="true" runat="server" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/buscar.png"
+                                                <asp:ImageButton ID="imgBuscar" 
+                                                    Enabled="false" AutoPostBack="true" runat="server" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/buscar.png"
                                                 Width="20px" ValidationGroup="5"  OnClick="imgBuscar_Click"/>
 
                                         </td
@@ -601,13 +602,17 @@
                                         <td style="height: 10px" colspan="9"></td>
                                     </tr>
                                     
-
+                                    <!-- OnPageIndexChanging="gvHistorial_PageIndexChanging" PageSize="15"-->
                                     <tr>
                                         <td colspan="9">
-                                            <asp:GridView ID="gvHistorial" runat="server" Width="970px" AllowSorting="True" BorderColor="#D0DEF0"
-                                                BorderStyle="Solid" BorderWidth="1px" GridLines="Horizontal" AutoGenerateColumns="False"
-                                                Font-Size="XX-Small"  AllowPaging="True"
-                                                OnPageIndexChanging="gvHistorial_PageIndexChanging" PageSize="15">
+                                            <asp:GridView ID="gvHistorial" AutoGenerateColumns="False" AllowPaging="True" runat="server" 
+                                                Width="992px" AllowSorting="True" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" GridLines="Horizontal"  Font-Size="XX-Small"  
+                                               OnSelectedIndexChanged="gvHistorial_SelectedIndexChanged" >
+                                                  
+                                             
+                                               
+                                                
+                                              
                                                 <Columns>
                                                     <asp:BoundField DataField="pNumeroIdentificacion" HeaderText="Documento" />
                                                     <asp:BoundField DataField="pNumeroCuenta" HeaderText="Cuenta" />

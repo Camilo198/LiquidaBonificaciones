@@ -268,6 +268,15 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sesión Expirada, por favor refresque la pagina.
+        /// </summary>
+        internal static string SesionExpirada {
+            get {
+                return ResourceManager.GetString("SesionExpirada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No se identifico ningun archivo.
         /// </summary>
         internal static string sinArchivo {

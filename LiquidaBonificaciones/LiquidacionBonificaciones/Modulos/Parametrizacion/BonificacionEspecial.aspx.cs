@@ -145,15 +145,22 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         //Permite Editar el estado del plan
         protected void ImgEditarEstadoPlan_Click(object sender, ImageClickEventArgs e)
         {
+            try
+            {
             mostrarControlesEditarEstadoPlan();
             ocultarControlesEstadoPlan();
-          Boolean estadoPlan=Convert.ToBoolean(Session["EstadoPlan"].ToString());
-          
-          if (estadoPlan == true)
-          {
-              this.EstadoLista.SelectedIndex = 1;
-          }
-          else { this.EstadoLista.SelectedIndex = 0; }
+           
+                Boolean estadoPlan = Convert.ToBoolean(Session["EstadoPlan"].ToString());
+                if (estadoPlan == true)
+                {
+                    this.EstadoLista.SelectedIndex = 1;
+                }
+                else { this.EstadoLista.SelectedIndex = 0; }
+            }
+            catch (NullReferenceException) {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.SesionExpirada + "');</script>", false);
+            }
+
    
 
         }
@@ -162,15 +169,17 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         protected void ImgGuardarEstadoPlan_Click(object sender, ImageClickEventArgs e)
         {
 
-            PlanDeBonificacionLN pbln= new PlanDeBonificacionLN();
-            PlanDeBonificacionEN pben = new PlanDeBonificacionEN();
-            pben.ID = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
-            pben.estado = Convert.ToBoolean(this.EstadoLista.SelectedValue);
-            pben.pUsuActualiza = Session["usuario"].ToString();
-            cancelarControlesEditarEstadoPlan();
+           
+            
 
             try
             {
+                PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
+                PlanDeBonificacionEN pben = new PlanDeBonificacionEN();
+                pben.ID = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
+                pben.estado = Convert.ToBoolean(this.EstadoLista.SelectedValue);
+                pben.pUsuActualiza = Session["usuario"].ToString();
+                cancelarControlesEditarEstadoPlan();
                 int result = Convert.ToInt32(pbln.ActualizarPlanBonificacionEspecialLN(pben, SP_ActualizarPlanDeBonificacion));
                 if (result > 0)
                 {
@@ -192,7 +201,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 }
             }
             catch (Exception) {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ErrorProceso+ "');</script>", false);
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.SesionExpirada+ "');</script>", false);
             }
             
 
@@ -330,7 +339,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Desde";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Hasta";
             }
-            else if (indexBonificacionEspecial == "3" || indexBonificacionEspecial == "4" || indexBonificacionEspecial == "5")
+            else if (indexBonificacionEspecial == "3" || indexBonificacionEspecial == "4" || indexBonificacionEspecial == "5" || indexBonificacionEspecial == "7")
             {
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "% Minimo de Cumplimiento";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "% Maximo de Cumplimiento";

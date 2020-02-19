@@ -5,3 +5,10 @@ D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificac
 D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Release\LiquidaBonificaciones.AD.csprojResolveAssemblyReference.cache
 D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Release\LiquidaBonificaciones.AD.dll
 D:\Chevyplan\Desarrollo\AÑO 2019 - 2\Bonificaciones\Desarrollo\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Release\LiquidaBonificaciones.AD.pdb
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Release\LiquidaBonificaciones.AD.dll
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Release\LiquidaBonificaciones.AD.pdb
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Release\LiquidaBonificaciones.EN.dll
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Release\LiquidaBonificaciones.EN.pdb
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Release\LiquidaBonificaciones.AD.csprojResolveAssemblyReference.cache
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Release\LiquidaBonificaciones.AD.dll
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Release\LiquidaBonificaciones.AD.pdb

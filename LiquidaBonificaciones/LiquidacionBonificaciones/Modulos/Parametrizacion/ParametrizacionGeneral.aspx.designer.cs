@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LiquidacionBonificaciones.Modulos.Proceso {
+namespace LiquidacionBonificaciones.Modulos.Parametrizacion {
     
     
-    public partial class Parametrizacion {
+    public partial class ParametrizacionGeneral {
         
         /// <summary>
         /// imgBtnNuevo control.
