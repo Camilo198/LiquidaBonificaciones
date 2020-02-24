@@ -22,5 +22,6 @@ namespace LiquidaBonificaciones.EN.Tablas
         public DateTime pAsistenciaFin { get; set; }
         public String pVendTipoAse { get; set; }
         public String pVendMail { get; set; }
+        public String pVendNombre { get; set; }
     }
 }

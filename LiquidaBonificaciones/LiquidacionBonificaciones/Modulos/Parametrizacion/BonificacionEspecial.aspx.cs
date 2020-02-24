@@ -331,18 +331,28 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             String indexBonificacionEspecial = Session["Obj_BonificacionEspecialEn"].ToString();
             if (indexBonificacionEspecial == "1" || indexBonificacionEspecial == "6")
             {
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[1].Text = "Descripcion";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Minimos";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Maximos";
             }
             else if (indexBonificacionEspecial == "2")
             {
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[1].Text = "Descripcion";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Desde";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Hasta";
             }
             else if (indexBonificacionEspecial == "3" || indexBonificacionEspecial == "4" || indexBonificacionEspecial == "5" || indexBonificacionEspecial == "7")
             {
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[1].Text = "Descripcion";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "% Minimo de Cumplimiento";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "% Maximo de Cumplimiento";
+            }
+            else if (indexBonificacionEspecial == "8")
+            {
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[1].Text = "Meta de Ventas";
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Fecha Desde";
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Fecha Hasta";
+                
             }
         }
 

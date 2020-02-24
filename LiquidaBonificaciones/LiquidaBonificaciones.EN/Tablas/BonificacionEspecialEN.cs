@@ -18,6 +18,7 @@ namespace LiquidaBonificaciones.EN.Tablas
         public DateTime pFecActualiza { get; set; }
         public String pUsuActualiza { get; set; }
         public int pIdPlanBonificacion { get; set; }
+        public int pMetaVentas { get; set; }
         
     }
 }

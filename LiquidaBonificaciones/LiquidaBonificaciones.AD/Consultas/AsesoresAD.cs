@@ -23,7 +23,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                 string[, ,] Param = new string[0, 0, 0]; // solo cuando el procedimiento almacenado tiene parametros
 
 
-                String sentenciaSicoSQL = "SELECT VEND.VendCodigo, VEND.VendTipoVen, VEND.VendIdeNro,REGI.RegiCodigo, REGI.RegiNombre,OFIC.OficCodigo, OFIC.OficNombre, VEND.VendFecIng, VEND.VendFecRet, VEND.VendTipoAse, VEND.VendMail FROM  VEND, OFIC,REGI WHERE OFIC.OficCodReg = REGI.RegiCodigo AND  VEND.VendCodOfi = OFIC.OficCodigo";
+                String sentenciaSicoSQL = "SELECT VEND.VendCodigo, VEND.VendTipoVen, VEND.VendIdeNro,REGI.RegiCodigo, REGI.RegiNombre,OFIC.OficCodigo, OFIC.OficNombre, VEND.VendFecIng, VEND.VendFecRet, VEND.VendTipoAse, VEND.VendMail,VEND.VendNombre FROM  VEND, OFIC,REGI WHERE OFIC.OficCodReg = REGI.RegiCodigo AND  VEND.VendCodOfi = OFIC.OficCodigo";
                 String keyODBC = "SICO";
                 String tipoConsulta = "sql";
                 String tipoConexion = "ODBC";          
@@ -49,6 +49,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                         objParametros.pVendFecRet = Convert.ToDateTime(wsc.fechaJulianaToGregoriana(Convert.ToInt64(Valida[8, 1])).ToString());
                         objParametros.pVendTipoAse = Valida[9, 1];
                         objParametros.pVendMail = Valida[10, 1].ToString();
+                        objParametros.pVendNombre = Valida[11, 1];
                         
                         listParametro.Add(objParametros);
                     }
@@ -67,7 +68,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         {
             try
             {
-                string[, ,] Param = new string[11, 3, 1];
+                string[, ,] Param = new string[12, 3, 1];
 
                 Param[0, 0, 0] = ObjEntidad.pVendCodigo.ToString();
                 Param[0, 1, 0] = "@codigoVendedor";
@@ -112,6 +113,10 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[10, 0, 0] = ObjEntidad.pRegiNombre;
                 Param[10, 1, 0] = "@nombreRegi";
                 Param[10, 2, 0] = "Varchar(50)";
+
+                Param[11, 0, 0] = ObjEntidad.pVendNombre;
+                Param[11, 1, 0] = "@nombreVendedor";
+                Param[11, 2, 0] = "Varchar(50)";
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
             }
             catch (Exception ex)
