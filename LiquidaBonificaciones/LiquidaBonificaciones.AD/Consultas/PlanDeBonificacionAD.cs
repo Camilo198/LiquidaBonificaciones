@@ -120,5 +120,21 @@ namespace LiquidaBonificaciones.AD.Consultas
                 return ex.Message;
             }
         }
+
+        public string InicializarResultadosAD(String Procedimiento)
+        {
+
+            try
+            {
+                string[, ,] Param = new string[0, 0, 0];
+
+                return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+        }
     }
 }

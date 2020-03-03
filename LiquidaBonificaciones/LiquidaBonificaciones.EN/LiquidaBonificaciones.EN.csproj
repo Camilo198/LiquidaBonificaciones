@@ -47,6 +47,7 @@
     <Compile Include="Tablas\PerfilEN.cs" />
     <Compile Include="Tablas\PlanDeBonificacionEN.cs" />
     <Compile Include="Tablas\PresupuestoEN.cs" />
+    <Compile Include="Tablas\RetosEN.cs" />
     <Compile Include="Tablas\UsuarioEN.cs" />
     <Compile Include="Tablas\VentasEN.cs" />
   </ItemGroup>

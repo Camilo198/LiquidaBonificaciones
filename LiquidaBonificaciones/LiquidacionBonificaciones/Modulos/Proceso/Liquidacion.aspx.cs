@@ -275,35 +275,67 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         protected void btnLiquidar_Click(object sender, EventArgs e)
         {
             PlanDeBonificacionLN pbln= new PlanDeBonificacionLN();
-            IList<PlanDeBonificacionEN> listaPlanes = pbln.ConsultarPlanesBonificacionEspecialLN("BON_ConsultaPlanesBonificacion");
+            pbln.InicializarResultadosLN("BON_IniciarResultados");
 
-            for (int i = 0; i < listaPlanes.Count;i++ )
+            IList<PlanDeBonificacionEN> listaPlanesBonificaciones = pbln.ConsultarPlanesBonificacionEspecialLN("BON_ConsultaPlanesBonificacion");
+
+            for (int i = 0; i < listaPlanesBonificaciones.Count;i++ )
             {
-                if (listaPlanes[i].estado == true) {
+                if (listaPlanesBonificaciones[i].estado == true) {
                     BonificacionEspecialLN beln = new BonificacionEspecialLN();
                     BonificacionEspecialEN benPb = new BonificacionEspecialEN();
-                    benPb.pIdPlanBonificacion = listaPlanes[i].ID;
+                   RetosLN retln = new RetosLN();
+                   
+                    RetosEN retEn = new RetosEN();
+                    retEn.pIdPlanBonificacion=listaPlanesBonificaciones[i].ID;
+                    benPb.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
                     IList<BonificacionEspecialEN> listaBonificaciones = beln.ConsultarBonificacionEspecialXidPlanLN("BON_ConsultaBonificacionEspecialXidPlan", benPb);
-                    for (int j = 0; j < listaBonificaciones.Count; j++)
+                    if (retEn.pIdPlanBonificacion == 8)
                     {
-                        if (listaBonificaciones[j].pEstado == true)
+                        IList<RetosEN> listaRetos = retln.ConsultarRetosXidPlanLN("BON_ConsultaRetosXidPlan", retEn);
+                        for (int j = 0; j < listaRetos.Count; j++)
                         {
-                            int idPlan = listaPlanes[i].ID;
-                            int id = listaBonificaciones[j].pId;
-                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+                          
+                          
+                                int idPlan = listaPlanesBonificaciones[i].ID;
+                                int id = listaRetos[j].ID;
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
 
-                            BonificacionEspecialEN ben = new BonificacionEspecialEN();
-                            ben.pId = listaBonificaciones[j].pId;
-                            ben.pIdPlanBonificacion = listaPlanes[i].ID;
-                            ben.pUsuActualiza = Session["usuario"].ToString();
-                            ben.pDescripcionBono = "";
-                            ben.pPlanesMinimos = Convert.ToInt32(txbPeriodo.Text);
-                            ben.pPlanesMaximos = Convert.ToInt32(txbano.Text);
-                            String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion");
-                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+                                BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                                ben.pId = listaRetos[j].ID;
+                                ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                                ben.pUsuActualiza = Session["usuario"].ToString();
+                                ben.pDescripcionBono = "";
+                                ben.pPlanesMinimos = Convert.ToInt32(txbPeriodo.Text);
+                                ben.pPlanesMaximos = Convert.ToInt32(txbano.Text);
+                                String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion");
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+                          
+                        }
+
+                    }
+                    else
+                    {
+                        for (int j = 0; j < listaBonificaciones.Count; j++)
+                        {
+                            if (listaBonificaciones[j].pEstado == true)
+                            {
+                                int idPlan = listaPlanesBonificaciones[i].ID;
+                                int id = listaBonificaciones[j].pId;
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+
+                                BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                                ben.pId = listaBonificaciones[j].pId;
+                                ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                                ben.pUsuActualiza = Session["usuario"].ToString();
+                                ben.pDescripcionBono = "";
+                                ben.pPlanesMinimos = Convert.ToInt32(txbPeriodo.Text);
+                                ben.pPlanesMaximos = Convert.ToInt32(txbano.Text);
+                                String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion");
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+                            }
                         }
                     }
-                   
                 }
   
             }

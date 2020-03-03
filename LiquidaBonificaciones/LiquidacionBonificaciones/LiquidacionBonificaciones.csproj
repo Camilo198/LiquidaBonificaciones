@@ -156,6 +156,7 @@
     <None Include="Properties\PublishProfiles\Liquida.pubxml" />
     <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Modulos\Administracion\AdminUsuario.aspx" />
+    <Content Include="Modulos\Parametrizacion\Retos.aspx" />
     <Content Include="Modulos\Parametrizacion\BonificacionEspecial.aspx" />
     <Content Include="Modulos\Parametrizacion\Presupuesto.aspx" />
     <Content Include="Modulos\Proceso\Liquidacion.aspx" />
@@ -183,6 +184,13 @@
     </Compile>
     <Compile Include="Modulos\Administracion\AdminUsuario.aspx.designer.cs">
       <DependentUpon>AdminUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\Retos.aspx.cs">
+      <DependentUpon>Retos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\Retos.aspx.designer.cs">
+      <DependentUpon>Retos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Parametrizacion\BonificacionEspecial.aspx.cs">
       <DependentUpon>BonificacionEspecial.aspx</DependentUpon>

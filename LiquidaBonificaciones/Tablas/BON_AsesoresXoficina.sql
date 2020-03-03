@@ -8,12 +8,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[BON_AsesoresXoficina](
-	[CodOficina] [int] NOT NULL,
+CREATE TABLE [dbo].[BON_AsesoresXgrupo](
+	[CodGrupo] [int] NOT NULL,
 	[CantidadAsesores] [int] NOT NULL,
- CONSTRAINT [PK_AsesoresXoficina] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_AsesoresXgrupo] PRIMARY KEY CLUSTERED 
 (
-	[CodOficina] ASC
+	[CodGrupo] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 

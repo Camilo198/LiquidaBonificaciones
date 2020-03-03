@@ -30,7 +30,12 @@ namespace LiquidaBonificaciones.LN.Consultas
           return Actualiza = new PlanDeBonificacionAD().ActualizarPlanBonificacion(ObjEntidad, ProcedimientoActualiza);
       }
 
+      public string InicializarResultadosLN(String ProcedimientoLiquida)
+      {
+          String Actualiza = String.Empty;
+          return Actualiza = new PlanDeBonificacionAD().InicializarResultadosAD(ProcedimientoLiquida);
 
+      }
 
     }
 

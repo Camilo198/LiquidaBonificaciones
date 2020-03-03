@@ -49,6 +49,7 @@
     <Compile Include="Consultas\PerfilLN.cs" />
     <Compile Include="Consultas\PlanDeBonificacionLN.cs" />
     <Compile Include="Consultas\PresupuestoLN.cs" />
+    <Compile Include="Consultas\RetosLN.cs" />
     <Compile Include="Consultas\UsuarioLN.cs" />
     <Compile Include="Consultas\VentasLN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
