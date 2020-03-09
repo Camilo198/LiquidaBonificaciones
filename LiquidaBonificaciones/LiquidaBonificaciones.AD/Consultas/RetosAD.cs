@@ -58,7 +58,7 @@ namespace LiquidaBonificaciones.AD.Consultas
             }
         }
 
-        //Retorna en una lista los parametros de la bonificacion Especial.
+        //Retorna en una lista los parametros de los Retos.
         public IList<RetosEN> ConsultarRetosAD(string Procedimiento, RetosEN objReto)
         {
             List<RetosEN> listParametro = new List<RetosEN>();
@@ -74,6 +74,65 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[1, 0, 0] = objReto.periodo.ToString();
                 Param[1, 1, 0] = "@Periodo";
                 Param[1, 2, 0] = "Int";
+                lista = wsc.LlenarLista(Param, Procedimiento, "SQLBoni", "SP", "Sql");
+                string[,] Valida;
+
+                if (lista.Count > 0)
+                {
+                    for (int i = 0; i < lista.Count; i++)
+                    {
+                        RetosEN objParametros = new RetosEN();
+                        Valida = lista[i];
+
+                        objParametros.codigoZona = Convert.ToInt32(Valida[0, 1].ToString());
+                        objParametros.RetoEnVentas = Convert.ToInt32(Valida[1, 1].ToString());
+                        objParametros.periodo = Convert.ToInt32(Valida[2, 1].ToString());
+                        objParametros.ano = Convert.ToInt32(Valida[3, 1].ToString());
+                        objParametros.codigoGerente = Convert.ToInt32(Valida[4, 1].ToString());
+                        objParametros.fechaInicioReto = Convert.ToDateTime(Valida[5, 1].ToString());
+                        objParametros.fechaFinReto = Convert.ToDateTime(Valida[6, 1].ToString());
+                        objParametros.valorBono = Convert.ToDouble(Valida[7, 1].ToString());
+                        objParametros.fechaActualiza = Convert.ToDateTime(Valida[8, 1].ToString());
+                        objParametros.usuarioActualiza = Valida[9, 1];
+                        listParametro.Add(objParametros);
+                    }
+                }
+
+                return listParametro;
+            }
+            catch (Exception)
+            {
+                return listParametro;
+            }
+        }
+
+        public IList<RetosEN> ConsultarRetosXllaveAD(string Procedimiento, RetosEN objReto)
+        {
+            List<RetosEN> listParametro = new List<RetosEN>();
+            List<string[,]> lista = new List<string[,]>();
+
+            try
+            {
+                string[,,] Param = new string[5, 3, 1]; // solo cuando el procedimiento almacenado tiene parametros
+                Param[0, 0, 0] = objReto.ano.ToString();
+                Param[0, 1, 0] = "@Ano";
+                Param[0, 2, 0] = "Int";
+
+                Param[1, 0, 0] = objReto.periodo.ToString();
+                Param[1, 1, 0] = "@Periodo";
+                Param[1, 2, 0] = "Int";
+
+                Param[2, 0, 0] = objReto.codigoGerente.ToString();
+                Param[2, 1, 0] = "@CodigoGerente";
+                Param[2, 2, 0] = "Int";
+
+                Param[3, 0, 0] = objReto.fechaInicioReto.ToString();
+                Param[3, 1, 0] = "@FechaIni";
+                Param[3, 2, 0] = "datetime";
+
+                Param[4, 0, 0] = objReto.fechaFinReto.ToString();
+                Param[4, 1, 0] = "@FechaFin";
+                Param[4, 2, 0] = "datetime";
                 lista = wsc.LlenarLista(Param, Procedimiento, "SQLBoni", "SP", "Sql");
                 string[,] Valida;
 

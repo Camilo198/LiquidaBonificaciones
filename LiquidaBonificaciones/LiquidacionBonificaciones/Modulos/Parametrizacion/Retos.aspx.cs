@@ -18,6 +18,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         private String Sp_EliminaReto = "BON_BorrarReto";
         private String SP_InsertaReto = "BON_CrearReto";
         private String SP_ActualizaReto = "BON_ActReto";
+        private String SP_ConsultaRetosXllave = "BON_ConsultaRetosXllave";
 
         //Procedimientos almacenados que interactuan con los Combos
         private String SP_ConsultaPeriodosRetosXano = "BON_ConsultaPeriodosRetosXano";
@@ -249,7 +250,43 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             return DatosParametros.Count;
         }
 
-        //Ajustar-----------------------------------------
+        private int cargarGridviewRetosXllave(String SP_Consulta, GridView gr, String Periodo, String Ano,String CodigoGer, String FechaIni, String FechaFin)
+        {
+            mostrarControlesAnadirNuevo();
+            RetosLN retLn = new RetosLN();
+            RetosEN retEn = new RetosEN();
+            retEn.periodo = Convert.ToInt32(Periodo);
+            retEn.ano = Convert.ToInt32(Ano);
+            retEn.codigoGerente = Convert.ToInt32(CodigoGer);
+            retEn.fechaInicioReto = Convert.ToDateTime(FechaIni);
+            retEn.fechaFinReto = Convert.ToDateTime(FechaFin);
+            IList<RetosEN> DatosParametros = retLn.ConsultarRetosXllaveLN(SP_Consulta, retEn);
+            if (DatosParametros.Count > 0)
+            {
+                //Carga la tabla de parametros al GridView
+                gr.DataSource = DatosParametros;
+                gr.DataBind();
+
+                //---Edicion de Heater del grid view
+
+            }
+            else
+            {
+                //gr.Columns[8].Visible = false; Ocular una columna
+                RetosEN be = new RetosEN();
+                DatosParametros.Add(be);
+                gr.DataSource = DatosParametros;
+                gr.DataBind();
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.SinParametros + " Por Cantidad Planes" + "');</script>", false);
+            }
+
+
+            return DatosParametros.Count;
+        }
+
+        
+
+
         private void ElminarFila(String SP_Elimina, String SP_Consulta, GridView gr, GridViewDeleteEventArgs e, String Periodo, String Ano)
         {
             int id = e.RowIndex;
@@ -331,9 +368,13 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
         private void EditarFila(String SP_Consulta, GridView gr, GridViewEditEventArgs e, String Periodo, String Ano)
         {
+            int id = e.NewEditIndex;
+            gr.EditIndex = id;  //Activa el modo edicion
+            Label l4CodGeren = (Label)gr.Rows[id].FindControl("Label10"); //Llave de la tabla 
+            Label l5FechaInicial = (Label)gr.Rows[id].FindControl("Label11");
+            Label l6FechaFinal = (Label)gr.Rows[id].FindControl("Label12");
 
-            gr.EditIndex = e.NewEditIndex; //Activa el modo edicion
-            this.cargarGridviewRetos(SP_Consulta, gr, Periodo, Ano);
+            this.cargarGridviewRetosXllave(SP_Consulta, gr, Periodo, Ano,l4CodGeren.Text,l5FechaInicial.Text,l6FechaFinal.Text);
         }
         //---Ajustar
         private void ActualizaFila(String SP_Actualiza, String SP_Consulta, GridView gr, GridViewUpdateEventArgs e, String Periodo, String Ano)
@@ -424,7 +465,10 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             try
             {
-                EditarFila(SP_ConsultaRetosXanoPeriodo, this.GridViewRetos, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+                
+                EditarFila(SP_ConsultaRetosXllave, this.GridViewRetos, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+               // EditarFila(SP_ConsultaRetosXanoPeriodo, this.GridViewRetos, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+
             }
             catch (Exception)
             {
@@ -458,11 +502,20 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             }
         }
 
+        protected void PosicionFinalScroll()
+        {
+          ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>var elm=document.getElementById('containerDiv');elm.scrollTop=99999999;</script>", false);
+
+                    }
+
+
 
         protected void ImgBtnAddRetos_Click(object sender, ImageClickEventArgs e)
         {
+            
             try
             {
+                PosicionFinalScroll();
                 agregarNuevaFila(SP_ConsultaRetosXanoPeriodo, this.GridViewRetos, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
 
             }
@@ -563,6 +616,18 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.archivoMax + "');</script>", false);
             }
+        }
+
+        protected void GridViewRetos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.RowIndex == 0)
+                    e.Row.Style.Add("height", "60px");
+
+
+            }
+
         }
 
 

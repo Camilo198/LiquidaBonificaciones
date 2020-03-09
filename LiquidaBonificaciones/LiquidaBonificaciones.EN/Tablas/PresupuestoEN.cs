@@ -16,5 +16,8 @@ namespace LiquidaBonificaciones.EN.Tablas
      public int ano { get; set; }
      public DateTime fechaActualiza { get; set; }
      public String usuarioActualiza { get; set; }
+     public int codigoZona { get; set; }
+     public int codigoDirector { get; set; }
+     public int codigoGerente { get; set; }
     }
 }

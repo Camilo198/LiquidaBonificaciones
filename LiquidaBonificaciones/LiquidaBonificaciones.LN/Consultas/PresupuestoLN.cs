@@ -17,6 +17,13 @@ namespace LiquidaBonificaciones.LN.Consultas
            return lista;
        }
 
+       public IList<PresupuestoEN> ConsultarPresupuestoXoficinaLN(String ProcedimientoConsulta, PresupuestoEN preEn)
+       {
+
+           IList<PresupuestoEN> lista = new PresupuestoAD().ConsultarPresupuestosXoficinaAD(ProcedimientoConsulta, preEn);
+           return lista;
+       }
+
        public IList<PresupuestoEN> ConsultarAnosPresupuestoLN(String ProcedimientoConsulta)
        {
 

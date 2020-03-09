@@ -27,7 +27,7 @@
                             <asp:Panel ID="pnlDatos" CssClass="PanelBordesRedondos" runat="server" Width="99%">
                                 <table style="width: 100%" cellpadding="0" cellspacing="2">
                                     <tr>
-                                        <td class="auto-style1" colspan="9">Presupuesto </td>              
+                                        <td class="auto-style1" colspan="9">Retos </td>              
                                                           <tr>
                                         <td colspan="9" class="auto-style2">
                                             <asp:DropDownList ID="ListAnos" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListAnos_SelectedIndexChanged">
@@ -60,7 +60,7 @@
                                                                   <td class="EspaciadoIntermedio"></td>
                                                                   <td colspan="9" style="height: 10px">
                                                                       <asp:ImageButton ID="ImgBtnAddRetos" runat="server" ImageUrl="~/MarcaVisual/iconos/agregar.png" OnClick="ImgBtnAddRetos_Click" />
-                                                                      <asp:Label ID="Label9" runat="server" Text="Añadir Nueva Oficina al Presupuesto "></asp:Label>
+                                                                      <asp:Label ID="Label9" runat="server" Text="Añadir un nuevo reto "></asp:Label>
                                                                   </td>
                                                               </tr>
                                                               <tr>
@@ -68,17 +68,23 @@
                                                                   <td class="EstiloEtiquetas80"></td>
                                                                   <td class="EspaciadoIntermedio"></td>
                                                                   <td>
-                                                                      <asp:GridView ID="GridViewRetos" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" CssClass="EstiloEtiquetas81" Font-Size="Small" GridLines="Horizontal" HorizontalAlign="Left" OnRowCancelingEdit="GridViewRetos_RowCancelingEdit" OnRowCommand="GridViewRetos_RowCommand" OnRowDeleting="GridViewRetos_RowDeleting" OnRowEditing="GridViewRetos_RowEditing" OnRowUpdating="GridViewRetos_RowUpdating" ShowHeaderWhenEmpty="True" Width="500px">
+                                                                      <div id="containerDiv"  style="overflow-y:auto;height:400px">
+                                                                          <!--BARRA VERTICAL-->
+                                                                      <asp:GridView ID="GridViewRetos" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderColor="#D0DEF0" BorderStyle="Solid" BorderWidth="1px" 
+                                                                          HeaderStyle-CssClass="FixedHeader"
+                                                                          CssClass="EstiloEtiquetas81" Font-Size="Small" GridLines="Horizontal" HorizontalAlign="Left" 
+                                                                          OnRowCancelingEdit="GridViewRetos_RowCancelingEdit" OnRowCommand="GridViewRetos_RowCommand" OnRowDeleting="GridViewRetos_RowDeleting" 
+                                                                          OnRowEditing="GridViewRetos_RowEditing" onrowdatabound="GridViewRetos_RowDataBound" OnRowUpdating="GridViewRetos_RowUpdating" ShowHeaderWhenEmpty="True" Width="830px">
                                                                           <Columns>
                                                                               <asp:TemplateField HeaderText="CodZona">
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label0" runat="server" Text='<%# Bind("codigoZona") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label0" runat="server" Width="30" Text='<%# Bind("codigoZona") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <EditItemTemplate>
-                                                                                      <asp:TextBox ID="TextBox8" Width="50" TextAlignment="Center" runat="server" Text='<%# Bind("codigoZona") %>'></asp:TextBox>
+                                                                                      <asp:TextBox ID="TextBox8" Width="40" TextAlignment="Center" runat="server" Text='<%# Bind("codigoZona") %>'></asp:TextBox>
                                                                                   </EditItemTemplate>
                                                                                   <FooterTemplate>
-                                                                                      <asp:TextBox ID="TextBox4" Width="50" TextAlignment="Center" runat="server"></asp:TextBox>
+                                                                                      <asp:TextBox ID="TextBox4" Width="40" TextAlignment="Center" runat="server"></asp:TextBox>
                                                                                   </FooterTemplate>
                                                                                     <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
@@ -90,13 +96,13 @@
                                                                                       <asp:TextBox ID="TextBox5" Width="80" TextAlignment="Center" runat="server"></asp:TextBox>
                                                                                   </FooterTemplate>
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label1" runat="server" Text='<%# Bind("retoEnVentas") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label1" runat="server" Width="70" Text='<%# Bind("retoEnVentas") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="Periodo">                                                                                  
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label2" runat="server" Text='<%# Bind("periodo") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label2" runat="server" Width="40" Text='<%# Bind("periodo") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                    <FooterTemplate>
                                                                                       <asp:TextBox ID="TextBox6" Width="50" TextAlignment="Center" runat="server"></asp:TextBox>
@@ -105,62 +111,62 @@
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="Año">
                                                                                  <ItemTemplate>
-                                                                                      <asp:Label ID="Label3" runat="server" Text='<%# Bind("ano") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label3" runat="server" Width="30" Text='<%# Bind("ano") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                    <FooterTemplate>
-                                                                                      <asp:TextBox ID="TextBox7" Width="50" TextAlignment="Center" runat="server"></asp:TextBox>
+                                                                                      <asp:TextBox ID="TextBox7" Width="40" TextAlignment="Center" runat="server"></asp:TextBox>
                                                                                   </FooterTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="CodGerente">
                                                                                   <FooterTemplate>
-                                                                                      <asp:TextBox ID="TextBox9" Width="100" TextAlignment="Center" runat="server"></asp:TextBox>
+                                                                                      <asp:TextBox ID="TextBox9" Width="50" TextAlignment="Center" runat="server"></asp:TextBox>
                                                                                   </FooterTemplate>
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label10" runat="server" Text='<%# Bind("codigoGerente") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label10" runat="server" Width="40" Text='<%# Bind("codigoGerente") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="FechaInicialReto">
                                                                                   <FooterTemplate>
-                                                                                      <asp:TextBox ID="TextBox10" Width="100" TextAlignment="Center" runat="server"></asp:TextBox>
+                                                                                      <asp:TextBox ID="TextBox10" Width="90"  runat="server"></asp:TextBox>
                                                                                   </FooterTemplate>
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label11" runat="server" Text='<%# Bind("fechaInicioReto") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label11" runat="server" Width="85" Text='<%# Bind("fechaInicioReto") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="FechaFinalReto">
                                                                                   <FooterTemplate>
-                                                                                      <asp:TextBox ID="TextBox11" Width="100" TextAlignment="Center" runat="server"></asp:TextBox>
+                                                                                      <asp:TextBox ID="TextBox11" Width="90" runat="server"></asp:TextBox>
                                                                                   </FooterTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label12" runat="server" Text='<%# Bind("fechaFinReto") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label12" runat="server" Width="85" Text='<%# Bind("fechaFinReto") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="ValorBono">
                                                                                   <EditItemTemplate>
-                                                                                      <asp:TextBox ID="TextBox12" Width="100" TextAlignment="Center" runat="server" Text='<%# Bind("ValorBono") %>'></asp:TextBox>
+                                                                                      <asp:TextBox ID="TextBox12" Width="60"  runat="server" Text='<%# Bind("ValorBono") %>'></asp:TextBox>
                                                                                   </EditItemTemplate>
                                                                                   <FooterTemplate>
-                                                                                      <asp:TextBox ID="TextBox13" Width="100" TextAlignment="Center" runat="server"></asp:TextBox>
+                                                                                      <asp:TextBox ID="TextBox13" Width="60"  runat="server"></asp:TextBox>
                                                                                   </FooterTemplate>
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label13" runat="server" Text='<%# Bind("ValorBono") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label13" runat="server" Width="50" Text='<%# Bind("ValorBono") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="UsuarioModifica">
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label5" runat="server" Text='<%# Bind("usuarioActualiza") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label5" runat="server" Width="70" Text='<%# Bind("usuarioActualiza") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
-                                                                              <asp:TemplateField HeaderText="FechaModifi">
+                                                                              <asp:TemplateField HeaderText="FechaModificacion">
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label6" runat="server" Text='<%# Bind("fechaActualiza") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label6" runat="server" Width="90" Text='<%# Bind("fechaActualiza") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
@@ -185,23 +191,20 @@
                                                                           <HeaderStyle BackColor="#326394" Font-Bold="True" Font-Size="Small" ForeColor="White" />
                                                                           <AlternatingRowStyle BackColor="#F2F2F2" />
                                                                       </asp:GridView>
+                                                                           </div>
                                                                   </td>
                                                                   <td colspan="9">&nbsp;</td>
                                                               </tr>
                                                               <tr>
                                                                   <td colspan="7" style="height: 10px"  class="EstiloEtiquetas80">                                                                     
-                                                                       <br>
-                                                                      
-                                                                       <br>
-                                                                     
+                                                                       <br>                                                                      
+                                                                       <br>                                                                     
                                                                        <asp:Label ID="Label7" runat="server" Text="Cargar Presupúesto desde Excel"></asp:Label>
                                                                        <asp:FileUpload ID="FileUploadControl" runat="server" />
                                                                        <asp:Button ID="UploadButton" runat="server" onclick="UploadButton_Click" text="Subir Archivo" />
-                                                                       <br>
-                                                                     
+                                                                       <br>                                                                    
                                                                       
-                                                                       <asp:Label ID="Label8" runat="server" Text="Error Estatus"></asp:Label>
-                                                                                                                                                                                                                   
+                                                                       <asp:Label ID="Label8" runat="server" Text="Error Estatus"></asp:Label>                                                                                                                                                                                                       
                                                                       
                                                                        
                                                                     

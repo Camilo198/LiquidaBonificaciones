@@ -44,6 +44,61 @@ namespace LiquidaBonificaciones.AD.Consultas
                         objParametros.ano = Convert.ToInt32(Valida[3, 1].ToString());
                         objParametros.fechaActualiza = Convert.ToDateTime(Valida[4, 1].ToString());
                         objParametros.usuarioActualiza = Valida[5, 1];
+                        objParametros.codigoZona = Convert.ToInt32(Valida[6, 1].ToString());
+                        objParametros.codigoDirector = Convert.ToInt32(Valida[7, 1].ToString());
+                        objParametros.codigoGerente = Convert.ToInt32(Valida[8, 1].ToString());
+                        listParametro.Add(objParametros);
+                    }
+                }
+
+                return listParametro;
+            }
+            catch (Exception)
+            {
+                return listParametro;
+            }
+        }
+
+        //Retorna en una lista los parametros de la bonificacion Especial.
+        public IList<PresupuestoEN> ConsultarPresupuestosXoficinaAD(string Procedimiento, PresupuestoEN objPresupuesto)
+        {
+            List<PresupuestoEN> listParametro = new List<PresupuestoEN>();
+            List<string[,]> lista = new List<string[,]>();
+
+            try
+            {
+
+                string[, ,] Param = new string[3, 3, 1]; // solo cuando el procedimiento almacenado tiene parametros
+                Param[0, 0, 0] = objPresupuesto.ano.ToString();
+                Param[0, 1, 0] = "@Ano";
+                Param[0, 2, 0] = "Int";
+
+                Param[1, 0, 0] = objPresupuesto.periodo.ToString();
+                Param[1, 1, 0] = "@Periodo";
+                Param[1, 2, 0] = "Int";
+
+                Param[2, 0, 0] = objPresupuesto.codigoOficina.ToString();
+                Param[2, 1, 0] = "@Oficina";
+                Param[2, 2, 0] = "Int";
+                lista = wsc.LlenarLista(Param, Procedimiento, "SQLBoni", "SP", "Sql");
+                string[,] Valida;
+
+                if (lista.Count > 0)
+                {
+                    for (int i = 0; i < lista.Count; i++)
+                    {
+                        PresupuestoEN objParametros = new PresupuestoEN();
+                        Valida = lista[i];
+
+                        objParametros.codigoOficina = Convert.ToInt32(Valida[0, 1].ToString());
+                        objParametros.presupuesto = Convert.ToInt32(Valida[1, 1].ToString());
+                        objParametros.periodo = Convert.ToInt32(Valida[2, 1].ToString());
+                        objParametros.ano = Convert.ToInt32(Valida[3, 1].ToString());
+                        objParametros.fechaActualiza = Convert.ToDateTime(Valida[4, 1].ToString());
+                        objParametros.usuarioActualiza = Valida[5, 1];
+                        objParametros.codigoZona = Convert.ToInt32(Valida[6, 1].ToString());
+                        objParametros.codigoDirector = Convert.ToInt32(Valida[7, 1].ToString());
+                        objParametros.codigoGerente = Convert.ToInt32(Valida[8, 1].ToString());
                         listParametro.Add(objParametros);
                     }
                 }
@@ -135,7 +190,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         {
             try
             {
-                string[, ,] Param = new string[5, 3, 1];
+                string[, ,] Param = new string[8, 3, 1];
 
 
                 Param[0, 0, 0] = ObjEntidad.codigoOficina.ToString();
@@ -157,6 +212,18 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[4, 0, 0] = ObjEntidad.usuarioActualiza.ToString();
                 Param[4, 1, 0] = "@usuarioactualiza";
                 Param[4, 2, 0] = "varchar(50)";
+
+                Param[5, 0, 0] = ObjEntidad.codigoZona.ToString();
+                Param[5, 1, 0] = "@codZona";
+                Param[5, 2, 0] = "int";
+
+                Param[6, 0, 0] = ObjEntidad.codigoDirector.ToString();
+                Param[6, 1, 0] = "@codDirector";
+                Param[6, 2, 0] = "int";
+
+                Param[7, 0, 0] = ObjEntidad.codigoGerente.ToString();
+                Param[7, 1, 0] = "@codGerente";
+                Param[7, 2, 0] = "int";
 
 
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
@@ -195,7 +262,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         {
             try
             {
-                string[, ,] Param = new string[5, 3, 1];
+                string[, ,] Param = new string[8, 3, 1];
 
 
                 Param[0, 0, 0] = ObjEntidad.codigoOficina.ToString();
@@ -217,6 +284,18 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[4, 0, 0] = ObjEntidad.usuarioActualiza.ToString();
                 Param[4, 1, 0] = "@usuarioactualiza";
                 Param[4, 2, 0] = "varchar(50)";
+
+                Param[5, 0, 0] = ObjEntidad.codigoZona.ToString();
+                Param[5, 1, 0] = "@codZona";
+                Param[5, 2, 0] = "int";
+
+                Param[6, 0, 0] = ObjEntidad.codigoGerente.ToString();
+                Param[6, 1, 0] = "@codGerente";
+                Param[6, 2, 0] = "int";
+
+                Param[7, 0, 0] = ObjEntidad.codigoDirector.ToString();
+                Param[7, 1, 0] = "@codDirector";
+                Param[7, 2, 0] = "int";
 
 
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");

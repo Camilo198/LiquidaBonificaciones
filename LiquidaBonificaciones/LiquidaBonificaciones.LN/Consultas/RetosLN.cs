@@ -25,6 +25,13 @@ namespace LiquidaBonificaciones.LN.Consultas
             return lista;
         }
 
+        public IList<RetosEN> ConsultarRetosXllaveLN(String ProcedimientoConsulta, RetosEN preEn)
+        {
+
+            IList<RetosEN> lista = new RetosAD().ConsultarRetosXllaveAD(ProcedimientoConsulta, preEn);
+            return lista;
+        }
+
         public IList<RetosEN> ConsultarAnosRetosLN(String ProcedimientoConsulta)
         {
 

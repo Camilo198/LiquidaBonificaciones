@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using LiquidaBonificaciones.EN.Tablas;
 using LiquidaBonificaciones.LN.Consultas;
@@ -16,6 +18,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
         //Procedimientos almacenados que interactuan con el Gridview
         private String SP_ConsultaPresupuestoXanoPeriodo = "BON_ConsultaPresupuesto";
+         private String SP_ConsultaPresupuestoXoficina = "BON_ConsultaPresupuestoXoficina";
         private String Sp_EliminaPresupuesto = "BON_BorrarPresupuesto";
         private String SP_InsertaPresupuesto = "BON_CrearPresupuesto";
         private String SP_ActualizaPresupuesto = "BON_ActPresupuesto";
@@ -249,6 +252,38 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             return DatosParametros.Count;
         }
 
+        private int cargarGridviewPresupuestoXoficina(String SP_Consulta, GridView gr, String Periodo, String Ano,String CodOficina)
+        {
+            mostrarControlesAnadirNuevo();
+            PresupuestoLN preLn = new PresupuestoLN();
+            PresupuestoEN preEn = new PresupuestoEN();
+            preEn.periodo = Convert.ToInt32(Periodo);
+            preEn.ano = Convert.ToInt32(Ano);
+            preEn.codigoOficina = Convert.ToInt32(CodOficina);
+            IList<PresupuestoEN> DatosParametros = preLn.ConsultarPresupuestoXoficinaLN(SP_Consulta, preEn);
+            if (DatosParametros.Count > 0)
+            {
+                //Carga la tabla de parametros al GridView
+                gr.DataSource = DatosParametros;
+                gr.DataBind();
+
+                //---Edicion de Heater del grid view
+
+            }
+            else
+            {
+                //gr.Columns[8].Visible = false; Ocular una columna
+                PresupuestoEN be = new PresupuestoEN();
+                DatosParametros.Add(be);
+                gr.DataSource = DatosParametros;
+                gr.DataBind();
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.SinParametros + " Por Cantidad Planes" + "');</script>", false);
+            }
+
+
+            return DatosParametros.Count;
+        }
+
 
         private void ElminarFila(String SP_Elimina, String SP_Consulta, GridView gr, GridViewDeleteEventArgs e, String Periodo, String Ano)
         {
@@ -290,6 +325,9 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 TextBox t5Fpresupuesto = (TextBox)gr.FooterRow.FindControl("TextBox5");
                 TextBox t6FPeriodo = (TextBox)gr.FooterRow.FindControl("TextBox6");
                 TextBox t7Fano = (TextBox)gr.FooterRow.FindControl("TextBox7");
+                TextBox t8FcodZona = (TextBox)gr.FooterRow.FindControl("TextBox8");
+                TextBox t10FcodDirector = (TextBox)gr.FooterRow.FindControl("TextBox10");
+                TextBox t11FcoGerente = (TextBox)gr.FooterRow.FindControl("TextBox11");
 
                 try
                 {
@@ -297,6 +335,9 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                     preEN.presupuesto = Convert.ToInt32(t5Fpresupuesto.Text);
                     preEN.periodo = Convert.ToInt32(t6FPeriodo.Text);
                     preEN.ano = Convert.ToInt32(t7Fano.Text);
+                    preEN.codigoZona = Convert.ToInt32(t8FcodZona.Text);
+                    preEN.codigoDirector = Convert.ToInt32(t10FcodDirector.Text);
+                    preEN.codigoGerente = Convert.ToInt32(t11FcoGerente.Text);
                     preEN.usuarioActualiza = Session["Usuario"].ToString();
                     String retorno = preLn.InsertarPresupuestoLN(preEN, SP_Inserta);
                     int reg = Convert.ToInt32(retorno);// Si ejecuta con exito
@@ -316,9 +357,13 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
         private void EditarFila(String SP_Consulta, GridView gr, GridViewEditEventArgs e, String Periodo, String Ano)
         {
-
-            gr.EditIndex = e.NewEditIndex; //Activa el modo edicion
-            this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);
+            int id = e.NewEditIndex;
+            gr.EditIndex = id; //Activa el modo edicion
+          Label l0CodOfic = (Label)gr.Rows[id].FindControl("Label0"); //Llave de la tabla control oculto        
+            this.cargarGridviewPresupuestoXoficina(SP_Consulta, gr, Periodo, Ano,l0CodOfic.Text);
+           // this.cargarGridviewPresupuesto(SP_Consulta, gr, Periodo, Ano);
+           
+           
         }
 
         private void ActualizaFila(String SP_Actualiza, String SP_Consulta, GridView gr, GridViewUpdateEventArgs e, String Periodo, String Ano)
@@ -326,19 +371,26 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             //CApturar Controles
 
             int id = e.RowIndex; //iterador de la fil
-            Label l1CodOfic = (Label)gr.Rows[id].FindControl("Label0"); //Llave de la tabla control oculto
+            Label l0CodOfic = (Label)gr.Rows[id].FindControl("Label0"); //Llave de la tabla control oculto
             TextBox t1Presupuesto = (TextBox)gr.Rows[id].FindControl("Textbox1"); //Sirve para Templates
             Label l2Periodo = (Label)gr.Rows[id].FindControl("Label2");
             Label l3ano = (Label)gr.Rows[id].FindControl("Label3");
+            TextBox t9codDirector = (TextBox)gr.Rows[id].FindControl("Textbox9"); //Sirve para Templates
+            Label l10codZona = (Label)gr.Rows[id].FindControl("Label10");
+            Label l12codGerente = (Label)gr.Rows[id].FindControl("Label12");
 
             PresupuestoEN preEn = new PresupuestoEN();
             PresupuestoLN beln = new PresupuestoLN();
             try
             {
-                preEn.codigoOficina = Convert.ToInt32(l1CodOfic.Text);
+                preEn.codigoOficina = Convert.ToInt32(l0CodOfic.Text);
                 preEn.presupuesto = Convert.ToInt32(t1Presupuesto.Text);
                 preEn.periodo = Convert.ToInt32(l2Periodo.Text);
                 preEn.ano = Convert.ToInt32(l3ano.Text);
+                preEn.codigoDirector = Convert.ToInt32(t9codDirector.Text);
+                preEn.codigoZona = Convert.ToInt32(l10codZona.Text);
+                preEn.codigoGerente = Convert.ToInt32(l12codGerente.Text);
+
                 preEn.usuarioActualiza = Session["Usuario"].ToString();
                 string retorno = beln.ActualizarPresupuestoLN(preEn, SP_Actualiza);
                 int reg = Convert.ToInt32(retorno);// Si ejecuta con exito
@@ -402,7 +454,11 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         {
             try
             {
-                EditarFila(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+
+                EditarFila(SP_ConsultaPresupuestoXoficina, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+             //   EditarFila(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
+               
+               
             }
             catch (Exception)
             {
@@ -436,19 +492,37 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             }
         }
 
+        protected void  PosicionFinalScroll() {
+  
 
-        protected void ImgBtnAddPresupuesto_Click(object sender, ImageClickEventArgs e)
+                // your code here
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>var elm=document.getElementById('containerDiv');elm.scrollTop=99999999;</script>", false);
+                
+
+
+        }
+
+
+       
+        protected  void ImgBtnAddPresupuesto_Click(object sender, ImageClickEventArgs e)
         {
+
+          
+           
+            
             try
             {
+                PosicionFinalScroll();
                 agregarNuevaFila(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
-
+               
+                
+                
             }
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.seleccioneBonificacion + "');</script>", false);
             }
-
+            
         }
 
         protected void UploadButton_Click(object sender, EventArgs e)
@@ -474,10 +548,13 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                                 {
                                     String ret = sl.GetCellValueAsString(i, 1);
                                     PresupuestoEN preEn = new PresupuestoEN();
-                                    preEn.codigoOficina = Convert.ToInt32(sl.GetCellValueAsString(i, 1));                                    
-                                    preEn.periodo= Convert.ToInt32(sl.GetCellValueAsString(i, 2));
-                                    preEn.ano = Convert.ToInt32(sl.GetCellValueAsString(i, 3));
-                                    preEn.presupuesto = Convert.ToInt32(sl.GetCellValueAsString(i, 4));
+                                    preEn.codigoZona = Convert.ToInt32(sl.GetCellValueAsString(i, 1));  
+                                    preEn.codigoOficina = Convert.ToInt32(sl.GetCellValueAsString(i, 2));  
+                                    preEn.codigoDirector =Convert.ToInt32(sl.GetCellValueAsString(i, 3));
+                                    preEn.codigoGerente = Convert.ToInt32(sl.GetCellValueAsString(i, 4));  
+                                    preEn.periodo= Convert.ToInt32(sl.GetCellValueAsString(i, 5));
+                                    preEn.ano = Convert.ToInt32(sl.GetCellValueAsString(i, 6));
+                                    preEn.presupuesto = Convert.ToInt32(sl.GetCellValueAsString(i, 7));
                                     preEn.usuarioActualiza = Session["usuario"].ToString();
                                String  result=    preLn.InsertarPresupuestoLN(preEn, SP_InsertaPresupuesto);
                                if (result == "0") {
@@ -534,6 +611,20 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.archivoMax + "');</script>", false);
             }
         }
+
+       protected void GridViewPresupuesto_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+           if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.RowIndex == 0)
+                    e.Row.Style.Add("height", "60px");
+              
+        
+          }
+          
+        }
+
+
 
 
 

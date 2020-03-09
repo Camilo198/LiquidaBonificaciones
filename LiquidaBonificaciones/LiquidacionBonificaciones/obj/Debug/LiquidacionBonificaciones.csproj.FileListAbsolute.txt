@@ -57,8 +57,12 @@ C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaci
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.LN.pdb
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidaBonificaciones.AD.pdb
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\bin\es\AjaxControlToolkit.resources.dll
-C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csprojResolveAssemblyReference.cache
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.Mensajes.resources
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csproj.GenerateResource.Cache
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.dll
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.pdb
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\bin\LiquidacionBonificaciones.dll.config
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\bin\DocumentFormat.OpenXml.dll
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\bin\DocumentFormat.OpenXml.xml
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csprojAssemblyReference.cache
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidacionBonificaciones\obj\Debug\LiquidacionBonificaciones.csproj.CopyComplete
