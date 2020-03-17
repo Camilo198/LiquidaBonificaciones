@@ -22,5 +22,7 @@ namespace LiquidaBonificaciones.EN.Tablas
         public DateTime fechaActualiza { get; set; }
         public String usuarioActualiza { get; set; }
         public int pIdPlanBonificacion { get; set; }
+
+        public int numeroReto { get; set; }
     }
 }

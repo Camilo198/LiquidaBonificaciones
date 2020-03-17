@@ -218,49 +218,57 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         //Entrega la bonificacion seleccionada
         protected void ListBonificacion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mostrarControlesAnadirNuevo();
-            TextBoxIdPlan.Text = ListBonificacion.Text;
-            Session["Obj_BonificacionEspecialEn"] = ListBonificacion.Text; //Se envia el resultado del Combo a sesion para que funcione en los otros eventos del GridView
-            //Carga los grid view con informacion
-            this.GridViewBonificacionEspecial.ShowFooter = false; //oculta el footer si esta visible
-            this.GridViewBonificacionEspecial.EditIndex = -1; //Devuelve al modo sin edicion 
-            PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
-            PlanDeBonificacionEN planBonificacion = new PlanDeBonificacionEN();
-            planBonificacion.ID = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
-            IList<PlanDeBonificacionEN> lista= pbln.ConsultarPlanBonificacionEspecialXidLN(SP_ConsultaPlanesBonificacionXid,planBonificacion);
-            try
+            if (Convert.ToInt32(ListBonificacion.Text) == 8)
             {
-                if (lista.Count > 0)
+                Response.Redirect("Retos.aspx");
+            }
+            else
+            {
+                mostrarControlesAnadirNuevo();
+                TextBoxIdPlan.Text = ListBonificacion.Text;
+                Session["Obj_BonificacionEspecialEn"] = ListBonificacion.Text; //Se envia el resultado del Combo a sesion para que funcione en los otros eventos del GridView
+                                                                               //Carga los grid view con informacion
+                this.GridViewBonificacionEspecial.ShowFooter = false; //oculta el footer si esta visible
+                this.GridViewBonificacionEspecial.EditIndex = -1; //Devuelve al modo sin edicion 
+                PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
+                PlanDeBonificacionEN planBonificacion = new PlanDeBonificacionEN();
+                planBonificacion.ID = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());
+                IList<PlanDeBonificacionEN> lista = pbln.ConsultarPlanBonificacionEspecialXidLN(SP_ConsultaPlanesBonificacionXid, planBonificacion);
+                try
                 {
-                    this.LabelDescipcionPlan.Text = lista[0].Descripcion;
-                    Session["EstadoPlan"] = lista[0].estado;
-                    if (lista[0].estado == true)
+                    if (lista.Count > 0)
                     {
-                        this.LabelEstadoPlan.Text = "Activo";
+                        this.LabelDescipcionPlan.Text = lista[0].Descripcion;
+                        Session["EstadoPlan"] = lista[0].estado;
+                        if (lista[0].estado == true)
+                        {
+                            this.LabelEstadoPlan.Text = "Activo";
 
+                        }
+                        else
+                        {
+                            this.LabelEstadoPlan.Text = "Desactivado";
+
+                        }
+                        cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
+                        cancelarControlesEditarEstadoPlan();
                     }
                     else
                     {
-                        this.LabelEstadoPlan.Text = "Desactivado";
-
+                        cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionSeleccion + "');</script>", false);
+                        ocultarControlesAnadirNuevo();
+                        ocultarControlesEstadoPlan();
                     }
-                    cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
-                    cancelarControlesEditarEstadoPlan();
                 }
-                else {
+                catch (Exception)
+                {
                     cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionSeleccion + "');</script>", false);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionInvalida + "');</script>", false);
                     ocultarControlesAnadirNuevo();
                     ocultarControlesEstadoPlan();
                 }
             }
-            catch (Exception) {
-                cargarGridviewBonificacionEspecial(SP_ConsultaBonificacionesXidPlan, this.GridViewBonificacionEspecial, Session["Obj_BonificacionEspecialEn"].ToString());
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.OpcionInvalida + "');</script>", false);
-                ocultarControlesAnadirNuevo();
-                ocultarControlesEstadoPlan();
-            }
-            
         }
         //Entrega el rol seleccionado y carga la lista de bonificaciones con este rol
         protected void ListAsesor_SelectedIndexChanged(object sender, EventArgs e)
@@ -329,30 +337,39 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         private void modificacionHeadersGridview() {
             //Modifica Los Heaters del Grid View Segun el plan de Bonificaion Seleccionado
             String indexBonificacionEspecial = Session["Obj_BonificacionEspecialEn"].ToString();
-            if (indexBonificacionEspecial == "1" || indexBonificacionEspecial == "6")
+            if (indexBonificacionEspecial == "1" || indexBonificacionEspecial == "6" || indexBonificacionEspecial == "10")
             {
-                this.GridViewBonificacionEspecial.HeaderRow.Cells[1].Text = "Descripcion";
+                
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Minimos";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Maximos";
             }
             else if (indexBonificacionEspecial == "2")
             {
-                this.GridViewBonificacionEspecial.HeaderRow.Cells[1].Text = "Descripcion";
+                
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Desde";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Hasta";
             }
-            else if (indexBonificacionEspecial == "3" || indexBonificacionEspecial == "4" || indexBonificacionEspecial == "5" || indexBonificacionEspecial == "7")
+            else if (indexBonificacionEspecial == "3" || indexBonificacionEspecial == "4" || indexBonificacionEspecial == "5" || indexBonificacionEspecial == "7" || indexBonificacionEspecial == "12")
             {
-                this.GridViewBonificacionEspecial.HeaderRow.Cells[1].Text = "Descripcion";
+    
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "% Minimo de Cumplimiento";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "% Maximo de Cumplimiento";
             }
-            else if (indexBonificacionEspecial == "8")
+            else if (indexBonificacionEspecial == "9")
             {
-                this.GridViewBonificacionEspecial.HeaderRow.Cells[1].Text = "Meta de Ventas";
+               
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Fecha Desde";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Fecha Hasta";
-                
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[4].Text = "%AdicionalBono";
+
+            }
+
+            else if (indexBonificacionEspecial == "11")
+            {
+
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Asesores Minimos";
+                this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Asesores Maximos";
+
             }
         }
 

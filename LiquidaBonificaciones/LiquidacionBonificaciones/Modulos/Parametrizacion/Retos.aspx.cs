@@ -338,6 +338,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 TextBox t10FFechaInicial = (TextBox)gr.FooterRow.FindControl("TextBox10");
                 TextBox t11FFechaFinal = (TextBox)gr.FooterRow.FindControl("TextBox11");
                 TextBox t13FvalorBono= (TextBox)gr.FooterRow.FindControl("TextBox13");
+                TextBox t14FnumeroRetp = (TextBox)gr.FooterRow.FindControl("TextBox14");
 
                 try
                 {
@@ -350,6 +351,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                     retEn.fechaFinReto = Convert.ToDateTime(t11FFechaFinal.Text);
                     retEn.valorBono = Convert.ToInt32(t13FvalorBono.Text);
                     retEn.usuarioActualiza = Session["Usuario"].ToString();
+                    retEn.numeroReto = Convert.ToInt32(t14FnumeroRetp.Text);
                     String retorno = retLn.InsertarRetosLN(retEn, SP_Inserta);
                     int reg = Convert.ToInt32(retorno);// Si ejecuta con exito
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + "Se Agrego " + reg + " Registro Correctamente" + "');</script>", false);
@@ -558,13 +560,14 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                                     retEn.fechaInicioReto = sl.GetCellValueAsDateTime(i, 6);
                                     retEn.fechaFinReto = sl.GetCellValueAsDateTime(i, 7);
                                     retEn.valorBono = Convert.ToDouble(sl.GetCellValueAsString(i, 8));
+                                    retEn.numeroReto = Convert.ToInt32(sl.GetCellValueAsString(i, 9));
 
                                     retEn.usuarioActualiza = Session["usuario"].ToString();
                                     String result = retLn.InsertarRetosLN(retEn, SP_InsertaReto);
-                                    if (result == "0")
+                                    if ( result.Substring(0,1) == "0")
                                     {
                                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ErrorProceso + "');</script>", false);
-
+                                        break;
                                     }
                                     else if (result != "1")
                                     {

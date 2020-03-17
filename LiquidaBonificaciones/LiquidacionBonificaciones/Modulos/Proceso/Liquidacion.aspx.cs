@@ -15,6 +15,8 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
    
         protected void Page_Load(object sender, EventArgs e)
         {
+            ScriptManager _scriptMan = ScriptManager.GetCurrent(this);
+            _scriptMan.AsyncPostBackTimeout = 36000;
             try
             {
                 UsuarioEN objUsuario = new UsuarioEN();
@@ -197,10 +199,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                             }
                         }
                     }
-                    
+
                     string resultActCampos = new VentasLN().ActualizaCampos("BON_ActualizarCampos");
-                    ObjReglas.pIdTabla = (ContadorReglas-1).ToString();// Se le resta 1 ya que no se tiene en cuenta la asistencia de Kactus en la suma de reglas
-                   this.TextVentasValidas.Text= new VentasLN().ValidarReglas(ObjReglas, "BON_CalculaReglas");
+                   this.TextVentasValidas.Text= new VentasLN().ValidarReglas("BON_CalculaReglas");
                    this.TextVentasValidas.Enabled = false;
 
                     if (resultActCampos.Substring(0, 1) != "0")

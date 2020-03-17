@@ -46,6 +46,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                         objParametros.fechaInicioReto = Convert.ToDateTime(Valida[6, 1].ToString());
                         objParametros.fechaFinReto = Convert.ToDateTime(Valida[7, 1].ToString());
                         objParametros.valorBono = Convert.ToInt32(Valida[8, 1].ToString());
+                        objParametros.numeroReto = Convert.ToInt32(Valida[16, 1].ToString());
                         listParametro.Add(objParametros);
                     }
                 }
@@ -94,6 +95,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                         objParametros.valorBono = Convert.ToDouble(Valida[7, 1].ToString());
                         objParametros.fechaActualiza = Convert.ToDateTime(Valida[8, 1].ToString());
                         objParametros.usuarioActualiza = Valida[9, 1];
+                        objParametros.numeroReto = Convert.ToInt32(Valida[10, 1].ToString());
                         listParametro.Add(objParametros);
                     }
                 }
@@ -153,6 +155,7 @@ namespace LiquidaBonificaciones.AD.Consultas
                         objParametros.valorBono = Convert.ToDouble(Valida[7, 1].ToString());
                         objParametros.fechaActualiza = Convert.ToDateTime(Valida[8, 1].ToString());
                         objParametros.usuarioActualiza = Valida[9, 1];
+                        objParametros.numeroReto= Convert.ToInt32(Valida[10, 1].ToString());
                         listParametro.Add(objParametros);
                     }
                 }
@@ -329,7 +332,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         {
             try
             {
-                string[, ,] Param = new string[9, 3, 1];
+                string[, ,] Param = new string[10, 3, 1];
 
 
                 Param[0, 0, 0] = ObjEntidad.codigoZona.ToString();
@@ -367,6 +370,10 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[8, 0, 0] = ObjEntidad.usuarioActualiza.ToString();
                 Param[8, 1, 0] = "@usuarioactualiza";
                 Param[8, 2, 0] = "varchar(50)";
+
+                Param[9, 0, 0] = ObjEntidad.numeroReto.ToString();
+                Param[9, 1, 0] = "@numeroReto";
+                Param[9, 2, 0] = "int";
 
 
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");

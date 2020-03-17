@@ -74,14 +74,14 @@
                                                                           HeaderStyle-CssClass="FixedHeader"
                                                                           CssClass="EstiloEtiquetas81" Font-Size="Small" GridLines="Horizontal" HorizontalAlign="Left" 
                                                                           OnRowCancelingEdit="GridViewRetos_RowCancelingEdit" OnRowCommand="GridViewRetos_RowCommand" OnRowDeleting="GridViewRetos_RowDeleting" 
-                                                                          OnRowEditing="GridViewRetos_RowEditing" onrowdatabound="GridViewRetos_RowDataBound" OnRowUpdating="GridViewRetos_RowUpdating" ShowHeaderWhenEmpty="True" Width="830px">
+                                                                          OnRowEditing="GridViewRetos_RowEditing" onrowdatabound="GridViewRetos_RowDataBound" OnRowUpdating="GridViewRetos_RowUpdating" ShowHeaderWhenEmpty="True" Width="850px">
                                                                           <Columns>
                                                                               <asp:TemplateField HeaderText="CodZona">
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label0" runat="server" Width="30" Text='<%# Bind("codigoZona") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label0" runat="server" Width="40" Text='<%# Bind("codigoZona") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <EditItemTemplate>
-                                                                                      <asp:TextBox ID="TextBox8" Width="40" TextAlignment="Center" runat="server" Text='<%# Bind("codigoZona") %>'></asp:TextBox>
+                                                                                      <asp:TextBox ID="TextBox8" Width="60" TextAlignment="Center" runat="server" Text='<%# Bind("codigoZona") %>'></asp:TextBox>
                                                                                   </EditItemTemplate>
                                                                                   <FooterTemplate>
                                                                                       <asp:TextBox ID="TextBox4" Width="40" TextAlignment="Center" runat="server"></asp:TextBox>
@@ -146,6 +146,15 @@
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
+                                                                              <asp:TemplateField HeaderText="#R">
+                                                                                  <FooterTemplate>
+                                                                                      <asp:TextBox ID="TextBox14" Width="60"  runat="server"></asp:TextBox>
+                                                                                  </FooterTemplate>
+                                                                                  <ItemTemplate>
+                                                                                      <asp:Label ID="Label14" runat="server" Text='<%# Bind("numeroReto") %>'></asp:Label>
+                                                                                  </ItemTemplate>
+                                                                                  <ItemStyle HorizontalAlign="Center" />
+                                                                              </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="ValorBono">
                                                                                   <EditItemTemplate>
                                                                                       <asp:TextBox ID="TextBox12" Width="60"  runat="server" Text='<%# Bind("ValorBono") %>'></asp:TextBox>
@@ -160,11 +169,11 @@
                                                                               </asp:TemplateField>
                                                                               <asp:TemplateField HeaderText="UsuarioModifica">
                                                                                   <ItemTemplate>
-                                                                                      <asp:Label ID="Label5" runat="server" Width="70" Text='<%# Bind("usuarioActualiza") %>'></asp:Label>
+                                                                                      <asp:Label ID="Label5" runat="server" Width="80" Text='<%# Bind("usuarioActualiza") %>'></asp:Label>
                                                                                   </ItemTemplate>
                                                                                   <ItemStyle HorizontalAlign="Center" />
                                                                               </asp:TemplateField>
-                                                                              <asp:TemplateField HeaderText="FechaModificacion">
+                                                                              <asp:TemplateField HeaderText="FechaModifica">
                                                                                   <ItemTemplate>
                                                                                       <asp:Label ID="Label6" runat="server" Width="90" Text='<%# Bind("fechaActualiza") %>'></asp:Label>
                                                                                   </ItemTemplate>
