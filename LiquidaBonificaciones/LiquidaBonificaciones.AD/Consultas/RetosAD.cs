@@ -19,12 +19,20 @@ namespace LiquidaBonificaciones.AD.Consultas
 
             try
             {
-                string[, ,] Param = new string[1, 3, 1]; // solo cuando el procedimiento almacenado tiene parametros
+                string[, ,] Param = new string[3, 3, 1]; // solo cuando el procedimiento almacenado tiene parametros
 
 
                 Param[0, 0, 0] = objEntidad.pIdPlanBonificacion.ToString();
                 Param[0, 1, 0] = "@IdPlanBonificacion";
                 Param[0, 2, 0] = "int";
+
+                Param[1, 0, 0] = objEntidad.periodo.ToString();
+                Param[1, 1, 0] = "@mes";
+                Param[1, 2, 0] = "int";
+
+                Param[2, 0, 0] = objEntidad.ano.ToString();
+                Param[2, 1, 0] = "@ano";
+                Param[2, 2, 0] = "int";
 
 
                 lista = wsc.LlenarLista(Param, Procedimiento, "SQLBoni", "SP", "Sql");

@@ -25,5 +25,4 @@ C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaci
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\bin\Debug\LiquidaBonificaciones.EN.pdb
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.dll
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.pdb
-C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.csprojAssemblyReference.cache
-C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.csproj.CopyComplete
+C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.AD\obj\Debug\LiquidaBonificaciones.AD.csprojResolveAssemblyReference.cache

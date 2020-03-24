@@ -19,5 +19,13 @@ namespace LiquidaBonificaciones.EN.Tablas
      public int codigoZona { get; set; }
      public int codigoDirector { get; set; }
      public int codigoGerente { get; set; }
+     public int retoSonadoresDia { get; set; }
+     public int retoExtraSonadoresDia { get; set; }
+     public double bonoAsesorSonadoresDia { get; set; }
+     public double bonoAsesorExtraSonadoresDia { get; set; }
+     public double bonoDirectorSonadoresDia { get; set; }
+     public double bonoDirectorExtraSonadoresDia { get; set; }
+     public int pIdBonificacion { get; set; }
+     public int pIdPlanBonificacion { get; set; }
     }
 }

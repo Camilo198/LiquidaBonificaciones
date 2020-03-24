@@ -73,13 +73,15 @@ namespace LiquidaBonificaciones.AD.Consultas
                 return "0";
             }
         }
-        public string ValidarReglas(string Procedimiento)
+        public string ValidarReglas(VentasEN objReglas,string Procedimiento)
         {
             try
             {
-                string[, ,] Param = new string[0, 0, 0];
+                string[, ,] Param = new string[1, 3, 1];
 
-
+               Param[0,0,0]= objReglas.pIdTabla;
+               Param[0,1,0]="@cantidadReglas";
+               Param[0,2,0] = "int";
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
             }
             catch (Exception)

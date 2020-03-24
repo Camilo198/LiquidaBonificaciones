@@ -30,10 +30,10 @@ namespace LiquidaBonificaciones.LN.Consultas
         
         }
 
-        public string ValidarReglas(string Procedimiento)
+        public string ValidarReglas(VentasEN objReglas ,string Procedimiento)
         {
             String Actualiza = String.Empty;
-            return Actualiza = new VentasAD().ValidarReglas(Procedimiento);
+            return Actualiza = new VentasAD().ValidarReglas(objReglas, Procedimiento);
         }
     }
 }

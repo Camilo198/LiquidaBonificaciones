@@ -222,6 +222,10 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             {
                 Response.Redirect("Retos.aspx");
             }
+            else if (Convert.ToInt32(ListBonificacion.Text) == 14 || Convert.ToInt32(ListBonificacion.Text) == 15)
+            {
+                Response.Redirect("Presupuesto.aspx");
+            }
             else
             {
                 mostrarControlesAnadirNuevo();
@@ -337,7 +341,8 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         private void modificacionHeadersGridview() {
             //Modifica Los Heaters del Grid View Segun el plan de Bonificaion Seleccionado
             String indexBonificacionEspecial = Session["Obj_BonificacionEspecialEn"].ToString();
-            if (indexBonificacionEspecial == "1" || indexBonificacionEspecial == "6" || indexBonificacionEspecial == "10")
+            if (indexBonificacionEspecial == "1" || indexBonificacionEspecial == "6"
+                 || indexBonificacionEspecial == "9")
             {
                 
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Minimos";
@@ -349,20 +354,17 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Planes Desde";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Planes Hasta";
             }
-            else if (indexBonificacionEspecial == "3" || indexBonificacionEspecial == "4" || indexBonificacionEspecial == "5" || indexBonificacionEspecial == "7" || indexBonificacionEspecial == "12")
+            else if (indexBonificacionEspecial == "3" || indexBonificacionEspecial == "4"
+                || indexBonificacionEspecial == "5" || indexBonificacionEspecial == "7"
+                || indexBonificacionEspecial == "10" || indexBonificacionEspecial == "12"
+                || indexBonificacionEspecial == "18")
             {
     
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "% Minimo de Cumplimiento";
                 this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "% Maximo de Cumplimiento";
             }
-            else if (indexBonificacionEspecial == "9")
-            {
-               
-                this.GridViewBonificacionEspecial.HeaderRow.Cells[2].Text = "Fecha Desde";
-                this.GridViewBonificacionEspecial.HeaderRow.Cells[3].Text = "Fecha Hasta";
-                this.GridViewBonificacionEspecial.HeaderRow.Cells[4].Text = "%AdicionalBono";
+         
 
-            }
 
             else if (indexBonificacionEspecial == "11")
             {

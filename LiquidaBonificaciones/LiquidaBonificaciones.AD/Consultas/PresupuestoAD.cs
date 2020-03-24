@@ -47,6 +47,14 @@ namespace LiquidaBonificaciones.AD.Consultas
                         objParametros.codigoZona = Convert.ToInt32(Valida[6, 1].ToString());
                         objParametros.codigoDirector = Convert.ToInt32(Valida[7, 1].ToString());
                         objParametros.codigoGerente = Convert.ToInt32(Valida[8, 1].ToString());
+                        objParametros.retoSonadoresDia = Convert.ToInt32(Valida[9, 1].ToString());
+                        objParametros.retoExtraSonadoresDia= Convert.ToInt32(Valida[10, 1].ToString());
+                        objParametros.bonoAsesorSonadoresDia = Convert.ToInt32(Valida[11, 1].ToString());
+                        objParametros.bonoAsesorExtraSonadoresDia = Convert.ToInt32(Valida[12, 1].ToString());
+                        objParametros.bonoDirectorSonadoresDia = Convert.ToInt32(Valida[13, 1].ToString());
+                        objParametros.bonoDirectorExtraSonadoresDia = Convert.ToInt32(Valida[14, 1].ToString());
+                        objParametros.pIdBonificacion = Convert.ToInt32(Valida[15, 1].ToString());
+                        objParametros.pIdPlanBonificacion = Convert.ToInt32(Valida[16, 1].ToString());
                         listParametro.Add(objParametros);
                     }
                 }
@@ -99,6 +107,14 @@ namespace LiquidaBonificaciones.AD.Consultas
                         objParametros.codigoZona = Convert.ToInt32(Valida[6, 1].ToString());
                         objParametros.codigoDirector = Convert.ToInt32(Valida[7, 1].ToString());
                         objParametros.codigoGerente = Convert.ToInt32(Valida[8, 1].ToString());
+                        objParametros.retoSonadoresDia = Convert.ToInt32(Valida[9, 1].ToString());
+                        objParametros.retoExtraSonadoresDia = Convert.ToInt32(Valida[10, 1].ToString());
+                        objParametros.bonoAsesorSonadoresDia = Convert.ToInt32(Valida[11, 1].ToString());
+                        objParametros.bonoAsesorExtraSonadoresDia = Convert.ToInt32(Valida[12, 1].ToString());
+                        objParametros.bonoDirectorSonadoresDia = Convert.ToInt32(Valida[13, 1].ToString());
+                        objParametros.bonoDirectorExtraSonadoresDia = Convert.ToInt32(Valida[14, 1].ToString());
+                        objParametros.pIdBonificacion = Convert.ToInt32(Valida[15, 1].ToString());
+                        objParametros.pIdPlanBonificacion = Convert.ToInt32(Valida[16, 1].ToString());
                         listParametro.Add(objParametros);
                     }
                 }
@@ -190,7 +206,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         {
             try
             {
-                string[, ,] Param = new string[8, 3, 1];
+                string[, ,] Param = new string[14, 3, 1];
 
 
                 Param[0, 0, 0] = ObjEntidad.codigoOficina.ToString();
@@ -225,6 +241,29 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[7, 1, 0] = "@codGerente";
                 Param[7, 2, 0] = "int";
 
+                Param[8, 0, 0] = ObjEntidad.retoSonadoresDia.ToString();
+                Param[8, 1, 0] = "@retoSonadores";
+                Param[8, 2, 0] = "int";
+
+                Param[9, 0, 0] = ObjEntidad.retoExtraSonadoresDia.ToString();
+                Param[9, 1, 0] = "@retoExtraSonadores";
+                Param[9, 2, 0] = "int";
+
+                Param[10, 0, 0] = ObjEntidad.bonoAsesorSonadoresDia.ToString();
+                Param[10, 1, 0] = "@bonoAsesorSonadores";
+                Param[10, 2, 0] = "numeric";
+
+                Param[11, 0, 0] = ObjEntidad.bonoAsesorExtraSonadoresDia.ToString();
+                Param[11, 1, 0] = "@bonoAsesorExtraSonadores";
+                Param[11, 2, 0] = "numeric";
+
+                Param[12, 0, 0] = ObjEntidad.bonoDirectorSonadoresDia.ToString();
+                Param[12, 1, 0] = "@bonoDirectoSonadores";
+                Param[12, 2, 0] = "numeric";
+
+                Param[13, 0, 0] = ObjEntidad.bonoDirectorExtraSonadoresDia.ToString();
+                Param[13, 1, 0] = "@bonoDirectorExtraSonadores";
+                Param[13, 2, 0] = "numeric";
 
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");
             }
@@ -262,7 +301,7 @@ namespace LiquidaBonificaciones.AD.Consultas
         {
             try
             {
-                string[, ,] Param = new string[8, 3, 1];
+                string[, ,] Param = new string[14, 3, 1];
 
 
                 Param[0, 0, 0] = ObjEntidad.codigoOficina.ToString();
@@ -296,6 +335,30 @@ namespace LiquidaBonificaciones.AD.Consultas
                 Param[7, 0, 0] = ObjEntidad.codigoDirector.ToString();
                 Param[7, 1, 0] = "@codDirector";
                 Param[7, 2, 0] = "int";
+
+                Param[8, 0, 0] = ObjEntidad.retoSonadoresDia.ToString();
+                Param[8, 1, 0] = "@retoSonadores";
+                Param[8, 2, 0] = "int";
+
+                Param[9, 0, 0] = ObjEntidad.retoExtraSonadoresDia.ToString();
+                Param[9, 1, 0] = "@retoExtraSonadores";
+                Param[9, 2, 0] = "int";
+
+                Param[10, 0, 0] = ObjEntidad.bonoAsesorSonadoresDia.ToString();
+                Param[10, 1, 0] = "@bonoAsesorSonadores";
+                Param[10, 2, 0] = "numeric";
+
+                Param[11, 0, 0] = ObjEntidad.bonoAsesorExtraSonadoresDia.ToString();
+                Param[11, 1, 0] = "@bonoAsesorExtraSonadores";
+                Param[11, 2, 0] = "numeric";
+
+                Param[12, 0, 0] = ObjEntidad.bonoDirectorSonadoresDia.ToString();
+                Param[12, 1, 0] = "@bonoDirectoSonadores";
+                Param[12, 2, 0] = "numeric";
+
+                Param[13, 0, 0] = ObjEntidad.bonoDirectorExtraSonadoresDia.ToString();
+                Param[13, 1, 0] = "@bonoDirectorExtraSonadores";
+                Param[13, 2, 0] = "numeric";
 
 
                 return wsc.Ejecutar(Param, Procedimiento, "SQLBoni");

@@ -288,7 +288,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
         private void ElminarFila(String SP_Elimina, String SP_Consulta, GridView gr, GridViewDeleteEventArgs e, String Periodo, String Ano)
         {
             int id = e.RowIndex;
-            Label l1CodOfic = (Label)gr.Rows[id].FindControl("Label0");
+            Label l1CodOfic = (Label)gr.Rows[id].FindControl("Label15");
             Label l2Periodo = (Label)gr.Rows[id].FindControl("Label2");
             Label l3ano = (Label)gr.Rows[id].FindControl("Label3");
             PresupuestoEN preEn = new PresupuestoEN();
@@ -328,6 +328,13 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 TextBox t8FcodZona = (TextBox)gr.FooterRow.FindControl("TextBox8");
                 TextBox t10FcodDirector = (TextBox)gr.FooterRow.FindControl("TextBox10");
                 TextBox t11FcoGerente = (TextBox)gr.FooterRow.FindControl("TextBox11");
+                TextBox t13Fsonador= (TextBox)gr.FooterRow.FindControl("TextBox13");
+                TextBox t15FextraSonador = (TextBox)gr.FooterRow.FindControl("TextBox15");
+                TextBox t16FValorAsesorsonador = (TextBox)gr.FooterRow.FindControl("TextBox16");
+                TextBox t17FvalorAsesorExtraSonador = (TextBox)gr.FooterRow.FindControl("TextBox17");
+                TextBox t18FvalorDirectorSonador = (TextBox)gr.FooterRow.FindControl("TextBox18");
+                TextBox t19FvalorDirectorExtraSonador = (TextBox)gr.FooterRow.FindControl("TextBox19");
+
 
                 try
                 {
@@ -338,6 +345,12 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                     preEN.codigoZona = Convert.ToInt32(t8FcodZona.Text);
                     preEN.codigoDirector = Convert.ToInt32(t10FcodDirector.Text);
                     preEN.codigoGerente = Convert.ToInt32(t11FcoGerente.Text);
+                    preEN.retoSonadoresDia = Convert.ToInt32(t13Fsonador.Text);
+                    preEN.retoExtraSonadoresDia = Convert.ToInt32(t15FextraSonador.Text);
+                    preEN.bonoAsesorSonadoresDia = Convert.ToInt32(t16FValorAsesorsonador.Text);
+                    preEN.bonoAsesorExtraSonadoresDia = Convert.ToInt32(t17FvalorAsesorExtraSonador.Text);
+                    preEN.bonoDirectorSonadoresDia = Convert.ToInt32(t18FvalorDirectorSonador.Text);
+                    preEN.bonoDirectorExtraSonadoresDia = Convert.ToInt32(t19FvalorDirectorExtraSonador.Text);
                     preEN.usuarioActualiza = Session["Usuario"].ToString();
                     String retorno = preLn.InsertarPresupuestoLN(preEN, SP_Inserta);
                     int reg = Convert.ToInt32(retorno);// Si ejecuta con exito
@@ -371,13 +384,19 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             //CApturar Controles
 
             int id = e.RowIndex; //iterador de la fil
-            Label l0CodOfic = (Label)gr.Rows[id].FindControl("Label0"); //Llave de la tabla control oculto
+            Label l0CodOfic = (Label)gr.Rows[id].FindControl("Label15"); //Llave de la tabla control oculto
             TextBox t1Presupuesto = (TextBox)gr.Rows[id].FindControl("Textbox1"); //Sirve para Templates
             Label l2Periodo = (Label)gr.Rows[id].FindControl("Label2");
             Label l3ano = (Label)gr.Rows[id].FindControl("Label3");
             TextBox t9codDirector = (TextBox)gr.Rows[id].FindControl("Textbox9"); //Sirve para Templates
             Label l10codZona = (Label)gr.Rows[id].FindControl("Label10");
             Label l12codGerente = (Label)gr.Rows[id].FindControl("Label12");
+            TextBox t12Sonador = (TextBox)gr.Rows[id].FindControl("Textbox12"); //Sirve para Templates
+            TextBox t14ExtraSonador = (TextBox)gr.Rows[id].FindControl("Textbox14"); //Sirve para Templates
+            Label l16ValorAsesorSonar = (Label)gr.Rows[id].FindControl("Label16");
+            Label l17ValorAsesorExtraSonar = (Label)gr.Rows[id].FindControl("Label17");
+            Label l18ValorDirectorSonar = (Label)gr.Rows[id].FindControl("Label18");
+            Label l19ValorDirectorExtraSonar = (Label)gr.Rows[id].FindControl("Label19");
 
             PresupuestoEN preEn = new PresupuestoEN();
             PresupuestoLN beln = new PresupuestoLN();
@@ -390,6 +409,12 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                 preEn.codigoDirector = Convert.ToInt32(t9codDirector.Text);
                 preEn.codigoZona = Convert.ToInt32(l10codZona.Text);
                 preEn.codigoGerente = Convert.ToInt32(l12codGerente.Text);
+                preEn.retoSonadoresDia = Convert.ToInt32(t12Sonador.Text);
+                preEn.retoExtraSonadoresDia = Convert.ToInt32(t14ExtraSonador.Text);
+                preEn.bonoAsesorSonadoresDia = Convert.ToInt32(l16ValorAsesorSonar.Text);
+                preEn.bonoAsesorExtraSonadoresDia = Convert.ToInt32(l17ValorAsesorExtraSonar.Text);
+                preEn.bonoDirectorSonadoresDia = Convert.ToInt32(l18ValorDirectorSonar.Text);
+                preEn.bonoDirectorExtraSonadoresDia = Convert.ToInt32(l19ValorDirectorExtraSonar.Text);
 
                 preEn.usuarioActualiza = Session["Usuario"].ToString();
                 string retorno = beln.ActualizarPresupuestoLN(preEn, SP_Actualiza);
@@ -455,9 +480,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             try
             {
 
-                EditarFila(SP_ConsultaPresupuestoXoficina, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
-             //   EditarFila(SP_ConsultaPresupuestoXanoPeriodo, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());
-               
+                EditarFila(SP_ConsultaPresupuestoXoficina, this.GridViewPresupuesto, e, Session["Obj_Periodo"].ToString(), Session["Obj_Ano"].ToString());              
                
             }
             catch (Exception)
@@ -555,6 +578,12 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                                     preEn.periodo= Convert.ToInt32(sl.GetCellValueAsString(i, 5));
                                     preEn.ano = Convert.ToInt32(sl.GetCellValueAsString(i, 6));
                                     preEn.presupuesto = Convert.ToInt32(sl.GetCellValueAsString(i, 7));
+                                    preEn.retoSonadoresDia = Convert.ToInt32(sl.GetCellValueAsString(i, 8));
+                                    preEn.bonoAsesorSonadoresDia = Convert.ToInt32(sl.GetCellValueAsString(i, 9));
+                                    preEn.bonoDirectorSonadoresDia = Convert.ToInt32(sl.GetCellValueAsString(i, 10));
+                                    preEn.retoExtraSonadoresDia = Convert.ToInt32(sl.GetCellValueAsString(i, 11));
+                                    preEn.bonoAsesorExtraSonadoresDia = Convert.ToInt32(sl.GetCellValueAsString(i, 12));
+                                    preEn.bonoDirectorExtraSonadoresDia = Convert.ToInt32(sl.GetCellValueAsString(i, 13));
                                     preEn.usuarioActualiza = Session["usuario"].ToString();
                                String  result=    preLn.InsertarPresupuestoLN(preEn, SP_InsertaPresupuesto);
                                if (result == "0") {

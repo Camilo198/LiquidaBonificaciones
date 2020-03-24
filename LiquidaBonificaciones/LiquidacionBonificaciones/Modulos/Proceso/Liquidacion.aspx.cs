@@ -199,9 +199,11 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                             }
                         }
                     }
+                    ObjReglas = new VentasEN();
+                    ObjReglas.pIdTabla = Convert.ToString(ContadorReglas);
 
                     string resultActCampos = new VentasLN().ActualizaCampos("BON_ActualizarCampos");
-                   this.TextVentasValidas.Text= new VentasLN().ValidarReglas("BON_CalculaReglas");
+                   this.TextVentasValidas.Text= new VentasLN().ValidarReglas(ObjReglas,"BON_CalculaReglas");
                    this.TextVentasValidas.Enabled = false;
 
                     if (resultActCampos.Substring(0, 1) != "0")
@@ -284,15 +286,17 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             {
                 if (listaPlanesBonificaciones[i].estado == true) {
                     BonificacionEspecialLN beln = new BonificacionEspecialLN();
-                    BonificacionEspecialEN benPb = new BonificacionEspecialEN();
-                   RetosLN retln = new RetosLN();
-                   
-                    RetosEN retEn = new RetosEN();
-                    retEn.pIdPlanBonificacion=listaPlanesBonificaciones[i].ID;
+                    BonificacionEspecialEN benPb = new BonificacionEspecialEN();                    
                     benPb.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
                     IList<BonificacionEspecialEN> listaBonificaciones = beln.ConsultarBonificacionEspecialXidPlanLN("BON_ConsultaBonificacionEspecialXidPlan", benPb);
-                    if (retEn.pIdPlanBonificacion == 8)
+                    if (benPb.pIdPlanBonificacion == 8)
                     {
+                        RetosLN retln = new RetosLN();
+
+                        RetosEN retEn = new RetosEN();
+                        retEn.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                        retEn.periodo = Convert.ToInt32(this.txbPeriodo.Text);
+                        retEn.ano = Convert.ToInt32(this.txbano.Text);
                         IList<RetosEN> listaRetos = retln.ConsultarRetosXidPlanLN("BON_ConsultaRetosXidPlan", retEn);
                         for (int j = 0; j < listaRetos.Count; j++)
                         {
@@ -300,7 +304,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                           
                                 int idPlan = listaPlanesBonificaciones[i].ID;
                                 int id = listaRetos[j].ID;
-                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+                             //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
 
                                 BonificacionEspecialEN ben = new BonificacionEspecialEN();
                                 ben.pId = listaRetos[j].ID;
@@ -310,11 +314,43 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                                 ben.pPlanesMinimos = Convert.ToInt32(txbPeriodo.Text);
                                 ben.pPlanesMaximos = Convert.ToInt32(txbano.Text);
                                 String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion");
-                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+                              //  ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
                           
                         }
 
                     }
+                    else if (benPb.pIdPlanBonificacion == 14 || benPb.pIdPlanBonificacion == 15)
+                    {
+                        PresupuestoLN preln = new PresupuestoLN();
+
+                        PresupuestoEN preEn = new PresupuestoEN();
+                        preEn.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                        preEn.periodo = Convert.ToInt32(this.txbPeriodo.Text);
+                        preEn.ano = Convert.ToInt32(this.txbano.Text);
+
+                        IList<PresupuestoEN> listaPresupuesto = preln.ConsultarPresupuestoLN("BON_ConsultaPresupuesto", preEn);
+                        for (int j = 0; j < listaPresupuesto.Count; j++)
+                        {
+
+
+                            int idPlan = listaPlanesBonificaciones[i].ID;
+                            int id = listaPresupuesto[j].pIdBonificacion;
+                         //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+
+                            BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                            ben.pId = id;
+                            ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                            ben.pUsuActualiza = Session["usuario"].ToString();
+                            ben.pDescripcionBono = "";
+                            ben.pPlanesMinimos = Convert.ToInt32(txbPeriodo.Text);
+                            ben.pPlanesMaximos = Convert.ToInt32(txbano.Text);
+                            String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion");
+                         //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+
+                        }
+
+                    }
+
                     else
                     {
                         for (int j = 0; j < listaBonificaciones.Count; j++)
@@ -323,7 +359,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                             {
                                 int idPlan = listaPlanesBonificaciones[i].ID;
                                 int id = listaBonificaciones[j].pId;
-                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+                             //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
 
                                 BonificacionEspecialEN ben = new BonificacionEspecialEN();
                                 ben.pId = listaBonificaciones[j].pId;
@@ -333,13 +369,15 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                                 ben.pPlanesMinimos = Convert.ToInt32(txbPeriodo.Text);
                                 ben.pPlanesMaximos = Convert.ToInt32(txbano.Text);
                                 String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion");
-                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+                               // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
                             }
                         }
                     }
                 }
   
             }
+
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.Exitoso + "');</script>", false);
             
          
         }
