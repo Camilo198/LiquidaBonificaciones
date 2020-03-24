@@ -155,6 +155,7 @@
     <Content Include="MarcaVisual\imagenes\pie22.jpg" />
     <Content Include="MarcaVisual\imagenes\status_anim.gif" />
     <Content Include="MarcaVisual\imagenes\titulo22.jpg" />
+    <None Include="Properties\PublishProfiles\Bonificaciones.pubxml" />
     <None Include="Properties\PublishProfiles\Liquida.pubxml" />
     <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Modulos\Administracion\AdminUsuario.aspx" />
