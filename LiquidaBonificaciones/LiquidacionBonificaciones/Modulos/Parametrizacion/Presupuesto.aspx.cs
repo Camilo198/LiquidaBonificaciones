@@ -30,11 +30,13 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ScriptManager _scriptMan = ScriptManager.GetCurrent(this);
+            _scriptMan.AsyncPostBackTimeout = 36000;
             try
             {
 
                 UsuarioEN objUsuario = new UsuarioEN();
-            //    Session["usuario"] = "cristian.munoz";
+               //Session["usuario"] = "cristian.munoz";
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
@@ -627,7 +629,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                         }
                         catch (Exception ex)
                         {
-                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpFail + " " + ex.Message + "');</script>", false);
+                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpFail + "');</script>", false);
 
                         }
                     }
