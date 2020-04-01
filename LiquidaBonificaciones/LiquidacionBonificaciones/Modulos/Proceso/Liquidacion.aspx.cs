@@ -279,6 +279,8 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         {
             liquidacionNormalPlanes();
            liquidacionRecuperacionPermanenciaPlanes();
+           liquidacionRetroactiva_1Planes();
+           liquidacionRetroactiva_2Planes();
         }
 
  
@@ -296,7 +298,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                     BonificacionEspecialLN beln = new BonificacionEspecialLN();
                     BonificacionEspecialEN benPb = new BonificacionEspecialEN();
                     benPb.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
-                    IList<BonificacionEspecialEN> listaBonificaciones = beln.ConsultarBonificacionEspecialXidPlanLN("BON_ConsultaBonificacionEspecialXidPlan", benPb);
+                    IList<BonificacionEspecialEN> listaBonificaciones = beln.ConsultarBonificacionEspecialXidPlanLN("BON_ConsultaBonificacionEspecialXidPlan_Recu", benPb);
                     if (benPb.pIdPlanBonificacion == 8)
                     {
                     /*    
@@ -359,8 +361,8 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                             ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
                             ben.pUsuActualiza = Session["usuario"].ToString();
                             ben.pDescripcionBono = "Recuperacion X Permanencia Periodo"+preEn.ano+"-"+preEn.periodo;
-                            ben.pPlanesMinimos = Convert.ToInt32(txbPeriodo.Text);
-                            ben.pPlanesMaximos = Convert.ToInt32(txbano.Text);
+                            ben.pPlanesMinimos = Convert.ToInt32(preEn.periodo);
+                            ben.pPlanesMaximos = Convert.ToInt32(preEn.ano);
                             String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion_RecuPerma");
                             //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
 
@@ -397,8 +399,8 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                                 ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
                                 ben.pUsuActualiza = Session["usuario"].ToString();
                                 ben.pDescripcionBono = "Recuperacion X Permanencia Periodo" + preEn.ano + "-" + preEn.periodo;
-                                ben.pPlanesMinimos = Convert.ToInt32(txbPeriodo.Text);
-                                ben.pPlanesMaximos = Convert.ToInt32(txbano.Text);
+                                ben.pPlanesMinimos = Convert.ToInt32(preEn.periodo);
+                                ben.pPlanesMaximos = Convert.ToInt32(preEn.ano);
                                 String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion_RecuPerma");
                                 // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
                             }
@@ -417,9 +419,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
 
  private void liquidacionNormalPlanes(){
                     PlanDeBonificacionLN pbln= new PlanDeBonificacionLN();
-            pbln.InicializarResultadosLN("BON_IniciarResultados");
+                    pbln.InicializarResultadosLN("BON_IniciarResultados");  
 
-            IList<PlanDeBonificacionEN> listaPlanesBonificaciones = pbln.ConsultarPlanesBonificacionEspecialLN("BON_ConsultaPlanesBonificacion");
+                    IList<PlanDeBonificacionEN> listaPlanesBonificaciones = pbln.ConsultarPlanesBonificacionEspecialLN("BON_ConsultaPlanesBonificacion"); 
 
             for (int i = 0; i < listaPlanesBonificaciones.Count;i++ )
             {
@@ -520,6 +522,307 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             
          
         }
+
+
+ private void liquidacionRetroactiva_1Planes()
+ {
+     PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
+     pbln.InicializarResultadosLN("BON_IniciarResultados-1");//"BON_IniciarResultados"
+
+     IList<PlanDeBonificacionEN> listaPlanesBonificaciones = pbln.ConsultarPlanesBonificacionEspecialLN("BON_ConsultaPlanesBonificacion");
+
+     for (int i = 0; i < listaPlanesBonificaciones.Count; i++)
+     {
+         if (listaPlanesBonificaciones[i].estado == true)
+         {
+             BonificacionEspecialLN beln = new BonificacionEspecialLN();
+             BonificacionEspecialEN benPb = new BonificacionEspecialEN();
+             benPb.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+
+             IList<BonificacionEspecialEN> listaBonificaciones = beln.ConsultarBonificacionEspecialXidPlanLN("BON_ConsultaBonificacionEspecialXidPlan-1", benPb);
+             if (benPb.pIdPlanBonificacion == 8)
+             {
+                 RetosLN retln = new RetosLN();
+
+                 RetosEN retEn = new RetosEN();        
+               
+
+                 retEn.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                 retEn.periodo = Convert.ToInt32(this.txbPeriodo.Text);
+                 retEn.ano = Convert.ToInt32(this.txbano.Text);
+                 if (retEn.periodo == 1)
+                 {
+                     retEn.periodo = 12;
+                     retEn.ano = retEn.ano - 1;
+                 }
+                 else
+                 {
+                     retEn.periodo = retEn.periodo - 1;
+                 }
+
+                 IList<RetosEN> listaRetos = retln.ConsultarRetosXidPlanLN("BON_ConsultaRetosXidPlan", retEn);
+                 for (int j = 0; j < listaRetos.Count; j++)
+                 {
+
+
+                     int idPlan = listaPlanesBonificaciones[i].ID;
+                     int id = listaRetos[j].ID;
+                     //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+
+                     BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                     ben.pId = listaRetos[j].ID;
+                     ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                     ben.pUsuActualiza = Session["usuario"].ToString();
+                     ben.pDescripcionBono = "Recuperacion Retroactiva Periodo" + retEn.ano + "-" + retEn.periodo;
+                     ben.pPlanesMinimos = Convert.ToInt32(retEn.periodo);
+                     ben.pPlanesMaximos = Convert.ToInt32(retEn.ano);
+                     String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion-1");
+                     //  ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+
+                 }
+
+             }
+             else if (benPb.pIdPlanBonificacion == 14 || benPb.pIdPlanBonificacion == 15)
+             {
+                 PresupuestoLN preln = new PresupuestoLN();
+
+                 PresupuestoEN preEn = new PresupuestoEN();
+                 preEn.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                 preEn.periodo = Convert.ToInt32(this.txbPeriodo.Text);
+                 preEn.ano = Convert.ToInt32(this.txbano.Text);
+                 if (preEn.periodo == 1)
+                 {
+                     preEn.periodo = 12;
+                     preEn.ano = preEn.ano - 1;
+                 }
+                 else
+                 {
+                     preEn.periodo = preEn.periodo - 1;
+                 }
+
+                 IList<PresupuestoEN> listaPresupuesto = preln.ConsultarPresupuestoLN("BON_ConsultaPresupuesto", preEn);
+                 for (int j = 0; j < listaPresupuesto.Count; j++)
+                 {
+
+
+                     int idPlan = listaPlanesBonificaciones[i].ID;
+                     int id = listaPresupuesto[j].pIdBonificacion;
+                     //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+
+                     BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                     ben.pId = id;
+                     ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                     ben.pUsuActualiza = Session["usuario"].ToString();
+                     ben.pDescripcionBono = "Recuperacion Retroactiva Periodo" + preEn.ano + "-" + preEn.periodo;
+                     ben.pPlanesMinimos = Convert.ToInt32(preEn.periodo);
+                     ben.pPlanesMaximos = Convert.ToInt32(preEn.ano);
+                     String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion-1");
+                     //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+
+                 }
+
+             }
+
+             else
+             {
+                 PresupuestoEN preEn = new PresupuestoEN();
+                 preEn.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                 preEn.periodo = Convert.ToInt32(this.txbPeriodo.Text);
+                 preEn.ano = Convert.ToInt32(this.txbano.Text);
+                 if (preEn.periodo == 1)
+                 {
+                     preEn.periodo = 12;
+                     preEn.ano = preEn.ano - 1;
+                 }
+                 else
+                 {
+                     preEn.periodo = preEn.periodo - 1;
+                 }
+                 for (int j = 0; j < listaBonificaciones.Count; j++)
+                 {
+                     if (listaBonificaciones[j].pEstado == true)
+                     {
+                         int idPlan = listaPlanesBonificaciones[i].ID;
+                         int id = listaBonificaciones[j].pId;
+                         //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+
+                         BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                         ben.pId = listaBonificaciones[j].pId;
+                         ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                         ben.pUsuActualiza = Session["usuario"].ToString();
+                         ben.pDescripcionBono = "Recuperacion Retroactiva Periodo" + preEn.ano + "-" + preEn.periodo;
+                         ben.pPlanesMinimos = Convert.ToInt32(preEn.periodo);
+                         ben.pPlanesMaximos = Convert.ToInt32(preEn.ano);
+                         String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion-1");
+                         // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+                     }
+                 }
+             }
+         }
+
+     }
+
+     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.Exitoso + "');</script>", false);
+
+
+ }
+
+ private void liquidacionRetroactiva_2Planes()
+ {
+     PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
+     pbln.InicializarResultadosLN("BON_IniciarResultados-2");//"BON_IniciarResultados"
+
+     IList<PlanDeBonificacionEN> listaPlanesBonificaciones = pbln.ConsultarPlanesBonificacionEspecialLN("BON_ConsultaPlanesBonificacion");
+
+     for (int i = 0; i < listaPlanesBonificaciones.Count; i++)
+     {
+         if (listaPlanesBonificaciones[i].estado == true)
+         {
+             BonificacionEspecialLN beln = new BonificacionEspecialLN();
+             BonificacionEspecialEN benPb = new BonificacionEspecialEN();
+             benPb.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+
+             IList<BonificacionEspecialEN> listaBonificaciones = beln.ConsultarBonificacionEspecialXidPlanLN("BON_ConsultaBonificacionEspecialXidPlan-2", benPb);
+             if (benPb.pIdPlanBonificacion == 8)
+             {
+                 RetosLN retln = new RetosLN();
+
+                 RetosEN retEn = new RetosEN();
+
+
+                 retEn.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                 retEn.periodo = Convert.ToInt32(this.txbPeriodo.Text);
+                 retEn.ano = Convert.ToInt32(this.txbano.Text);
+                 if (retEn.periodo == 2)
+                 {
+                     retEn.periodo = 12;
+                     retEn.ano = retEn.ano - 1;
+                 }
+                 else if (retEn.periodo == 1) {
+                     retEn.periodo = 11;
+                     retEn.ano = retEn.ano - 1;
+                 }
+                 else
+                 {
+                     retEn.periodo = retEn.periodo - 2;
+                 }
+
+                 IList<RetosEN> listaRetos = retln.ConsultarRetosXidPlanLN("BON_ConsultaRetosXidPlan", retEn);
+                 for (int j = 0; j < listaRetos.Count; j++)
+                 {
+
+
+                     int idPlan = listaPlanesBonificaciones[i].ID;
+                     int id = listaRetos[j].ID;
+                     //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+
+                     BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                     ben.pId = listaRetos[j].ID;
+                     ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                     ben.pUsuActualiza = Session["usuario"].ToString();
+                     ben.pDescripcionBono = "Recuperacion Retroactiva Periodo" + retEn.ano + "-" + retEn.periodo;
+                     ben.pPlanesMinimos = Convert.ToInt32(retEn.periodo);
+                     ben.pPlanesMaximos = Convert.ToInt32(retEn.ano);
+                     String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion-2");
+                     //  ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+
+                 }
+
+             }
+             else if (benPb.pIdPlanBonificacion == 14 || benPb.pIdPlanBonificacion == 15)
+             {
+                 PresupuestoLN preln = new PresupuestoLN();
+
+                 PresupuestoEN preEn = new PresupuestoEN();
+                 preEn.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                 preEn.periodo = Convert.ToInt32(this.txbPeriodo.Text);
+                 preEn.ano = Convert.ToInt32(this.txbano.Text);
+                 if (preEn.periodo == 2)
+                 {
+                     preEn.periodo = 12;
+                     preEn.ano = preEn.ano - 1;
+                 }
+                 else if (preEn.periodo == 1)
+                 {
+                     preEn.periodo = 11;
+                     preEn.ano = preEn.ano - 1;
+                 }
+                 else
+                 {
+                     preEn.periodo = preEn.periodo - 2;
+                 }
+
+                 IList<PresupuestoEN> listaPresupuesto = preln.ConsultarPresupuestoLN("BON_ConsultaPresupuesto", preEn);
+                 for (int j = 0; j < listaPresupuesto.Count; j++)
+                 {
+
+
+                     int idPlan = listaPlanesBonificaciones[i].ID;
+                     int id = listaPresupuesto[j].pIdBonificacion;
+                     //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+
+                     BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                     ben.pId = id;
+                     ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                     ben.pUsuActualiza = Session["usuario"].ToString();
+                     ben.pDescripcionBono = "Recuperacion Retroactiva Periodo" + preEn.ano + "-" + preEn.periodo;
+                    ben.pPlanesMinimos = Convert.ToInt32(preEn.periodo);
+                    ben.pPlanesMaximos = Convert.ToInt32(preEn.ano);
+                     String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion-2");
+                     //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+
+                 }
+
+             }
+
+             else
+             {
+                 PresupuestoEN preEn = new PresupuestoEN();
+                 preEn.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                 preEn.periodo = Convert.ToInt32(this.txbPeriodo.Text);
+                 preEn.ano = Convert.ToInt32(this.txbano.Text);
+                 if (preEn.periodo == 2)
+                 {
+                     preEn.periodo = 12;
+                     preEn.ano = preEn.ano - 1;
+                 }
+                 else if (preEn.periodo == 1)
+                 {
+                     preEn.periodo = 11;
+                     preEn.ano = preEn.ano - 1;
+                 }
+                 else
+                 {
+                     preEn.periodo = preEn.periodo - 2;
+                 }
+                 for (int j = 0; j < listaBonificaciones.Count; j++)
+                 {
+                     if (listaBonificaciones[j].pEstado == true)
+                     {
+                         int idPlan = listaPlanesBonificaciones[i].ID;
+                         int id = listaBonificaciones[j].pId;
+                         //   ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + id + "Bon" + idPlan + "Plan" + "');</script>", false);
+
+                         BonificacionEspecialEN ben = new BonificacionEspecialEN();
+                         ben.pId = listaBonificaciones[j].pId;
+                         ben.pIdPlanBonificacion = listaPlanesBonificaciones[i].ID;
+                         ben.pUsuActualiza = Session["usuario"].ToString();
+                         ben.pDescripcionBono = "Recuperacion Retroactiva Periodo" + preEn.ano + "-" + preEn.periodo;
+                         ben.pPlanesMinimos = Convert.ToInt32(preEn.periodo);
+                         ben.pPlanesMaximos = Convert.ToInt32(preEn.ano);
+                         String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion-2");
+                         // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
+                     }
+                 }
+             }
+         }
+
+     }
+
+     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.Exitoso + "');</script>", false);
+
+
+ }
 
 
         protected void btnSubirAsesores_Click(object sender, EventArgs e)
