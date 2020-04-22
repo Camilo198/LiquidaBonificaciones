@@ -20,7 +20,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             try
             {
                 UsuarioEN objUsuario = new UsuarioEN();
-                Session["usuario"] = "cristian.munoz";
+               Session["usuario"] = "cristian.munoz";
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
@@ -278,9 +278,9 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         protected void btnLiquidar_Click(object sender, EventArgs e)
         {
             liquidacionNormalPlanes();
-           liquidacionRecuperacionPermanenciaPlanes();
-           liquidacionRetroactiva_1Planes();
-           liquidacionRetroactiva_2Planes();
+         //  liquidacionRecuperacionPermanenciaPlanes();
+          // liquidacionRetroactiva_1Planes();
+          // liquidacionRetroactiva_2Planes();
         }
 
  
@@ -811,6 +811,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                          ben.pPlanesMinimos = Convert.ToInt32(preEn.periodo);
                          ben.pPlanesMaximos = Convert.ToInt32(preEn.ano);
                          String Result = beln.LiquidarBonificacionEspecial(ben, "BON_LiquidarPlanesBonificacion-2");
+
                          // ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Result + "');</script>", false);
                      }
                  }

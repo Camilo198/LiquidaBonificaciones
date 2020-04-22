@@ -7,6 +7,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using LiquidaBonificaciones.EN.Tablas;
 using LiquidaBonificaciones.LN.Consultas;
+using System.IO;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 {
@@ -35,7 +38,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             {
                 
                 UsuarioEN objUsuario = new UsuarioEN();
-               // Session["usuario"] = "cristian.munoz";
+             //  Session["usuario"] = "cristian.munoz";
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
@@ -214,18 +217,21 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
 
         }
 
+   //
+        
 
         //Entrega la bonificacion seleccionada
         protected void ListBonificacion_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Convert.ToInt32(ListBonificacion.Text) == 8)
             {
-                Response.Redirect("Retos.aspx");
-            }
+
+                 Response.Redirect("Retos.aspx?usuario=" + Session["usuario"].ToString());
+    }
             else if (Convert.ToInt32(ListBonificacion.Text) == 14 || Convert.ToInt32(ListBonificacion.Text) == 15)
             {
-                Response.Redirect("Presupuesto.aspx");
-            }
+                Response.Redirect("Presupuesto.aspx?usuario=" + Session["usuario"].ToString());
+         }
             else
             {
                 mostrarControlesAnadirNuevo();
@@ -234,6 +240,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                                                                                //Carga los grid view con informacion
                 this.GridViewBonificacionEspecial.ShowFooter = false; //oculta el footer si esta visible
                 this.GridViewBonificacionEspecial.EditIndex = -1; //Devuelve al modo sin edicion 
+        
                 PlanDeBonificacionLN pbln = new PlanDeBonificacionLN();
                 PlanDeBonificacionEN planBonificacion = new PlanDeBonificacionEN();
                 planBonificacion.ID = Convert.ToInt32(Session["Obj_BonificacionEspecialEn"].ToString());

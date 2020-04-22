@@ -11,44 +11,24 @@
             vertical-align: middle;
             width: 69px;
         }
+        .auto-style3
+        {
+            font-size: 8pt;
+            text-align: left;
+            vertical-align: middle;
+            width: 92px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBarraHerramientas" runat="server">
-        <asp:UpdatePanel ID="UpdatePanelHerramientas" runat="server">
-        <ContentTemplate>
-            <table align="left" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="CuadranteBotonImagen">
-                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/MarcaVisual/iconos/nuevo.png"
-                            Width="16px" ToolTip="Nuevo..." OnClick="imgBtnNuevo_Click" style="height: 16px" />
-                    </td>
-                    <td class="CuadranteBotonImagen">
-                    <asp:ImageButton ID="imgBtnReportes" runat="server" ImageUrl="~/MarcaVisual/iconos/activar_sel.png"
-                    Width="16px" ToolTip="Reportes"  OnClick="imgBtnReportes_Click"  />
-                    </td>
-                </tr>
-            </table>
-            <asp:UpdateProgress ID="UpdateProgressPanelHerramientas" runat="server" AssociatedUpdatePanelID="UpdatePanelHerramientas">
-                <ProgressTemplate>
-                    <div class="contenedor">
-                        <div class="centrado">
-                            <div class="contenido">
-                                <asp:Image ID="ImagePanelHerramientas" runat="server" ImageUrl="~/MarcaVisual/iconos/loading.gif"
-                                    Height="20px" Width="100px" ImageAlign="Middle" />
-                            </div>
-                        </div>
-                    </div>
-                </ProgressTemplate>
-            </asp:UpdateProgress>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+       
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContenido" runat="server">
     <asp:UpdatePanel ID="upContenido" runat="server">
         <ContentTemplate>
             <table style="width: 100%" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td class="BarraSubTitulo">Reportes Debito Automatico
+                    <td class="BarraSubTitulo">Reportes Bonificaciones Pre
                     </td>
                 </tr>
                 <tr>
@@ -76,45 +56,25 @@
                                     </tr>
                                     <tr>
                                         <td class="EspaciadoInicial">
-                                        </td>
-                                        <td class="EstiloEtiquetas80">
-                                            <asp:Label ID="lblTipoReporte" runat="server" Text="Tipo de reporte:"></asp:Label>
-                                        </td>
+                                            &nbsp;</td>
+                                        <td class="auto-style3">
+                                            &nbsp;</td>
                                         <td class="EspaciadoIntermedio">
-                                        </td>
+                                            &nbsp;</td>
                                         <td>
-                                               <asp:DropDownList ID="ddlReporte" AutoPostBack="true" runat="server" CssClass="BordeListas" 
-                                                Width="150px" OnSelectedIndexChanged="ddlReporte_SelectedIndexChanged">
-                                                      <asp:ListItem Value="0">[Seleccione]</asp:ListItem>
-                                                <asp:ListItem Value="1">Clientes por tipo</asp:ListItem>
-                                                <asp:ListItem Value="2">Inconsistencia</asp:ListItem>
-                                                   <asp:ListItem Value="3">Historico de transacciones</asp:ListItem>
-                                                   <asp:ListItem Value="4">Logs por contrato</asp:ListItem>
-                                                   <asp:ListItem Value="5">Logs por archivos</asp:ListItem>
-                                                   <asp:ListItem Value="6">Clientes actualizados</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </td>
+                                               &nbsp;</td>
                                         <td class="EspaciadoIntermedio">
                                         </td>
                                          <td class="EstiloEtiquetas125Right">
-                                     <asp:Label ID="lblContrato" Visible="false" runat="server" Text="Contrato:"></asp:Label>
-                                        </td>
+                                             &nbsp;</td>
                                         <td class="EspaciadoIntermedio">
                                         </td>
                                         <td class="EstiloEtiquetas80">
-                                            <asp:TextBox ID="txbContrato" Visible="false" runat="server" CssClass="FuenteDDL" TabIndex="2"
-                                               Width="85px"></asp:TextBox>
-                                             <asp:FilteredTextBoxExtender ID="frbContrato" runat="server"
-                                                TargetControlID="txbContrato" FilterType="Custom, Numbers">
-                                            </asp:FilteredTextBoxExtender>
-                                        </td>
+                                            &nbsp;</td>
                                          <td class="auto-style2">
-                                            <asp:Label ID="lblBanco" Visible="false" runat="server" Text="Banco:"></asp:Label>
-                                        </td>
+                                             &nbsp;</td>
                                          <td class="EstiloEtiquetas80">
-                                        <asp:DropDownList ID="ddlBancoDebito" runat="server" CssClass="BordeListas" Visible="false" Width="150px">
-                                           </asp:DropDownList>
-                                        </td>
+                                             &nbsp;</td>
                                         <td class="EspaciadoIntermedio">
                                         </td>
                                         <td>
@@ -130,45 +90,23 @@
                                       <tr>
                                         <td class="EspaciadoInicial">
                                         </td>
-                                        <td class="EstiloEtiquetas80">
-                                            <asp:Label ID="lblFechaInicio" Visible="false" runat="server" Text="Fecha Inicio:"></asp:Label>
-                                        </td>
+                                        <td class="auto-style3">
+                                            &nbsp;</td>
                                         <td class="EspaciadoIntermedio">
                                         </td>
                                         <td>
-                                          <asp:TextBox ID="txbFechaInicio" Visible="false" runat="server" CssClass="FuenteDDL" TabIndex="2"
-                                               Width="85px"></asp:TextBox>
-                                            <asp:ImageButton ID="imgFechaInicio" Visible="false" runat="server" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/calendario.png"
-                                                Width="20px" />
-                                            <asp:CalendarExtender ID="ceFechaInicio" runat="server" Enabled="True" Format="dd/MM/yyyy"
-                                                PopupButtonID="imgFechaInicio" TargetControlID="txbFechaInicio">
-                                            </asp:CalendarExtender>
-                                            <asp:MaskedEditExtender ID="meFechaInicio" runat="server" InputDirection="LeftToRight"
-                                                Mask="99/99/9999" MaskType="Date" TargetControlID="txbFechaInicio" UserDateFormat="DayMonthYear">
-                                            </asp:MaskedEditExtender>
-                                            
-                                        </td>
+                                            &nbsp;</td>
                                         <td class="EspaciadoIntermedio">
                                         </td>
                                          <td class="EstiloEtiquetas125Right">
-                                            <asp:Label ID="lblFechaFin" Visible="false" runat="server" Text="Fecha Fin:"></asp:Label>
-                                        </td>
+                                             &nbsp;</td>
                                         <td class="EspaciadoIntermedio">
                                         </td>
                                         <td>
-                                               <asp:TextBox ID="txbFechaFinal" Visible="false" runat="server" CssClass="FuenteDDL" TabIndex="2"
-                                               Width="85px"></asp:TextBox>
-                                            <asp:ImageButton ID="imgBtnFechaFinal" Visible="false" runat="server" ImageAlign="Middle" ImageUrl="~/MarcaVisual/iconos/calendario.png"
-                                                Width="20px" />
-                                            <asp:CalendarExtender ID="ceFechaInicial" runat="server" Enabled="True" Format="dd/MM/yyyy"
-                                                PopupButtonID="imgBtnFechaFinal" TargetControlID="txbFechaFinal">
-                                            </asp:CalendarExtender>
-                                            <asp:MaskedEditExtender ID="meeFechaInicial" runat="server" InputDirection="LeftToRight"
-                                                Mask="99/99/9999" MaskType="Date" TargetControlID="txbFechaFinal" UserDateFormat="DayMonthYear">
-                                            </asp:MaskedEditExtender>
-                                        </td>
+                                               <asp:Button ID="btnInformes" runat="server" Height="33px" OnClick="btnInformes_Click" Text="Ir a mis informes" Width="137px" />
+                                          </td>
                                         <td class="auto-style1">
-                                        </td>
+                                            &nbsp;</td>
                                         <td class="EstiloEtiquetas80">
                                             
                                         </td>
@@ -186,19 +124,14 @@
                                          <tr>
                                         <td class="EspaciadoInicial">
                                         </td>
-                                        <td class="EstiloEtiquetas80">
+                                        <td class="auto-style3">
                                             
-                                            <asp:Label ID="lblEstadoD" runat="server" Text="Estado Debito:" Visible="false"></asp:Label>
-                                            
-                                        </td>
+                                            &nbsp;</td>
                                         <td class="EspaciadoIntermedio">
                                         </td>
                                        <td class="EstiloEtiquetas80" colspan="9">
                                           
-                                           <asp:DropDownList ID="ddlEstadoDebito" runat="server" CssClass="BordeListas" Visible="false" Width="150px" OnSelectedIndexChanged="ddlEstadoDebito_SelectedIndexChanged">
-                                           </asp:DropDownList>
-                                          
-                                        </td>
+                                           &nbsp;</td>
                                         
                                                  <tr>
                                                      <td colspan="13" style="height: 10px"></td>

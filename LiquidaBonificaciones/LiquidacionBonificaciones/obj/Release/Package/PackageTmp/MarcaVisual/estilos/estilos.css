@@ -323,13 +323,16 @@ Input
 {
     font-family: Arial, Verdana;
     font-size: 8pt;
+    
+
+Input
+{
+    font-family: Arial, Verdana;
+    font-size: 8pt;
     margin-left: 0px;
 }
 
-.VentanaModal
-{
-    background-color: #000000;
-    filter: alpha(opacity=50); /*opacity: 0.5;*/
+ty=50); /*opacity: 0.5;*/
 }
 
 .VentanaModalSinPermisos

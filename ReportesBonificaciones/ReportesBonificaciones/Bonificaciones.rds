@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Bonificaciones">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=sbogche037v;Initial Catalog=Bonificacion_QA</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>509b12f0-06de-457b-b9b3-42affbe4be8a</DataSourceID>
+</RptDataSource>
