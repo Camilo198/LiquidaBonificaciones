@@ -156,9 +156,14 @@
                                     </tr>
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
-                                        <td class="EstiloEtiquetas80"></td>
-                                        <td class="EspaciadoIntermedio"></td>
-                                        <td class="auto-style5"></td>
+                                        <td class="EstiloEtiquetas80">
+                                            <asp:Button ID="BtnCierreCRM" runat="server" Text="Cierre CRM" OnClick="btnCargarCierre_Click" ToolTip="Cargar Cierre CRM" ValidationGroup="1" />
+                                        </td>
+                                        <td class="EspaciadoIntermedio"></td>                                       
+                                             <td style="width: 20%" class="EstiloEtiquetas80"">
+                                            <asp:Label ID="l1CierreCRM" runat="server" Text="Ultimo Cierre CRM"></asp:Label>
+                                            <asp:TextBox ID="t1CierreCRM" runat="server"></asp:TextBox>
+                                        </td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td style="width: 20%" class="EstiloEtiquetas80">
                                             <asp:Label ID="lblFechaFin" runat="server" Text="Fecha Fin:"></asp:Label>

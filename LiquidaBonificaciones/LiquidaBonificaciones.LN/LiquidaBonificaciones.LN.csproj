@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Consultas\AsesoresLN.cs" />
     <Compile Include="Consultas\BonificacionEspecialLN.cs" />
+    <Compile Include="Consultas\CrmLN.cs" />
     <Compile Include="Consultas\ParametrosLN.cs" />
     <Compile Include="Consultas\PerfilComercialLN.cs" />
     <Compile Include="Consultas\PerfilLN.cs" />

@@ -124,6 +124,15 @@ namespace LiquidacionBonificaciones {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se cargaron al Cierre CRM: .
+        /// </summary>
+        internal static string CierreCRM {
+            get {
+                return ResourceManager.GetString("CierreCRM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se encontraron claves duplicadas ya cargadas al sistema, revise por favor.
         /// </summary>
         internal static string clavesDuplicadas {

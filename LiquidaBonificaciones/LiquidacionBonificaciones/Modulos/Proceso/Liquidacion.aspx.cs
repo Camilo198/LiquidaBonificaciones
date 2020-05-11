@@ -147,6 +147,16 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                     }
                     #endregion
 
+                    #region FECHA CRM
+                    CrmLN consultaFechaCRn =new  CrmLN();
+                    IList<CrmEN> listaFechaCRM = consultaFechaCRn.ConsultaFechaCierreCrm();
+                    if (listaFechaCRM.Count > 0)
+                    {
+                        t1CierreCRM.Text = listaFechaCRM[0].FechaActualiza.ToString();
+                    }
+
+                    #endregion
+
 
 
                 }
@@ -861,6 +871,25 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
         protected void gvParametros_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnCargarCierre_Click(object sender, EventArgs e)
+        {
+            CrmLN cierreCrmln = new CrmLN();
+            CrmEN cierreCrmEn = new CrmEN();
+            cierreCrmEn.Usuario = Session["usuario"].ToString();
+            try
+            {  
+                    int retin = Convert.ToInt32(cierreCrmln.cargarCierreCRM(cierreCrmEn));
+
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.CierreCRM + retin +" Registros" + "');</script>", false);
+                
+
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ProcesoError + "');</script>", false);
+            }
         }
     }
 }

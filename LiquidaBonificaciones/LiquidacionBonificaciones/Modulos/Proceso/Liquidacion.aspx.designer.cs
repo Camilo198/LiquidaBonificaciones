@@ -148,6 +148,33 @@ namespace LiquidacionBonificaciones.Modulos.Proceso {
         protected global::System.Web.UI.WebControls.TextBox txbFechaInicio;
         
         /// <summary>
+        /// BtnCierreCRM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCierreCRM;
+        
+        /// <summary>
+        /// l1CierreCRM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label l1CierreCRM;
+        
+        /// <summary>
+        /// t1CierreCRM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox t1CierreCRM;
+        
+        /// <summary>
         /// lblFechaFin control.
         /// </summary>
         /// <remarks>
