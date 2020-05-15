@@ -52,6 +52,7 @@
     <Compile Include="Tablas\RetosEN.cs" />
     <Compile Include="Tablas\UsuarioEN.cs" />
     <Compile Include="Tablas\VentasEN.cs" />
+    <Compile Include="Tablas\PamVentasOutEN.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

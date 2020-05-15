@@ -45,6 +45,7 @@
     <Compile Include="Consultas\AsesoresAD.cs" />
     <Compile Include="Consultas\BonificacionEspecialAD.cs" />
     <Compile Include="Consultas\CrmAD.cs" />
+    <Compile Include="Consultas\PamVentasOutAD.cs" />
     <Compile Include="Consultas\ParametrosAD.cs" />
     <Compile Include="Consultas\PerfilAD.cs" />
     <Compile Include="Consultas\PerfilComercialAD.cs" />

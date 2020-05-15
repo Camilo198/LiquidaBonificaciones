@@ -7,12 +7,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
+using SpreadsheetLight;
 
 namespace LiquidacionBonificaciones.Modulos.Proceso
 {
     public partial class Liquidacion : System.Web.UI.Page
     {
-   
+
+        private String SP_InsertaVentasOutSourcing = "BON_CrearVentaOutSourcing";
+        private String SP_EliminaVentasOutSourcing = "BON_EliminaVentasOutSourcing";
         protected void Page_Load(object sender, EventArgs e)
         {
             ScriptManager _scriptMan = ScriptManager.GetCurrent(this);
@@ -20,7 +24,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             try
             {
                 UsuarioEN objUsuario = new UsuarioEN();
-               Session["usuario"] = "cristian.munoz";
+              // Session["usuario"] = "cristian.munoz";
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
@@ -889,6 +893,119 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ProcesoError + "');</script>", false);
+            }
+        }
+
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PamVentaOutLN ventaOutLn = new PamVentaOutLN();
+                String resultClear = ventaOutLn.EliminarVentasOut(SP_EliminaVentasOutSourcing);
+                if (Path.GetExtension(FileUploadControl.FileName) == ".xlsx" || Path.GetExtension(FileUploadControl.FileName) == ".xls")
+                {
+                    if (this.FileUploadControl.HasFile)
+                    {
+                        try
+                        {
+                            SLDocument sl = new SLDocument(FileUploadControl.PostedFile.InputStream);
+                            string filename = Path.GetFileName(FileUploadControl.FileName);
+                            //   FileUploadControl.SaveAs(Server.MapPath("~/") + filename); Guarda el archivo en una ruta
+
+                            if (sl.GetCellValueAsString(1, 1) != null && sl.GetCellValueAsString(1, 1) != "")
+                            {
+                                String LogErrores = "";
+                                
+                                for (int i = 2; sl.GetCellValueAsString(i, 1) != null && sl.GetCellValueAsString(i, 1) != ""; i++)
+                                {
+                                    String ret = sl.GetCellValueAsString(i, 1);
+                                    PamVentasOutEN ventaOutEn = new PamVentasOutEN();
+                                    ventaOutEn.Cupo = sl.GetCellValueAsString(i, 1);
+                                    ventaOutEn.Afiliado = sl.GetCellValueAsString(i, 2);
+                                    ventaOutEn.Contrato = sl.GetCellValueAsString(i, 3);
+                                    ventaOutEn.CodOficina = Convert.ToInt32(sl.GetCellValueAsString(i, 4));
+                                    ventaOutEn.Oficina = sl.GetCellValueAsString(i, 5);
+                                    ventaOutEn.FechaVenta = sl.GetCellValueAsDateTime(i, 6);
+                                    ventaOutEn.ValorPlan = Convert.ToDouble(sl.GetCellValueAsString(i, 7));
+                                    ventaOutEn.CodVendedor = Convert.ToInt32(sl.GetCellValueAsString(i, 8));
+                                    ventaOutEn.IdeVendedor = Convert.ToDouble(sl.GetCellValueAsString(i, 9));
+                                    ventaOutEn.nombreVendedor = sl.GetCellValueAsString(i, 10);
+                                    ventaOutEn.Tipo = sl.GetCellValueAsString(i, 11);
+                                    ventaOutEn.PorcentajeInscripcion = Convert.ToDouble(sl.GetCellValueAsString(i, 12));
+                                    ventaOutEn.ValorInscripcionSinIva = Convert.ToDouble(sl.GetCellValueAsString(i, 13));
+                                    ventaOutEn.ValorPagoParcial = Convert.ToDouble(sl.GetCellValueAsString(i, 14));
+                                    ventaOutEn.AlturaDiferida = sl.GetCellValueAsString(i, 15);
+                                    ventaOutEn.TipoContrato = sl.GetCellValueAsString(i, 16);
+                                    ventaOutEn.EstadoCupo = sl.GetCellValueAsString(i, 17);
+                                    ventaOutEn.CarroAgil = sl.GetCellValueAsString(i, 18);                                    
+                                    ventaOutEn.MarcaDiferida = sl.GetCellValueAsString(i, 19);
+                                    ventaOutEn.CodigoDirector = Convert.ToInt32(sl.GetCellValueAsString(i, 20));
+                                    ventaOutEn.IdeDirector = Convert.ToDouble(sl.GetCellValueAsString(i, 21));
+                                    ventaOutEn.NombreDirector = sl.GetCellValueAsString(i, 22);
+                                    ventaOutEn.ValorIvaInscripcion = Convert.ToDouble(sl.GetCellValueAsString(i, 23));
+                                    ventaOutEn.ValorTotaInscripcionConIva = Convert.ToDouble(sl.GetCellValueAsString(i, 24));
+                                    ventaOutEn.MarcaExcl = sl.GetCellValueAsString(i, 25);
+                                    ventaOutEn.LineaProducto = sl.GetCellValueAsString(i, 26);
+                                    ventaOutEn.UsuarioActualiza = Session["usuario"].ToString();
+                                    String result = ventaOutLn.InsertarVentaOutLN(ventaOutEn, SP_InsertaVentasOutSourcing);
+                                    if (result == "0")
+                                    {
+                                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ErrorProceso + "');</script>", false);
+
+                                    }
+                                    else if (result != "1")
+                                    {
+                                        if (result.Length >= 155)
+                                        {
+                                            LogErrores += result.Substring(155, 47) + "</br>";
+                                        }
+                                        else
+                                        {
+
+                                            LogErrores += result + "</br>";
+                                        }
+                                    }
+
+                                }
+                                if (LogErrores != "")
+                                {
+                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.clavesDuplicadas + "');</script>", false);
+
+                                    Label8.Visible = true;
+                                    Label8.Text = LogErrores;
+
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpOk + "');" + "  window.location.href='/Modulos/Proceso/Liquidacion.aspx'</script>", false);
+
+                                }
+
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.archivoVacio + "');" + "  window.location.href='/Modulos/Proceso/Liquidacion.aspx'</script>", false);
+
+
+                            }
+
+
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpFail + "');</script>", false);
+
+                        }
+                    }
+                    else { ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.sinArchivo + "');</script>", false); }
+                }
+                else { ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.soloExcel + "');</script>", false); }
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.archivoMax + "');</script>", false);
             }
         }
     }

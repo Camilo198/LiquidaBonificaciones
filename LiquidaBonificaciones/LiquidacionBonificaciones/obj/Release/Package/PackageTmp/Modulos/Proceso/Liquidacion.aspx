@@ -119,7 +119,19 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="height: 10px" colspan="9"></td>
+                                       
+                                        <td colspan="7" style="height: 10px"  class="EstiloEtiquetas80">                                                                     
+                                                                      <br />
+                                                                      <br />
+                                                                      <asp:Label ID="Label7" runat="server" Text="Cargar Ventas OutSourcing desde Excel"></asp:Label>
+                                                                      <asp:FileUpload ID="FileUploadControl" runat="server" />
+                                                                      <asp:Button ID="UploadButton" runat="server" onclick="UploadButton_Click" text="Subir Archivo" />
+                                                                      <br />
+                                                                      <br />
+                                                                      <asp:Label ID="Label8" runat="server" Text="Error Estatus"></asp:Label>
+                                                                       <br />
+                                                                      <br />
+                                                                  </td>
                                     </tr>
                                     <tr>
                                         <td class="EspaciadoInicial"></td>
@@ -369,6 +381,10 @@
                 </ProgressTemplate>
             </asp:UpdateProgress>
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID="UploadButton" />
+
+        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphBarraEstado" runat="server">

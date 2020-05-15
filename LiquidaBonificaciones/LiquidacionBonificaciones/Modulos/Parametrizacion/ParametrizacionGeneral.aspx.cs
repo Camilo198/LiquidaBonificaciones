@@ -20,7 +20,7 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
             try
             {
                // Session["usuario"] = "Nicolas.Larrota";
-               Session["usuario"] = "cristian.munoz";
+              // Session["usuario"] = "cristian.munoz";
                 UsuarioEN objUsuario = new UsuarioEN();
 
                 if (Session["usuario"] == null)

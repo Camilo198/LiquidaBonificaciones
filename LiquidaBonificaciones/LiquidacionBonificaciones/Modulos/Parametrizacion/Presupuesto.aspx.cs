@@ -594,8 +594,16 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                                }
                                else if (result != "1") {
 
-                                   LogErrores += result.Substring(140,47) +"</br>";
 
+                                   if (result.Length >= 140)
+                                        {
+                                   LogErrores += result.Substring(140,47) +"</br>";
+                                        }
+                                   else
+                                   {
+
+                                       LogErrores += result + "</br>";
+                                   }
                                }
 
                                 }
