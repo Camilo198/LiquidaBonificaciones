@@ -617,7 +617,8 @@ namespace LiquidacionBonificaciones.Modulos.Parametrizacion
                         catch (Exception ex)
                         {
                             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpFail + "');</script>", false);
-
+                            Label8.Visible = true;
+                            Label8.Text = ex.ToString();
                         }
                     }
                     else { ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.sinArchivo + "');</script>", false); }

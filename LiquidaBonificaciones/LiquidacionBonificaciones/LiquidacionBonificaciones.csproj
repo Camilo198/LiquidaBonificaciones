@@ -159,6 +159,7 @@
     <None Include="Properties\PublishProfiles\Liquida.pubxml" />
     <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Modulos\Administracion\AdminUsuario.aspx" />
+    <Content Include="Modulos\Administracion\MenuPrincipal.aspx" />
     <Content Include="Modulos\Parametrizacion\Retos.aspx" />
     <Content Include="Modulos\Parametrizacion\BonificacionEspecial.aspx" />
     <Content Include="Modulos\Parametrizacion\Presupuesto.aspx" />
@@ -166,6 +167,7 @@
     <Content Include="Modulos\Proceso\Novedades.aspx" />
     <Content Include="Modulos\Parametrizacion\ParametrizacionGeneral.aspx" />
     <Content Include="Modulos\Proceso\Reportes.aspx" />
+    <Content Include="Modulos\MenuPrincipal.aspx" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\ReFocus.js" />
@@ -187,6 +189,13 @@
     </Compile>
     <Compile Include="Modulos\Administracion\AdminUsuario.aspx.designer.cs">
       <DependentUpon>AdminUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Administracion\MenuPrincipal.aspx.cs">
+      <DependentUpon>MenuPrincipal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Administracion\MenuPrincipal.aspx.designer.cs">
+      <DependentUpon>MenuPrincipal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Parametrizacion\Retos.aspx.cs">
       <DependentUpon>Retos.aspx</DependentUpon>
@@ -236,6 +245,13 @@
     </Compile>
     <Compile Include="Modulos\Proceso\Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\MenuPrincipal.aspx.cs">
+      <DependentUpon>MenuPrincipal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\MenuPrincipal.aspx.designer.cs">
+      <DependentUpon>MenuPrincipal.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaginaMaestra\Sitio.Master.cs">
       <DependentUpon>Sitio.Master</DependentUpon>

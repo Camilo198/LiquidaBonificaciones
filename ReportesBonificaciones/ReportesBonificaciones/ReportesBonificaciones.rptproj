@@ -18,6 +18,10 @@
       <FullPath>RptDirectoresPre.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>RptGerentesPre.rdl</Name>
+      <FullPath>RptGerentesPre.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>RptLiquidacionVentas.rdl</Name>
       <FullPath>RptLiquidacionVentas.rdl</FullPath>
     </ProjectItem>
@@ -26,8 +30,12 @@
       <FullPath>RptResultados.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>RptGerentesPre.rdl</Name>
-      <FullPath>RptGerentesPre.rdl</FullPath>
+      <Name>RptComisionAsesoresPre.rdl</Name>
+      <FullPath>RptComisionAsesoresPre.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>RptComisionesDirectorPre.rdl</Name>
+      <FullPath>RptComisionesDirectorPre.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

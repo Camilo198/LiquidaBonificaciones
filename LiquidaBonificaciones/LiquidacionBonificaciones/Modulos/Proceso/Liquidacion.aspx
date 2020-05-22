@@ -140,7 +140,7 @@
                                         </td>
                                         <td class="EspaciadoIntermedio"></td>
                                         <td class="auto-style5">
-                                            <asp:DropDownList ID="ddlFormaLiquidacion" runat="server" CssClass="BordeListas" ValidationGroup="1" Height="16px" Width="129px">
+                                            <asp:DropDownList ID="ddlFormaLiquidacion" runat="server" CssClass="BordeListas" ValidationGroup="1" Height="16px" Width="129px" AutoPostBack="True" OnSelectedIndexChanged="ddlFormaLiquidacion_SelectedIndexChanged">
                                                 <asp:ListItem Value="0">[Seleccione]</asp:ListItem>
                                                 <asp:ListItem Value="1">Simulación</asp:ListItem>
                                                 <asp:ListItem Value="2">Liquidación</asp:ListItem>

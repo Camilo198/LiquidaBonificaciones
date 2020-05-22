@@ -24,7 +24,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             try
             {
                 UsuarioEN objUsuario = new UsuarioEN();
-              // Session["usuario"] = "cristian.munoz";
+               //Session["usuario"] = "cristian.munoz";
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
@@ -996,7 +996,8 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                         catch (Exception ex)
                         {
                             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpFail + "');</script>", false);
-
+                            Label8.Visible = true;
+                            Label8.Text = ex.ToString();
                         }
                     }
                     else { ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.sinArchivo + "');</script>", false); }
@@ -1006,6 +1007,18 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.archivoMax + "');</script>", false);
+            }
+        }
+
+        protected void ddlFormaLiquidacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (ddlFormaLiquidacion.Text == "2")
+            {
+                this.btnConfirmaLiquidacion.Enabled = true;
+            }
+            else {
+                this.btnConfirmaLiquidacion.Enabled = false;
             }
         }
     }
