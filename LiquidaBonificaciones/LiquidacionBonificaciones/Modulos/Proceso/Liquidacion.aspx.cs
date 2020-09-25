@@ -977,6 +977,28 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
                                 }
                                 else
                                 {
+                                    VentasEN ObjReglas = new VentasEN();
+                                    ObjReglas.pCeremonia = this.txbCeremonia.Text.Substring(6, 4) + this.txbCeremonia.Text.Substring(3, 2);
+                                    int ContadorReglas = 0;
+                                    foreach (GridViewRow dtgItem in this.gvParametros.Rows)
+                                    {
+                                        String Actualiza = String.Empty;
+
+                                        if (dtgItem.Cells[2].Text.Equals("Si"))
+                                        {
+                                            ContadorReglas++;
+                                            ObjReglas.pIdTabla = dtgItem.Cells[0].Text;
+                                            dtgItem.Cells[3].Text = new VentasLN().AplicarReglas(ObjReglas, "BON_ContarBases");
+                  
+                                        }
+                                    }
+                                    ObjReglas = new VentasEN();
+                                    ObjReglas.pIdTabla = Convert.ToString(ContadorReglas);
+
+                                    string resultActCampos = new VentasLN().ActualizaCampos("BON_ActualizarCampos");
+                                    this.TextVentasValidas.Text = new VentasLN().ValidarReglas(ObjReglas, "BON_CalculaReglas");
+                                    this.TextVentasValidas.Enabled = false;
+                 
                                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), Guid.NewGuid().ToString(), "<script type='text/javascript'>alert('" + Mensajes.ArchivoUpOk + "');" + "  window.location.href='/Modulos/Proceso/Liquidacion.aspx'</script>", false);
 
                                 }

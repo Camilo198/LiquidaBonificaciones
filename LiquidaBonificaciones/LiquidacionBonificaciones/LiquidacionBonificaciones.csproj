@@ -160,6 +160,8 @@
     <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Modulos\Administracion\AdminUsuario.aspx" />
     <Content Include="Modulos\Administracion\MenuPrincipal.aspx" />
+    <Content Include="Modulos\Parametrizacion\Entregas.aspx" />
+    <Content Include="Modulos\Parametrizacion\ContratosTelefonicosDigitales.aspx" />
     <Content Include="Modulos\Parametrizacion\Retos.aspx" />
     <Content Include="Modulos\Parametrizacion\BonificacionEspecial.aspx" />
     <Content Include="Modulos\Parametrizacion\Presupuesto.aspx" />
@@ -196,6 +198,20 @@
     </Compile>
     <Compile Include="Modulos\Administracion\MenuPrincipal.aspx.designer.cs">
       <DependentUpon>MenuPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\Entregas.aspx.cs">
+      <DependentUpon>Entregas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\Entregas.aspx.designer.cs">
+      <DependentUpon>Entregas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\ContratosTelefonicosDigitales.aspx.cs">
+      <DependentUpon>ContratosTelefonicosDigitales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Parametrizacion\ContratosTelefonicosDigitales.aspx.designer.cs">
+      <DependentUpon>ContratosTelefonicosDigitales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Parametrizacion\Retos.aspx.cs">
       <DependentUpon>Retos.aspx</DependentUpon>

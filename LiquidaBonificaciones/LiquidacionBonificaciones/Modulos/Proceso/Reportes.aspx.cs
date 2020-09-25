@@ -18,7 +18,7 @@ namespace LiquidacionBonificaciones.Modulos.Proceso
             {
 
                 UsuarioEN objUsuario = new UsuarioEN();
-             //     Session["usuario"] = "cristian.munoz";
+                // Session["usuario"] = "cristian.munoz";
                 if (Session["usuario"] == null)
                     objUsuario.pUsuario = Request.QueryString[0].ToString();
                 else
