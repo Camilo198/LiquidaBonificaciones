@@ -17,3 +17,8 @@ C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaci
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.dll
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.pdb
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.csprojResolveAssemblyReference.cache
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\bin\Debug\LiquidaBonificaciones.EN.dll
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\bin\Debug\LiquidaBonificaciones.EN.pdb
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.csprojResolveAssemblyReference.cache
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.dll
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.EN\obj\Debug\LiquidaBonificaciones.EN.pdb

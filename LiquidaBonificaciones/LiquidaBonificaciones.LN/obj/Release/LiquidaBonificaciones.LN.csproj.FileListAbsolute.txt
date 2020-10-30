@@ -16,3 +16,12 @@ C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaci
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\obj\Release\LiquidaBonificaciones.LN.csprojResolveAssemblyReference.cache
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\obj\Release\LiquidaBonificaciones.LN.dll
 C:\Users\cristian.munoz\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\obj\Release\LiquidaBonificaciones.LN.pdb
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\bin\Release\LiquidaBonificaciones.LN.dll
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\bin\Release\LiquidaBonificaciones.LN.pdb
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\bin\Release\LiquidaBonificaciones.AD.dll
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\bin\Release\LiquidaBonificaciones.EN.dll
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\bin\Release\LiquidaBonificaciones.AD.pdb
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\bin\Release\LiquidaBonificaciones.EN.pdb
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\obj\Release\LiquidaBonificaciones.LN.csprojResolveAssemblyReference.cache
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\obj\Release\LiquidaBonificaciones.LN.dll
+C:\Users\cristian.munoz.CHEVYPLAN\Documents\GitHub\LiquidaBonificaciones\LiquidaBonificaciones\LiquidaBonificaciones.LN\obj\Release\LiquidaBonificaciones.LN.pdb
